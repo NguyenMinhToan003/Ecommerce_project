@@ -2,8 +2,14 @@ import IconHeart from "../../assets/Icons/Heart";
 import IconSearch from "../../assets/Icons/Search";
 import IconAvatar from "../../assets/Icons/Avatar";
 import IconCart from "../../assets/Icons/Cart";
+import { NavLink } from "react-router-dom";
 const Nav = () => {
-  const menu = ["Home", "Contact", "About", "Sign Up"];
+  const menu = [
+    { title: "Home", link: "/" },
+    { title: "Contact", link: "/contact" },
+    { title: "About", link: "/about" },
+    { title: "Sign Up", link: "/login" },
+  ];
   const button = [<IconHeart />, <IconCart />, <IconAvatar />];
   return (
     <>
@@ -12,7 +18,11 @@ const Nav = () => {
           <span className="font-bold text-2xl">Exclusive</span>
           <ul className="flex items-center gap-12 min-w-max  text-[#484848] ">
             {menu.map((item, index) => {
-              return <li className="p-2">{item}</li>;
+              return (
+                <NavLink to={item.link} className="p-2">
+                  {item.title}
+                </NavLink>
+              );
             })}
           </ul>
         </div>

@@ -1,13 +1,17 @@
 import Header from "../Header/Header";
 import Nav from "../Nav/Nav";
-import Index from ".";
+import Footer from "../Footer/Footer";
+import { Outlet } from "react-router-dom";
 const Home = () => {
   return (
     <>
-      <Header />
-      <Nav />
-      <hr className="my-7" />
-      <Index />
+      <div>
+        <Header />
+        <Nav />
+        <hr className="my-7" />
+        <Outlet />
+        <Footer />
+      </div>
     </>
   );
 };

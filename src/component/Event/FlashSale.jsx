@@ -1,6 +1,10 @@
 import ItemFlashSale from "./ItemFlashSale";
 import IconArrowRight from "../../assets/Icons/ArrowRight";
 import IconArrowLeft from "../../assets/Icons/ArrowLeft";
+import Image from "../../assets/Image/item1.jpg";
+import Image2 from "../../assets/Image/item2.png";
+import Image3 from "../../assets/Image/item3.png";
+import Image4 from "../../assets/Image/item4.png";
 import "./FlashSale.css";
 const FlashSale = () => {
   const time = [
@@ -8,6 +12,62 @@ const FlashSale = () => {
     { time: "Hours", value: "23" },
     { time: "Minutes", value: "19" },
     { time: "Seconds", value: "56" },
+  ];
+  const flashSale = [
+    {
+      image: Image2,
+      title: "HAVIT HV-G92 Gamepad",
+      sale: 120,
+      price: 160,
+      star: 3,
+      view: 88,
+      counDown: 30,
+    },
+    {
+      image: Image,
+      title: "AK-900 Wired Keyboard",
+      sale: 120,
+      price: 160,
+      star: 5,
+      view: 88,
+      counDown: 40,
+    },
+    {
+      image: Image3,
+      title: "IPS LCD Gaming Monitor",
+      sale: 130,
+      price: 160,
+      star: 4,
+      view: 88,
+      counDown: 40,
+    },
+    {
+      image: Image4,
+      title: "AK-900 Wired Keyboard",
+      sale: 120,
+      price: 160,
+      star: 5,
+      view: 88,
+      counDown: 40,
+    },
+    {
+      image: Image2,
+      title: "HAVIT HV-G92 Gamepad",
+      sale: 120,
+      price: 160,
+      star: 3,
+      view: 88,
+      counDown: 30,
+    },
+    {
+      image: Image,
+      title: "AK-900 Wired Keyboard",
+      sale: 120,
+      price: 160,
+      star: 5,
+      view: 88,
+      counDown: 40,
+    },
   ];
   return (
     <>
@@ -48,11 +108,12 @@ const FlashSale = () => {
         </div>
       </div>
       <div className="flex overflow-hidden gap-8 container mx-auto mt-10">
-        <ItemFlashSale />
-        <ItemFlashSale />
-        <ItemFlashSale />
-        <ItemFlashSale />
-        <ItemFlashSale />
+        {flashSale.map((item, index) => {
+          return <ItemFlashSale item={item} />;
+        })}
+      </div>
+      <div className=" mx-auto px-12 py-4 rounded bg-[#db4444] text-white w-60 mt-20">
+        View All Products
       </div>
     </>
   );

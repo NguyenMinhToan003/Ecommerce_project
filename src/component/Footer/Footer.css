@@ -1,0 +1,6 @@
+@tailwind components;
+@layer components {
+  .item {
+    @apply flex flex-col gap-4 text-[16px] font-light;
+  }
+}

@@ -49,6 +49,8 @@ const Index = () => {
         </div>
       </div>
       <FlashSale />
+      <FlashSale />
+      <FlashSale />
     </>
   );
 };
