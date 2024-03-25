@@ -1,4 +1,6 @@
 import { NavLink, Outlet } from 'react-router-dom';
+
+import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 import './Account.css';
 const Account = () => {
 	const manage = [
@@ -13,12 +15,17 @@ const Account = () => {
 	const wishList = [];
 	return (
 		<>
-			<div className='container mx-auto'>
+			<div className='container mx-auto relative'>
 				<div>
 					<span>Welcome!</span>
 					<span> Md Rimel</span>
 				</div>
-				<div className='grid grid-cols-[200px,minmax(auto,_1fr)] gap-16'>
+				{/* <div className='flex justify-center items-center absolute top-10 left-10'>
+					<FaAngleLeft className='bg-red-400 rounded-full w-8 h-8 ' />
+					<FaAngleRight className='bg-red-400 rounded-full w-8 h-8' />
+				</div> */}
+
+				<div className='grid grid-cols-[200px,minmax(auto,_1fr)] gap-40 container mx-auto'>
 					<div className='flex flex-col gap-4 '>
 						<ul className='list'>
 							<h3 className='h3'>Manage My Account</h3>

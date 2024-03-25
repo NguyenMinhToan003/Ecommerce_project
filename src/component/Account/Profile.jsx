@@ -42,15 +42,32 @@ const Profile = () => {
 					/>
 				</div>
 			</div>
-			<div className='space'>
+			<div className='space flex flex-col gap-4 w-full items-start '>
 				<label for='password'>Password Changes</label>
-				<input type='password' placeholder='Current Passwod' name='password' />
-				<input type='password' placeholder='New Password' name='password' />
-				<input type='password' placeholder='Confirm Password' name='password' />
+				<input
+					type='password'
+					placeholder='Current Passwod'
+					name='password'
+					className='input-set'
+				/>
+				<input
+					type='password'
+					placeholder='New Password'
+					name='password'
+					className='input-set'
+				/>
+				<input
+					type='password'
+					placeholder='Confirm Password'
+					name='password'
+					className='input-set'
+				/>
 			</div>
-			<div>
+			<div className='flex justify-end items-center gap-4 w-full'>
 				<button>Cancel</button>
-				<button>Save Changes</button>
+				<button className='px-12 py-4 bg-[#db4444] text-white rounded-md'>
+					Save Changes
+				</button>
 			</div>
 		</form>
 	);

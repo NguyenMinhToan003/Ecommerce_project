@@ -5,7 +5,8 @@ import Index from '../Home';
 import SignUp from '../SignUp/SignUp';
 import Account from '../Account/Account';
 import Profile from '../Account/Profile';
-
+import Contact from '../Contact/Contact';
+import ErrorRouter from './ErrorRouter';
 const AppRouter = () => {
 	return (
 		<Routes>
@@ -16,6 +17,8 @@ const AppRouter = () => {
 				<Route path='account' element={<Account />}>
 					<Route path='profile' element={<Profile />} />
 				</Route>
+				<Route path='contact' element={<Contact />} />
+				<Route path='*' element={<ErrorRouter />} />
 			</Route>
 		</Routes>
 	);

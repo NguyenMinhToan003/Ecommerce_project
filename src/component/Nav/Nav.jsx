@@ -10,7 +10,11 @@ const Nav = () => {
 		{ title: 'About', link: '/about' },
 		{ title: 'Sign Up', link: '/signup' },
 	];
-	const button = [<IconHeart />, <IconCart />, <IconAvatar />];
+	const button = [
+		{ icon: <IconHeart />, link: '/like' },
+		{ icon: <IconCart />, link: '/cart' },
+		{ icon: <IconAvatar />, link: '/account' },
+	];
 	return (
 		<>
 			<div className='mt-3 container mx-auto flex items-center xl:gap-32 lg:flex-row flex-col justify-between'>
@@ -39,7 +43,7 @@ const Nav = () => {
 						</div>
 						<div className='flex items-center gap-3'>
 							{button.map((item, index) => {
-								return <div>{item}</div>;
+								return <NavLink to={item.link}>{item.icon}</NavLink>;
 							})}
 						</div>
 					</div>
