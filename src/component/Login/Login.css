@@ -1,0 +1,6 @@
+@tailwind components;
+@layer components {
+	.input {
+		@apply p-2 border-[#c7c7c7] border-b-[1px] w-full outline-none;
+	}
+}

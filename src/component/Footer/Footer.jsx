@@ -24,7 +24,10 @@ const Footer = () => {
             return <li>{item}</li>;
           })}
           <div className="relative">
-            <input className="px-3 py-4 border-white border-[1.5px] bg-inherit text-white text-[16px] rounded w-full" />
+            <input
+              className="px-3 py-4 border-white border-[1.5px] bg-inherit text-white text-[16px] rounded w-full "
+              placeholder="@email.com"
+            />
             <div className="absolute top-1/2 right-[12px] -translate-y-1/2">
               <IconLatter />
             </div>
