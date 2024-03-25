@@ -1,10 +1,10 @@
-// import './SignUp.css';
+import { FaGoogle } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 import Bg from '../../assets/Image/bg-login.png';
 const SignUp = () => {
 	return (
 		<>
-			<div className='md:grid md:grid-cols-[minmax(auto_,1fr),_370px] gap-48 max-w-[1300px] grid-cols-1 flex flex-col-reverse'>
+			<div className='md:grid md:grid-cols-[minmax(auto_,1fr),_470px] gap-48 max-w-[1300px] grid-cols-1 flex flex-col-reverse container mx-auto'>
 				<div>
 					<img src={Bg} alt='logo' />
 				</div>
@@ -36,8 +36,9 @@ const SignUp = () => {
 						<button className='px-12 py-4 bg-[#db4444] rounded text-white  '>
 							Create Account
 						</button>
-						<a className='text-[#db4444] px-12 py-4 text-center  border-black border-[1px]'>
-							Sign up with Google
+						<a className=' px-12 py-4 text-center rounded-md border-black border-[1px] flex justify-center items-center gap-3'>
+							<FaGoogle />
+							<span className='text-[#db4444]'>Sign up with Google</span>
 						</a>
 						<div className='flex justify-between items-center'>
 							<p>Already have account?</p>

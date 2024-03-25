@@ -3,7 +3,7 @@ import Bg from '../../assets/Image/bg-login.png';
 const Login = () => {
 	return (
 		<>
-			<div className='grid md:grid-cols-[minmax(auto_,1fr),_370px] gap-48 max-w-[1300px] grid-cols-1'>
+			<div className='grid md:grid-cols-[minmax(auto_,1fr),_470px] gap-48 max-w-[1300px] container mx-auto grid-cols-1'>
 				<div>
 					<img src={Bg} alt='logo' />
 				</div>
