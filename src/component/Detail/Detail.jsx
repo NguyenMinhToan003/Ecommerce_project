@@ -7,14 +7,30 @@ import detail2 from '../../assets/Image/detail2.png';
 import detail3 from '../../assets/Image/detail3.png';
 import detail4 from '../../assets/Image/detail4.png';
 import detail5 from '../../assets/Image/detail5.png';
+import './Detail.css';
+import Size from './Size';
+import Color from './Color';
+import { useState } from 'react';
 
 const Detail = (props) => {
+	const [count, setCount] = useState(1);
+	const [color, setColor] = useState('');
+	const [size, setSize] = useState('XS');
+	const handlerSetColor = (color) => {
+		setColor(color);
+	};
+	const handlerSetSize = (size) => {
+		setSize(size);
+	};
 	const list = [
 		{
 			id: 0,
 			name: 'Havic HV G-92 Gamepad',
 			star: 4,
 			price: 192.0,
+			size: ['XS', 'S', 'M', 'L', 'XL'],
+			color: ['#ec4899', '#a855f7', '#22c55e', '#3b82f6'],
+
 			detail:
 				'PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.',
 		},
@@ -23,6 +39,8 @@ const Detail = (props) => {
 			name: 'Havic HV G-92 Gamepad',
 			star: 4,
 			price: 192.0,
+			size: ['XS', 'S', 'M', 'L', 'XL'],
+			color: ['#ec4899', '#a855f7', '#22c55e', '#3b82f6'],
 			detail:
 				'PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.',
 		},
@@ -31,6 +49,8 @@ const Detail = (props) => {
 			name: 'Havic HV G-92 Gamepad',
 			star: 4,
 			price: 192.0,
+			size: ['XS', 'S', 'M', 'L', 'XL'],
+			color: ['#ec4899', '#a855f7', '#22c55e', '#3b82f6'],
 			detail:
 				'PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.',
 		},
@@ -39,11 +59,18 @@ const Detail = (props) => {
 			name: 'Havic HV G-92 Gamepad',
 			star: 4,
 			price: 192.0,
+			size: ['XS', 'S', 'M', 'L', 'XL'],
+			color: ['#ec4899', '#a855f7', '#22c55e', '#3b82f6'],
 			detail:
 				'PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.',
 		},
 	];
+
 	const item = list[1];
+	const Count = (value) => {
+		if ((count <= 1) & (value === -1)) return;
+		setCount(count + value);
+	};
 	return (
 		<div className='container mx-auto'>
 			<div className='max-w-[1170px] min-h-[600px] mx-auto grid grid-cols-[170px,minmax(auto,_1fr),400px]'>
@@ -74,37 +101,27 @@ const Detail = (props) => {
 						sensitive.
 					</p>
 					<hr className='my-6' />
-					<div>
+					<div className='flex gap-3'>
 						<span>Colours:</span>
-						<input type='radio' name='color' id='color1' />
-						<input type='radio' name='color' id='color2' />
+						<Color colorAmount={item.color} handlerSetColor={handlerSetColor} />
 					</div>
-					<div className='mt-6'>
-						<span>Size</span>
-						<input
-							type='radio'
-							name='size'
-							id='size1'
-							placeholder='xs'
-							className='hidden peer'
-						/>
-						<label
-							htmlFor='size1'
-							className='text-center text-gray-500  border-[#a9a9a9] border-[2px]  rounded-lg cursor-pointer peer-checked:text-blue-600 text-[14px] px-[10px] py-[6px] peer-checked:bg-#db4444 '>
-							xs
-						</label>
-						<label htmlFor='size1'>s</label>
-						<input type='radio' name='size' value='size2' />
+					<div className='mt-6 peer flex  gap-3 '>
+						<span>Size:</span>
+						<Size sizeAmount={item.size} handlerSetSize={handlerSetSize} />
 					</div>
 					<div className='flex justify-between items-center mt-6'>
 						<div className='flex justify-center items-center'>
-							<button className='w-10 h-11 border-[1px] border-[#b4b4b4] rounded-l-md'>
+							<button
+								className='w-10 h-11 border-[1px] border-[#b4b4b4] rounded-l-md'
+								onClick={() => Count(-1)}>
 								-
 							</button>
 							<p className='w-20 h-11 border-[1px] flex justify-center items-center border-[#b4b4b4] border-x-transparent'>
-								1
+								{count}
 							</p>
-							<button className='w-10 h-11 border-[1px]  border-[#db4444] bg-[#db4444]  rounded-r-md text-white'>
+							<button
+								className='w-10 h-11 border-[1px]  border-[#db4444] bg-[#db4444]  rounded-r-md text-white'
+								onClick={() => Count(1)}>
 								+
 							</button>
 						</div>
