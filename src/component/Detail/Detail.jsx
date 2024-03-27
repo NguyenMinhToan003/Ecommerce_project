@@ -17,7 +17,6 @@ import { useDispatch, useSelector } from 'react-redux';
 const Detail = (props) => {
 	const dispatch = useDispatch();
 	const cart = useSelector((state) => state.cart.list);
-	console.log(cart);
 	const [count, setCount] = useState(1);
 	const [color, setColor] = useState('');
 	const [size, setSize] = useState('XS');
@@ -29,10 +28,21 @@ const Detail = (props) => {
 		setSize(size);
 	};
 	const handlerBuy = () => {
-		dispatch(addItem(item));
+		dispatch(addItem({ ...item, color: color, size: size, quantity: count }));
 	};
+
 	const handlerColorHeart = () => {
 		setColorHeart(colorHeart === 'none' ? '#db4444' : 'none');
+	};
+	const Count = (value) => {
+		const constParse = +count;
+		if ((count <= 1) & (value === -1)) return;
+		setCount(constParse + value);
+	};
+	const handlerChangeQuantity = (event) => {
+		const value = +event.target.value;
+		if (isNaN(value)) setCount('');
+		else setCount(value);
 	};
 	const list = [
 		{
@@ -79,23 +89,20 @@ const Detail = (props) => {
 	];
 
 	const item = list[1];
-	const Count = (value) => {
-		if ((count <= 1) & (value === -1)) return;
-		setCount(count + value);
-	};
+
 	return (
 		<div className='container mx-auto'>
-			<div className='max-w-[1170px] min-h-[600px] mx-auto grid grid-cols-[170px,minmax(auto,_1fr),400px]'>
-				<div className='flex flex-col items-center justify-between gap-4'>
+			<div className='max-w-[1170px] min-h-[600px] mx-auto grid lg:grid-cols-[170px,minmax(auto,_1fr),400px] grid-cols-2'>
+				<div className='lg:flex lg:flex-col items-center justify-between gap-4 grid grid-cols-2'>
 					<img src={detail2} alt='product' />
 					<img src={detail3} alt='product' />
 					<img src={detail4} alt='product' />
 					<img src={detail5} alt='product' />
 				</div>
-				<div className='flex justify-center items-center'>
+				<div className='flex justify-center items-center '>
 					<img src={detail1} alt='product' />
 				</div>
-				<div className='flex justify-between flex-col'>
+				<div className='flex justify-between flex-col lg:col-span-1 col-span-2 mt-30'>
 					<div>
 						<h3 className='text-[24px] font-semibold mb-4'>{item.name}</h3>
 						<div className='mb-4 flex gap-4'>
@@ -130,9 +137,9 @@ const Detail = (props) => {
 							</button>
 							<div>
 								<input
-									className='w-20 h-11 border-[1px] flex justify-center items-center border-[#b4b4b4] border-x-transparent text-center'
+									className='w-20 h-11 border-[1px] flex justify-center items-center border-[#b4b4b4] border-x-transparent text-center '
 									value={count}
-									onChange={(event) => setCount(event.target.value)}
+									onChange={(event) => handlerChangeQuantity(event)}
 								/>
 							</div>
 							<button

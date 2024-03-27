@@ -34,7 +34,7 @@ const Nav = () => {
 					<div className='flex items-center flex-auto gap-6'>
 						<div className=' relative  '>
 							<input
-								className='w-72 bg-[#f5f5f5] px-5 py-3  '
+								className='w-72 bg-[#f5f5f5] pl-5 py-3 pr-8  '
 								placeholder='What are you looking for'
 							/>
 							<div className='absolute top-1/2 -translate-y-1/2 right-3 '>

@@ -120,7 +120,7 @@ const FlashSale = () => {
 				</div>
 			</div>
 			<div
-				className='flex overflow-x-scroll  gap-8  mt-10 snap-x ml-20 flex-nowrap '
+				className='flex overflow-x-scroll  gap-8  mt-10 snap-x lg:ml-20 ml-10 flex-nowrap '
 				onWheel={handleScroll}>
 				{flashSale.map((item, index) => {
 					return (

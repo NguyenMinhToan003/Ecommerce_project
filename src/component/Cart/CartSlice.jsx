@@ -11,6 +11,7 @@ export const cartSlice = createSlice({
 				price: 192.0,
 				size: ['XS', 'S', 'M', 'L', 'XL'],
 				color: ['#ec4899', '#a855f7', '#22c55e', '#3b82f6'],
+				quantity: 2,
 				detail:
 					'PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.',
 			},
