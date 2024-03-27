@@ -15,18 +15,14 @@ const Account = () => {
 	const wishList = [];
 	return (
 		<>
-			<div className='container mx-auto relative'>
-				<div>
-					<span>Welcome!</span>
-					<span> Md Rimel</span>
+			<div className='container mx-auto relative text-[16px] font-normal'>
+				<div className='flex justify-end gap-1 mb-20 text-[14px]'>
+					<span>Welcome! </span>
+					<span className='text-[#db4444]'> Md Rimel</span>
 				</div>
-				{/* <div className='flex justify-center items-center absolute top-10 left-10'>
-					<FaAngleLeft className='bg-red-400 rounded-full w-8 h-8 ' />
-					<FaAngleRight className='bg-red-400 rounded-full w-8 h-8' />
-				</div> */}
 
-				<div className='grid grid-cols-[200px,minmax(auto,_1fr)] gap-40 container mx-auto'>
-					<div className='flex flex-col gap-4 '>
+				<div className='grid grid-cols-[200px,870px] gap-40 max-w-[1170px] mx-auto '>
+					<div className='flex flex-col gap-8 '>
 						<ul className='list'>
 							<h3 className='h3'>Manage My Account</h3>
 							{manage.map((item, index) => {

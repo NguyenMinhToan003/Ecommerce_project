@@ -11,7 +11,7 @@
 		@apply flex flex-col gap-2;
 	}
 	.item {
-		@apply ml-[25px] text-[#878787] inline;
+		@apply ml-[25px] text-[#7d8184] inline font-normal;
 	}
 	.space {
 		@apply flex justify-between items-center gap-[50px];

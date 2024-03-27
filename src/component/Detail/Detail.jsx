@@ -11,16 +11,28 @@ import './Detail.css';
 import Size from './Size';
 import Color from './Color';
 import { useState } from 'react';
+import { addItem } from '../Cart/CartSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Detail = (props) => {
+	const dispatch = useDispatch();
+	const cart = useSelector((state) => state.cart.list);
+	console.log(cart);
 	const [count, setCount] = useState(1);
 	const [color, setColor] = useState('');
 	const [size, setSize] = useState('XS');
+	const [colorHeart, setColorHeart] = useState('none');
 	const handlerSetColor = (color) => {
 		setColor(color);
 	};
 	const handlerSetSize = (size) => {
 		setSize(size);
+	};
+	const handlerBuy = () => {
+		dispatch(addItem(item));
+	};
+	const handlerColorHeart = () => {
+		setColorHeart(colorHeart === 'none' ? '#db4444' : 'none');
 	};
 	const list = [
 		{
@@ -116,9 +128,13 @@ const Detail = (props) => {
 								onClick={() => Count(-1)}>
 								-
 							</button>
-							<p className='w-20 h-11 border-[1px] flex justify-center items-center border-[#b4b4b4] border-x-transparent'>
-								{count}
-							</p>
+							<div>
+								<input
+									className='w-20 h-11 border-[1px] flex justify-center items-center border-[#b4b4b4] border-x-transparent text-center'
+									value={count}
+									onChange={(event) => setCount(event.target.value)}
+								/>
+							</div>
 							<button
 								className='w-10 h-11 border-[1px]  border-[#db4444] bg-[#db4444]  rounded-r-md text-white'
 								onClick={() => Count(1)}>
@@ -126,10 +142,14 @@ const Detail = (props) => {
 							</button>
 						</div>
 
-						<button className='bg-[#db4444] px-12 py-[10px] rounded-md text-white'>
+						<button
+							className='bg-[#db4444] px-12 py-[10px] rounded-md text-white'
+							onClick={() => handlerBuy()}>
 							Buy Now
 						</button>
-						<IconHeart />
+						<div onClick={handlerColorHeart}>
+							<IconHeart color={colorHeart} />
+						</div>
 					</div>
 					<div className='mt-10'>
 						<div className='p-4 border-[1px] flex gap-4 border-black'>

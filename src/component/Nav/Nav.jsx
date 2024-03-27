@@ -11,7 +11,7 @@ const Nav = () => {
 		{ title: 'Sign Up', link: '/signup' },
 	];
 	const button = [
-		{ icon: <IconHeart />, link: '/like' },
+		{ icon: <IconHeart color-='none' />, link: '/like' },
 		{ icon: <IconCart />, link: '/cart' },
 		{ icon: <IconAvatar />, link: '/account' },
 	];

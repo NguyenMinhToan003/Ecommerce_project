@@ -8,6 +8,15 @@ import Image4 from '../../assets/Image/item4.png';
 import './FlashSale.css';
 
 const FlashSale = () => {
+	const handleScroll = (event) => {
+		const container = event.target;
+		const scrollAmount = event.deltaY;
+		container.scrollTo({
+			top: 0,
+			left: container.scrollLeft + scrollAmount,
+			behavior: 'smooth',
+		});
+	};
 	const time = [
 		{ time: 'Days', value: '03' },
 		{ time: 'Hours', value: '23' },
@@ -110,10 +119,12 @@ const FlashSale = () => {
 					</div>
 				</div>
 			</div>
-			<div className='flex overflow-scroll  gap-8  mt-10 snap-x ml-10'>
+			<div
+				className='flex overflow-x-scroll  gap-8  mt-10 snap-x ml-20 flex-nowrap '
+				onWheel={handleScroll}>
 				{flashSale.map((item, index) => {
 					return (
-						<div className='scroll-m-6 snap-start hover:scroll-m-[24rem]'>
+						<div>
 							<ItemFlashSale item={item} />
 						</div>
 					);

@@ -7,7 +7,7 @@ const Login = () => {
 				<div>
 					<img src={Bg} alt='logo' />
 				</div>
-				<form className=' flex justify-center items-start flex-col p-4'>
+				<form className=' flex justify-center items-start flex-col p-4 '>
 					<h3 className='text-4xl mb-6'>Log in to Exclusive</h3>
 					<div className='w-full'>
 						<label htmlFor='email'>Enter your details below</label>

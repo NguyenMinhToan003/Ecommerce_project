@@ -1,9 +1,9 @@
 const Profile = () => {
 	return (
-		<form className='flex gap-5 flex-col  items-start max-w-[870px] min-w-[630px] px-20 py-10'>
+		<form className='flex gap-5 flex-col  items-start max-w-[870px] min-w-[630px] px-20 py-10 shadow-lg'>
 			<h2 className='h2 text-[#db4444]'>Edit Your Profile</h2>
-			<div className='space'>
-				<div className='flex flex-col'>
+			<div className='space '>
+				<div className='flex flex-col gap-2'>
 					<label for='firstname'>First Name</label>
 					<input
 						type='text'
@@ -12,7 +12,7 @@ const Profile = () => {
 						className='input-set'
 					/>
 				</div>
-				<div>
+				<div className='flex flex-col gap-2'>
 					<label for='lastname'>Last Name</label>
 					<input
 						type='text'
@@ -23,7 +23,7 @@ const Profile = () => {
 				</div>
 			</div>
 			<div className='space'>
-				<div className='flex flex-col'>
+				<div className='flex flex-col gap-2'>
 					<label for='email'>Email</label>
 					<input
 						type='email'
@@ -32,7 +32,7 @@ const Profile = () => {
 						className='input-set'
 					/>
 				</div>
-				<div>
+				<div className='flex flex-col gap-2'>
 					<label for='address'>Address</label>
 					<input
 						type='text'
@@ -43,7 +43,9 @@ const Profile = () => {
 				</div>
 			</div>
 			<div className='space flex flex-col gap-4 w-full items-start '>
-				<label for='password'>Password Changes</label>
+				<label for='password' className='mb-2'>
+					Password Changes
+				</label>
 				<input
 					type='password'
 					placeholder='Current Passwod'
