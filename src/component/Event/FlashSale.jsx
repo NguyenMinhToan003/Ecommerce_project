@@ -8,15 +8,6 @@ import Image4 from '../../assets/Image/item4.png';
 import './FlashSale.css';
 
 const FlashSale = () => {
-	const handleScroll = (event) => {
-		const container = event.target;
-		const scrollAmount = event.deltaY;
-		container.scrollTo({
-			top: 0,
-			left: container.scrollLeft + scrollAmount,
-			behavior: 'smooth',
-		});
-	};
 	const time = [
 		{ time: 'Days', value: '03' },
 		{ time: 'Hours', value: '23' },
@@ -70,15 +61,6 @@ const FlashSale = () => {
 			view: 88,
 			counDown: 30,
 		},
-		{
-			image: Image,
-			title: 'AK-900 Wired Keyboard',
-			sale: 120,
-			price: 160,
-			star: 5,
-			view: 88,
-			counDown: 40,
-		},
 	];
 	return (
 		<>
@@ -88,7 +70,7 @@ const FlashSale = () => {
 					<div className='text-[#db4444]'>Today’s</div>
 				</div>
 				<div className='flex justify-between container mx-auto'>
-					<div className='flex md:gap-20 gap:15  lx:flex-row flex-col'>
+					<div className='flex md:gap-20 gap:15  lg:flex-row flex-col'>
 						<div className='text-4xl'>Flash Sales</div>
 						<div className='w-12 flex gap-9 '>
 							{time.map((item, index) => {
@@ -119,9 +101,7 @@ const FlashSale = () => {
 					</div>
 				</div>
 			</div>
-			<div
-				className='flex overflow-x-scroll  gap-8  mt-10 snap-x lg:ml-20 ml-10 flex-nowrap '
-				onWheel={handleScroll}>
+			<div className='flex overflow-x-scroll  gap-8  mt-10 snap-x lg:ml-20 ml-10 flex-nowrap  no-scrollbar '>
 				{flashSale.map((item, index) => {
 					return (
 						<div>

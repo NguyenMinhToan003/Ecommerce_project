@@ -1,31 +1,55 @@
-import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { IoCloseSharp } from 'react-icons/io5';
 import {
 	MdOutlineKeyboardArrowUp,
 	MdOutlineKeyboardArrowDown,
 } from 'react-icons/md';
+import { removeItem } from './CartSlice';
 import { useEffect, useState } from 'react';
-
+import { addItem } from './CartSlice';
 const Cart = () => {
+	const dispatch = useDispatch();
+	const [Shipping, setShipping] = useState(0);
 	const [quantity, setQuantity] = useState([]);
 	const navigate = useNavigate();
 	const listCart = useSelector((state) => state.cart.list);
 
 	useEffect(() => {
 		setQuantity(listCart.map((item) => item.quantity));
-		console.log(quantity);
 	}, []);
 	const handlerCancelPage = () => {
 		navigate(-1);
 	};
 	const handerChangeQuantity = (value, index) => {
+		const valueNumber = +value;
 		if (value === -1 && quantity[index] === 1) return;
 		else
 			setQuantity(
-				quantity.map((item, idx) => (idx === index ? item + value : item))
+				quantity.map((item, idx) => (idx === index ? item + valueNumber : item))
 			);
+		dispatch(
+			addItem({
+				data: {
+					...listCart[index],
+					quantity: listCart[index].quantity + valueNumber,
+				},
+				index: index,
+			})
+		);
 	};
-
+	const handerChangeQuantityInput = (value, index) => {
+		setQuantity(quantity.map((item, idx) => (idx === index ? value : item)));
+		dispatch(
+			addItem({
+				data: {
+					...listCart[index],
+					quantity: value,
+				},
+				index: index,
+			})
+		);
+	};
 	return (
 		<>
 			<div className='container mx-auto'>
@@ -42,11 +66,19 @@ const Cart = () => {
 						{listCart.map((item, index) => {
 							return (
 								<tr className='px-10 py-6 text-[16px] h-[72px] w-full items-center '>
-									<td>{item.name}</td>
+									<td className='relative'>
+										<span>{item.name}</span>
+										<div className='absolute top-0 -left-10 w-[18px] h-[18px] rounded-full bg-[#db4444] text-white cursor-pointer flex items-center' onClick={() => {dispatch(removeItem(index))}}>
+											<IoCloseSharp />
+										</div>
+									</td>
 									<td>{item.price}</td>
 									<td className='relative   w-[80px]'>
 										<input
-											type='text'
+											type='number'
+											onChange={(event) => {
+												handerChangeQuantityInput(event.target.value, index);
+											}}
 											value={quantity[index]}
 											className='w-[72px] h-[44px] border-2 border-[#808080] rounded-md pl-4 px-4'
 										/>
@@ -91,7 +123,11 @@ const Cart = () => {
 						<h3 className='text-[20px] font-medium'>Cart Total</h3>
 						<div className='flex justify-between items-center mt-8 mb-4'>
 							<p>Subtotal:</p>
-							<p>$1750</p>
+							<p>
+								{listCart.reduce((total, item, index) => {
+									return total + item.price * quantity[index];
+								}, 0)}
+							</p>
 						</div>
 						<hr className='my-4' />
 						<div className='flex justify-between items-center'>
@@ -101,12 +137,18 @@ const Cart = () => {
 						<hr className='my-4' />
 						<div className='flex justify-between items-center '>
 							<p>Total:</p>
-							<p>$1750</p>
+							<p>
+								{listCart.reduce((total, item, index) => {
+									return total + item.price * quantity[index];
+								}, 0) - Shipping}
+							</p>
 						</div>
 						<div className='flex justify-center items-center'>
-							<button className='py-4 px-12 rounded-md bg-[#db4444] text-white font-medium text-[16px] '>
+							<NavLink
+								to='/billingDetail'
+								className='py-4 px-12 rounded-md bg-[#db4444] text-white font-medium text-[16px] '>
 								Procees to checkout
-							</button>
+							</NavLink>
 						</div>
 					</div>
 				</div>

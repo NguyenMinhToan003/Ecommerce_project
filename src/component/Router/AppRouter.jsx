@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Router } from 'react-router-dom';
 import Home from '../Home/Home';
 import Login from '../Login/Login';
 import Index from '../Home';
@@ -9,6 +9,8 @@ import Contact from '../Contact/Contact';
 import ErrorRouter from './ErrorRouter';
 import Cart from '../Cart/Cart';
 import Detail from '../Detail/Detail';
+import BillingDetail from '../BillingDetail/BillingDetail';
+
 const AppRouter = () => {
 	return (
 		<Routes>
@@ -18,6 +20,7 @@ const AppRouter = () => {
 				<Route path='signup' element={<SignUp />} />
 				<Route path='cart' element={<Cart />} />
 				<Route path='detail' element={<Detail />} />
+				<Route path='billingDetail' element={<BillingDetail />} />
 				<Route path='account' element={<Account />}>
 					<Route path='profile' element={<Profile />} />
 				</Route>

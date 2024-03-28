@@ -3,7 +3,9 @@ import IconSearch from '../../assets/Icons/Search';
 import IconAvatar from '../../assets/Icons/Avatar';
 import IconCart from '../../assets/Icons/Cart';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 const Nav = () => {
+	const number = useSelector((state) => state.cart.list.length);
 	const menu = [
 		{ title: 'Home', link: '/' },
 		{ title: 'Contact', link: '/contact' },
@@ -12,7 +14,7 @@ const Nav = () => {
 	];
 	const button = [
 		{ icon: <IconHeart color-='none' />, link: '/like' },
-		{ icon: <IconCart />, link: '/cart' },
+		{ icon: <IconCart number={number} />, link: '/cart' },
 		{ icon: <IconAvatar />, link: '/account' },
 	];
 	return (

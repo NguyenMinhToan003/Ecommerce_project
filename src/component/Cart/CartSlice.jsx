@@ -3,31 +3,26 @@ import { createSlice } from '@reduxjs/toolkit';
 export const cartSlice = createSlice({
 	name: 'cart',
 	initialState: {
-		list: [
-			{
-				id: 0,
-				name: 'Havic HV G-92 Gamepad',
-				star: 4,
-				price: 192.0,
-				size: ['XS', 'S', 'M', 'L', 'XL'],
-				color: ['#ec4899', '#a855f7', '#22c55e', '#3b82f6'],
-				quantity: 2,
-				detail:
-					'PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.',
-			},
-		],
+		list: localStorage.getItem('cart')
+			? JSON.parse(localStorage.getItem('cart'))
+			: [],
 	},
 	reducers: {
 		addItem: (state, action) => {
-			state.list = [...state.list, action.payload];
+			if (action.payload.index !== -1) {
+				let newList = state.list;
+				newList[action.payload.index] = action.payload.data;
+			} else state.list = [...state.list, action.payload.data];
+			localStorage.setItem('cart', JSON.stringify(state.list));
 		},
-		incrementByAmount: (state, action) => {
-			state.value += action.payload;
+		removeItem: (state, action) => {
+			state.list = state.list.filter((item, index) => index !== action.payload);
+			localStorage.setItem('cart', JSON.stringify(state.list));
 		},
 	},
 });
 
 // Action creators are generated for each case reducer function
-export const { addItem, incrementByAmount } = cartSlice.actions;
+export const { addItem, removeItem } = cartSlice.actions;
 
 export default cartSlice.reducer;

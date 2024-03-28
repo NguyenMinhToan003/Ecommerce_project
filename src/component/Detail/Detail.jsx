@@ -12,11 +12,11 @@ import Size from './Size';
 import Color from './Color';
 import { useState } from 'react';
 import { addItem } from '../Cart/CartSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 
 const Detail = (props) => {
 	const dispatch = useDispatch();
-	const cart = useSelector((state) => state.cart.list);
 	const [count, setCount] = useState(1);
 	const [color, setColor] = useState('');
 	const [size, setSize] = useState('XS');
@@ -28,7 +28,13 @@ const Detail = (props) => {
 		setSize(size);
 	};
 	const handlerBuy = () => {
-		dispatch(addItem({ ...item, color: color, size: size, quantity: count }));
+		dispatch(
+			addItem({
+				data: { ...item, color: color, size: size, quantity: count },
+				index: -1,
+			})
+		);
+		toast.success('Up to Cart');
 	};
 
 	const handlerColorHeart = () => {

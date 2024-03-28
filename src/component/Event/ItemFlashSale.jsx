@@ -1,7 +1,9 @@
 import IconStar from '../../assets/Icons/IconStar';
 import IconHeart from '../../assets/Icons/Heart';
 import IconEye from '../../assets/Icons/IconEye';
+import { useState } from 'react';
 const ItemFlashSale = (props) => {
+	const [colorHeart, setColorHeart] = useState('none');
 	const { image, title, sale, price, star, view, counDown } = props.item;
 	return (
 		<>
@@ -12,7 +14,12 @@ const ItemFlashSale = (props) => {
 						-{counDown}%
 					</div>
 					<div className='flex flex-col gap-3 absolute top-3 right-3'>
-						<IconHeart color='none' />
+						<div
+							onClick={() => {
+								setColorHeart(colorHeart === 'none' ? '#de5454' : 'none');
+							}}>
+							<IconHeart color={colorHeart} />
+						</div>
 						<IconEye />
 					</div>
 
