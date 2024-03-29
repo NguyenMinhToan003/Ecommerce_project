@@ -97,7 +97,7 @@ const Detail = (props) => {
 	const item = list[1];
 
 	return (
-		<div className='container mx-auto'>
+		<div className='container mx-auto px-2'>
 			<div className='max-w-[1170px] min-h-[600px] mx-auto grid lg:grid-cols-[170px,minmax(auto,_1fr),400px] grid-cols-2'>
 				<div className='lg:flex lg:flex-col items-center justify-between gap-4 grid grid-cols-2'>
 					<img src={detail2} alt='product' />
