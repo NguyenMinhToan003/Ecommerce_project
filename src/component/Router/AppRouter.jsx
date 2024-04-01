@@ -16,8 +16,6 @@ const AppRouter = () => {
 		<Routes>
 			<Route path='/' element={<Home />}>
 				<Route index element={<Index />} />
-				<Route path='login' element={<Login />} />
-				<Route path='signup' element={<SignUp />} />
 				<Route
 					path='cart'
 					element={
@@ -48,6 +46,8 @@ const AppRouter = () => {
 				<Route path='contact' element={<Contact />} />
 				<Route path='*' element={<ErrorRouter />} />
 			</Route>
+			<Route path='login' element={<Login />} />
+			<Route path='signup' element={<Login />} />
 		</Routes>
 	);
 };
