@@ -36,7 +36,7 @@ const Billing = () => {
 						className='w-6 h-6 bg-transparent checked:bg-[#db4444] appearance-none rounded-[3px] border-2 border-[#db4444]'
 					/>
 					<label className='font-medium text-[16px]'>
-						Save this information for faster check-out next time
+						Save this information htmlFor faster check-out next time
 					</label>
 				</div>
 			</div>

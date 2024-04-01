@@ -60,7 +60,7 @@ const Detail = (props) => {
 			color: ['#ec4899', '#a855f7', '#22c55e', '#3b82f6'],
 
 			detail:
-				'PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.',
+				'PlayStation 5 Controller Skin High quality vinyl with air channel adhesive htmlFor easy bubble free install & mess free removal Pressure sensitive.',
 		},
 		{
 			id: 1,
@@ -70,7 +70,7 @@ const Detail = (props) => {
 			size: ['XS', 'S', 'M', 'L', 'XL'],
 			color: ['#ec4899', '#a855f7', '#22c55e', '#3b82f6'],
 			detail:
-				'PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.',
+				'PlayStation 5 Controller Skin High quality vinyl with air channel adhesive htmlFor easy bubble free install & mess free removal Pressure sensitive.',
 		},
 		{
 			id: 2,
@@ -80,7 +80,7 @@ const Detail = (props) => {
 			size: ['XS', 'S', 'M', 'L', 'XL'],
 			color: ['#ec4899', '#a855f7', '#22c55e', '#3b82f6'],
 			detail:
-				'PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.',
+				'PlayStation 5 Controller Skin High quality vinyl with air channel adhesive htmlFor easy bubble free install & mess free removal Pressure sensitive.',
 		},
 		{
 			id: 3,
@@ -90,7 +90,7 @@ const Detail = (props) => {
 			size: ['XS', 'S', 'M', 'L', 'XL'],
 			color: ['#ec4899', '#a855f7', '#22c55e', '#3b82f6'],
 			detail:
-				'PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.',
+				'PlayStation 5 Controller Skin High quality vinyl with air channel adhesive htmlFor easy bubble free install & mess free removal Pressure sensitive.',
 		},
 	];
 
@@ -122,8 +122,8 @@ const Detail = (props) => {
 					</div>
 					<p className='text-[14px]'>
 						PlayStation 5 Controller Skin High quality vinyl with air channel
-						adhesive for easy bubble free install & mess free removal Pressure
-						sensitive.
+						adhesive htmlFor easy bubble free install & mess free removal
+						Pressure sensitive.
 					</p>
 					<hr className='my-6' />
 					<div className='flex gap-3'>
@@ -172,7 +172,7 @@ const Detail = (props) => {
 							<div className='font-medium'>
 								<p className='text-[16px] '>Free Delivery</p>
 								<a className='underline text-[12px]'>
-									Enter your postal code for Delivery Availability
+									Enter your postal code htmlFor Delivery Availability
 								</a>
 							</div>
 						</div>

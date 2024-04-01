@@ -1,6 +1,7 @@
 import Image from '../../assets/Image/login_art.jpg';
 import IconGoogle from '../../assets/Image/Google';
 import IconFacebook from '../../assets/Image/Facebook';
+import { NavLink } from 'react-router-dom';
 import './Login.css';
 const Login = () => {
 	return (
@@ -17,7 +18,7 @@ const Login = () => {
 						</span>
 						<form className='w-[24rem] flex flex-col gap-6 mt-12'>
 							<div className='flex flex-col gap-2'>
-								<label for='email'>Email</label>
+								<label htmlFor='email'>Email</label>
 								<input
 									type='email'
 									className='input'
@@ -26,7 +27,7 @@ const Login = () => {
 								/>
 							</div>
 							<div className='flex flex-col gap-2'>
-								<label for='password'>Password</label>
+								<label htmlFor='password'>Password</label>
 								<input
 									type='passsword'
 									className='input'
@@ -55,7 +56,9 @@ const Login = () => {
 						</form>
 						<span className='flex flex-row items-center justify-center mt-10'>
 							<span>Don't have an account ?</span>
-							<a className='text-[#486ced] cursor-pointer'>Signup</a>
+							<NavLink to='/signup' className='text-[#486ced] cursor-pointer'>
+								Signup
+							</NavLink>
 						</span>
 						<div className='text-center text-[#959CB6] uppercase mt-9'>
 							© 2023 ALL RIGHTS RESERVED

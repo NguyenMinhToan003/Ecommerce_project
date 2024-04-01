@@ -1,15 +1,15 @@
 import { Routes, Route } from 'react-router-dom';
-import Home from '../Home/Home';
-import Login from '../Login/Login';
-import Index from '../Home';
-import SignUp from '../SignUp/SignUp';
-import Account from '../Account/Account';
-import Profile from '../Account/Profile';
-import Contact from '../Contact/Contact';
+import Home from '../component/Home/Home';
+import Login from '../component/Login/Login';
+import Index from '../component/Home';
+import SignUp from '../component/SignUp/SignUp';
+import Account from '../component/Account/Account';
+import Profile from '../component/Account/Profile';
+import Contact from '../component/Contact/Contact';
 import ErrorRouter from './ErrorRouter';
-import Cart from '../Cart/Cart';
-import Detail from '../Detail/Detail';
-import Billing from '../Billing/Billing';
+import Cart from '../component/Cart/Cart';
+import Detail from '../component/Detail/Detail';
+import Billing from '../component/Billing/Billing';
 import PrivateRoute from './PrivateRouter';
 const AppRouter = () => {
 	return (
@@ -47,7 +47,7 @@ const AppRouter = () => {
 				<Route path='*' element={<ErrorRouter />} />
 			</Route>
 			<Route path='login' element={<Login />} />
-			<Route path='signup' element={<Login />} />
+			<Route path='signup' element={<SignUp />} />
 		</Routes>
 	);
 };

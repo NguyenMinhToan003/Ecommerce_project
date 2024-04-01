@@ -37,7 +37,7 @@ const Nav = () => {
 						<div className=' relative  '>
 							<input
 								className='w-72 bg-[#f5f5f5] pl-5 py-3 pr-8  '
-								placeholder='What are you looking for'
+								placeholder='What are you looking htmlFor'
 							/>
 							<div className='absolute top-1/2 -translate-y-1/2 right-3 '>
 								<IconSearch />

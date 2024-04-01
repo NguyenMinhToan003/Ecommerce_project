@@ -1,4 +1,4 @@
-import AppRouter from './component/Router/AppRouter';
+import AppRouter from './Router/AppRouter';
 import { ToastContainer } from 'react-toastify';
 function App() {
 	return (
