@@ -27,7 +27,7 @@ const Account = () => {
 							<h3 className='h3'>Manage My Account</h3>
 							{manage.map((item, index) => {
 								return (
-									<NavLink key={index} to={item.path} className='item'>
+									<NavLink key={10 + index} to={item.path} className='item'>
 										{item.title}
 									</NavLink>
 								);
@@ -39,7 +39,7 @@ const Account = () => {
 								return (
 									<NavLink
 										className='ml-[25px]  text-[#878787]'
-										key={index}
+										key={index + 100}
 										to={item.path}>
 										{item.title}
 									</NavLink>
@@ -55,7 +55,7 @@ const Account = () => {
 									return (
 										<NavLink
 											className='ml-[25px] text-[#878787]'
-											key={index}
+											key={index + 1000}
 											to={item.path}>
 											{item.title}
 										</NavLink>

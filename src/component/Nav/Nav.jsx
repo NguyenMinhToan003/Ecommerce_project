@@ -25,7 +25,7 @@ const Nav = () => {
 					<ul className='flex items-center xl:gap-12 gap-5 min-w-max  text-[#484848] '>
 						{menu.map((item, index) => {
 							return (
-								<NavLink to={item.link} className='p-2'>
+								<NavLink to={item.link} className='p-2' key={item.title}>
 									{item.title}
 								</NavLink>
 							);
@@ -37,7 +37,7 @@ const Nav = () => {
 						<div className=' relative  '>
 							<input
 								className='w-72 bg-[#f5f5f5] pl-5 py-3 pr-8  '
-								placeholder='What are you looking htmlFor'
+								placeholder='What are you looking for?'
 							/>
 							<div className='absolute top-1/2 -translate-y-1/2 right-3 '>
 								<IconSearch />

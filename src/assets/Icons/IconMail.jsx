@@ -9,9 +9,9 @@ const IconMail = () => {
 			<path
 				d='M1 1L11 8L21 1M1 15H21V1H1V15Z'
 				stroke='white'
-				stroke-width='1.5'
-				stroke-linecap='round'
-				stroke-linejoin='round'
+				strokeWidth='1.5'
+				strokeLinecap='round'
+				strokeLinejoin='round'
 			/>
 		</svg>
 	);

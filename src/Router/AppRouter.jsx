@@ -11,6 +11,7 @@ import Cart from '../component/Cart/Cart';
 import Detail from '../component/Detail/Detail';
 import Billing from '../component/Billing/Billing';
 import PrivateRoute from './PrivateRouter';
+import MissRouter from './MissRouter';
 const AppRouter = () => {
 	return (
 		<Routes>

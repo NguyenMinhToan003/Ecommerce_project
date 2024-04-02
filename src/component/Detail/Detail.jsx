@@ -10,7 +10,7 @@ import detail5 from '../../assets/Image/detail5.png';
 import './Detail.css';
 import Size from './Size';
 import Color from './Color';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { addItem } from '../Cart/CartSlice';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
@@ -21,6 +21,9 @@ const Detail = (props) => {
 	const [color, setColor] = useState('');
 	const [size, setSize] = useState('XS');
 	const [colorHeart, setColorHeart] = useState('none');
+	useEffect(() => {
+		setColor(item.color[0]);
+	}, []);
 	const handlerSetColor = (color) => {
 		setColor(color);
 	};
@@ -128,11 +131,19 @@ const Detail = (props) => {
 					<hr className='my-6' />
 					<div className='flex gap-3'>
 						<span>Colours:</span>
-						<Color colorAmount={item.color} handlerSetColor={handlerSetColor} />
+						<Color
+							colorAmount={item.color}
+							handlerSetColor={handlerSetColor}
+							coloring={color}
+						/>
 					</div>
 					<div className='mt-6 peer flex  gap-3 '>
 						<span>Size:</span>
-						<Size sizeAmount={item.size} handlerSetSize={handlerSetSize} />
+						<Size
+							sizeAmount={item.size}
+							handlerSetSize={handlerSetSize}
+							sizing={size}
+						/>
 					</div>
 					<div className='flex justify-between items-center mt-6'>
 						<div className='flex justify-center items-center'>

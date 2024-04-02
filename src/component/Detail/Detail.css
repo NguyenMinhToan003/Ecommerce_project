@@ -3,6 +3,7 @@
 	.label-radio {
 		@apply w-8 h-8 block text-center text-gray-500  border-[#a9a9a9] border-[2px]  rounded-lg cursor-pointer text-[14px] py-1  peer-checked:bg-[#db4444] peer-checked:text-white;
 	}
+
 	.radio-color {
 		@apply cursor-pointer w-5 h-5 rounded-full peer-checked:border-black border-[2px]  flex justify-center items-center;
 	}

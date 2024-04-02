@@ -23,7 +23,7 @@ const Index = () => {
 						return (
 							<>
 								<div className='flex items-center justify-between'>
-									<li>{item}</li>
+									<li key={item}>{item}</li>
 									{index === 0 || index === 1 ? <ArrowLeftMenu /> : ' '}
 								</div>
 							</>

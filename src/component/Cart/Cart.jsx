@@ -2,14 +2,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { IoCloseSharp } from 'react-icons/io5';
 import { AiOutlineMessage } from 'react-icons/ai';
-
 import {
 	MdOutlineKeyboardArrowUp,
 	MdOutlineKeyboardArrowDown,
 } from 'react-icons/md';
-import { removeItem } from './CartSlice';
 import { useEffect, useState } from 'react';
-import { addItem } from './CartSlice';
+import { addItem, removeItem } from './CartSlice';
+
 const Cart = () => {
 	const dispatch = useDispatch();
 	const [Shipping, setShipping] = useState(0);
@@ -20,9 +19,11 @@ const Cart = () => {
 	useEffect(() => {
 		setQuantity(listCart.map((item) => item.quantity));
 	}, []);
+
 	const handlerCancelPage = () => {
 		navigate(-1);
 	};
+
 	const handerChangeQuantity = (value, index) => {
 		const valueNumber = +value;
 		if (value === -1 && quantity[index] === 1) return;
@@ -40,6 +41,7 @@ const Cart = () => {
 			})
 		);
 	};
+
 	const handerChangeQuantityInput = (value, index) => {
 		const valueNumber = +value;
 		setQuantity(
@@ -55,6 +57,7 @@ const Cart = () => {
 			})
 		);
 	};
+
 	return (
 		<>
 			{listCart.length > 0 ? (
@@ -71,52 +74,49 @@ const Cart = () => {
 						<tbody>
 							{listCart.map((item, index) => {
 								return (
-									<>
-										<tr className='px-10 py-6 text-[16px] h-[72px] w-full items-center '>
-											<td className='relative'>
-												<span>{item.name}</span>
-												<div
-													className='absolute top-0 -left-10 w-[18px] h-[18px] rounded-full bg-[#db4444] text-white cursor-pointer flex items-center justify-center'
-													onClick={() => {
-														dispatch(removeItem(index));
-													}}>
-													<IoCloseSharp />
-												</div>
-											</td>
-											<td>{item.price}</td>
-											<td className='relative w-[80px]'>
-												<input
-													type='number'
-													onChange={(event) => {
-														handerChangeQuantityInput(
-															event.target.value,
-															index
-														);
-													}}
-													value={quantity[index]}
-													className='w-[72px] h-[44px] border-2 border-[#808080] rounded-md pl-4 px-4'
+									<tr
+										key={index}
+										className='px-10 py-6 text-[16px] h-[72px] w-full items-center '>
+										<td className='relative'>
+											<span>{item.name}</span>
+											<div
+												className='absolute top-0 -left-10 w-[18px] h-[18px] rounded-full bg-[#db4444] text-white cursor-pointer flex items-center justify-center'
+												onClick={() => {
+													dispatch(removeItem(index));
+												}}>
+												<IoCloseSharp />
+											</div>
+										</td>
+										<td>{item.price}</td>
+										<td className='relative w-[80px]'>
+											<input
+												type='number'
+												onChange={(event) => {
+													handerChangeQuantityInput(event.target.value, index);
+												}}
+												value={quantity[index]}
+												className='w-[72px] h-[44px] border-2 border-[#808080] rounded-md pl-4 px-4'
+											/>
+											<div className='absolute top-1/2 right-4 flex flex-col items-center justify-between -translate-y-1/2'>
+												<MdOutlineKeyboardArrowUp
+													className='cursor-pointer'
+													onClick={() => handerChangeQuantity(1, index)}
 												/>
-												<div className='absolute top-1/2 right-4 flex flex-col items-center justify-between -translate-y-1/2'>
-													<MdOutlineKeyboardArrowUp
-														className='cursor-pointer'
-														onClick={() => handerChangeQuantity(1, index)}
-													/>
-													<MdOutlineKeyboardArrowDown
-														className='cursor-pointer'
-														onClick={() => handerChangeQuantity(-1, index)}
-													/>
-												</div>
-											</td>
-											<td>{item.price * quantity[index]}</td>
-										</tr>
-									</>
+												<MdOutlineKeyboardArrowDown
+													className='cursor-pointer'
+													onClick={() => handerChangeQuantity(-1, index)}
+												/>
+											</div>
+										</td>
+										<td>{item.price * quantity[index]}</td>
+									</tr>
 								);
 							})}
 						</tbody>
 					</table>
 					<div className='max-w-[1170px] xl:w-[1170px] mx-auto flex justify-between items-center mt-6 '>
 						<button
-							className='  rounded-md px-12 py-4 border-2 border-[#717171]  hover:text-white hover:bg-black'
+							className='rounded-md px-12 py-4 border-2 border-[#717171]  hover:text-white hover:bg-black'
 							onClick={() => handlerCancelPage()}>
 							Return To Shop
 						</button>
@@ -179,4 +179,5 @@ const Cart = () => {
 		</>
 	);
 };
+
 export default Cart;
