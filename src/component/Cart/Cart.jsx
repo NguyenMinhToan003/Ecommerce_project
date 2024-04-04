@@ -7,7 +7,7 @@ import {
 	MdOutlineKeyboardArrowDown,
 } from 'react-icons/md';
 import { useEffect, useState } from 'react';
-import { addItem, removeItem } from './CartSlice';
+import { addCartItem, removeCartItem } from './CartSlice';
 
 const Cart = () => {
 	const dispatch = useDispatch();
@@ -32,7 +32,7 @@ const Cart = () => {
 				quantity.map((item, idx) => (idx === index ? item + valueNumber : item))
 			);
 		dispatch(
-			addItem({
+			addCartItem({
 				data: {
 					...listCart[index],
 					quantity: listCart[index].quantity + valueNumber,
@@ -82,7 +82,7 @@ const Cart = () => {
 											<div
 												className='absolute top-0 -left-10 w-[18px] h-[18px] rounded-full bg-[#db4444] text-white cursor-pointer flex items-center justify-center'
 												onClick={() => {
-													dispatch(removeItem(index));
+													dispatch(removeCartItem(index));
 												}}>
 												<IoCloseSharp />
 											</div>

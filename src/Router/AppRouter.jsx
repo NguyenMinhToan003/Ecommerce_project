@@ -11,7 +11,7 @@ import Cart from '../component/Cart/Cart';
 import Detail from '../component/Detail/Detail';
 import Billing from '../component/Billing/Billing';
 import PrivateRoute from './PrivateRouter';
-import MissRouter from './MissRouter';
+import { useSelector } from 'react-redux';
 const AppRouter = () => {
 	return (
 		<Routes>

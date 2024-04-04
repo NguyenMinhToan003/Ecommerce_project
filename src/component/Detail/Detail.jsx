@@ -11,7 +11,7 @@ import './Detail.css';
 import Size from './Size';
 import Color from './Color';
 import { useEffect, useState } from 'react';
-import { addItem } from '../Cart/CartSlice';
+import { addCartItem } from '../Cart/CartSlice';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 
@@ -32,7 +32,7 @@ const Detail = (props) => {
 	};
 	const handlerBuy = () => {
 		dispatch(
-			addItem({
+			addCartItem({
 				data: { ...item, color: color, size: size, quantity: count },
 				index: -1,
 			})

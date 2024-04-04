@@ -74,7 +74,6 @@ const Login = () => {
 	];
 
 	const handlerKeyDown = (e) => {
-		console.log(e.key, e.target, refName.current);
 		if (e.key === 'Enter') {
 			if (e.target == refName.current) refAddress.current.focus();
 			else if (e.target === refAddress.current) refEmail.current.focus();

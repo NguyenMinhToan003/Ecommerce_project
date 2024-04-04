@@ -49,8 +49,8 @@ const Login = () => {
 		const response = await loginService({ account, password });
 		if (response.EC === 0) {
 			toast.success(response.EM);
-			const data = { ...response.DT, auth: true };
-			dispatch(setAccountRedux(data));
+			const user = response.DT;
+			dispatch(setAccountRedux(user));
 			navigate('/');
 		} else if (response.EC === 1) {
 			toast.error(response.EM);

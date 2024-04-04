@@ -1,5 +1,4 @@
 const IconArrowLeft = (props) => {
-	console.log(props.color);
 	return (
 		<svg
 			width='19'

@@ -1,7 +1,8 @@
 const IconCart = (props) => {
+	const number = props.number || 0;
 	return (
 		<div className='relative'>
-			{props.number > 0 && (
+			{number > 0 && (
 				<span className='absolute -top-2 -right-1 w-5 h-5 rounded-full bg-[#db4444] text-white flex justify-center items-center text-[12px] p-1'>
 					{props.number}
 				</span>
