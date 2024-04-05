@@ -30,7 +30,7 @@ const Index = () => {
 						);
 					})}
 				</ul>
-				<div className='px-10 py-10 max-w-full h-full relative bg-black text-white pl-16 pt-14 '>
+				<div className='px-10 py-10 max-w-full h-full relative bg-black text-white pl-16 pt-14 -z-10'>
 					<div>
 						<IconApple />
 						<span className='text-[16px]'>iPhone 14 Series</span>
@@ -44,7 +44,7 @@ const Index = () => {
 					</div>
 					<img
 						src={imageBg}
-						className=' h-full w-1/2 absolute right-0 top-0 '
+						className=' h-full w-1/2 absolute right-0 top-0  object-cover'
 					/>
 				</div>
 			</div>

@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
+const account = JSON.parse(localStorage.getItem('account'));
 const AccountSlice = createSlice({
 	name: 'account',
 	initialState: {
-		data: JSON.parse(localStorage.getItem('account')) || [],
-		isAuth: JSON.parse(localStorage.getItem('account')) ? true : false,
+		data: account || null,
+		isAuth: account ? true : false,
 	},
 	reducers: {
 		setAccount: (state, action) => {
@@ -13,9 +14,9 @@ const AccountSlice = createSlice({
 			localStorage.setItem('account', JSON.stringify(state));
 		},
 		resetAccount: (state) => {
-			state.data = [];
+			state.data = null;
 			state.isAuth = false;
-			localStorage.setItem('account', JSON.stringify(state.data));
+			localStorage.removeItem('account');
 			console.log('>>>> reset account:', state);
 		},
 	},

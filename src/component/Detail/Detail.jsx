@@ -11,7 +11,7 @@ import './Detail.css';
 import Size from './Size';
 import Color from './Color';
 import { useEffect, useState } from 'react';
-import { addCartItem } from '../Cart/CartSlice';
+import { addCartItem } from '../../Redux/CartSlice';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 

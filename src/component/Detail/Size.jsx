@@ -13,7 +13,7 @@ const Size = (props) => {
 							name='size'
 							defaultChecked={sizing === item ? true : false}
 						/>
-						<span className='peer label-radio'>{item}</span>
+						<span className='label-radio'>{item}</span>
 					</label>
 				);
 			})}

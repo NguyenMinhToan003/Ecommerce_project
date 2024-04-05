@@ -7,7 +7,7 @@ import IconHeart from '../../assets/Icons/Heart';
 import IconAvatar from '../../assets/Icons/Avatar';
 import IconCart from '../../assets/Icons/Cart';
 import { IoCloseSharp } from 'react-icons/io5';
-import { resetCartStore } from '../Cart/CartSlice';
+import { resetCartStore } from '../../Redux/CartSlice';
 import { resetAccount } from '../../Redux/AccountSlice';
 
 const AccountDropdown = () => {
@@ -46,7 +46,7 @@ const AccountDropdown = () => {
 					)}
 				</button>
 				{isOpen && (
-					<ul className='absolute z-10 min-w-[180px]  rounded-md border  bg-white p-3  text-sm font-normal text-blue-gray-500 shadow-lg shadow-blue-gray-500/10 focus:outline-none -left-20'>
+					<ul className='absolute z-10 min-w-[180px]  rounded-md border  bg-white p-3  text-sm font-normal text-blue-gray-500 shadow-lg shadow-blue-gray-500/10 focus:outline-none right-0 mt-2'>
 						<li
 							className=' w-full cursor-pointer  rounded-md px-3 pt-[9px] pb-2 text-start leading-tight'
 							key='drop-1 '
@@ -73,7 +73,7 @@ const AccountDropdown = () => {
 							key='drop-3'
 							className=' w-full cursor-pointer  rounded-md px-3 pt-[9px] pb-2 text-start leading-tight'>
 							<NavLink
-								to='/addProduct '
+								to='/uploadProduct'
 								onClick={() => {
 									setIsOpen(!isOpen);
 								}}>

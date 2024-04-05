@@ -7,7 +7,7 @@ import {
 	MdOutlineKeyboardArrowDown,
 } from 'react-icons/md';
 import { useEffect, useState } from 'react';
-import { addCartItem, removeCartItem } from './CartSlice';
+import { addCartItem, removeCartItem } from '../../Redux/CartSlice';
 
 const Cart = () => {
 	const dispatch = useDispatch();

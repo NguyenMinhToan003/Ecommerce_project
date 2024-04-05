@@ -11,7 +11,7 @@ import Cart from '../component/Cart/Cart';
 import Detail from '../component/Detail/Detail';
 import Billing from '../component/Billing/Billing';
 import PrivateRoute from './PrivateRouter';
-import { useSelector } from 'react-redux';
+import UploadProduct from '../component/UploadProduct/UploadProduct';
 const AppRouter = () => {
 	return (
 		<Routes>
@@ -33,6 +33,7 @@ const AppRouter = () => {
 						</PrivateRoute>
 					}
 				/>
+				<Route path='uploadProduct' element={<UploadProduct />} />
 				<Route path='detail' element={<Detail />} />
 
 				<Route

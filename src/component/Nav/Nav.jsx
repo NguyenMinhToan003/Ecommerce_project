@@ -20,7 +20,7 @@ const Nav = () => {
 	];
 	return (
 		<>
-			<div className='mt-3 container mx-auto flex flex-col items-center  justify-between lg:flex-row '>
+			<div className='my-3 container mx-auto flex flex-col items-center  justify-between lg:flex-row z-50'>
 				<div className='flex lg:w-1/2 container items-center justify-between '>
 					<div>
 						<span className='inline-block font-bold text-2xl'>Exclusive</span>
@@ -49,7 +49,7 @@ const Nav = () => {
 						<div className='flex items-center gap-3'>
 							{button.map((item, index) => {
 								return (
-									<div className='xl:block hidden'>
+									<div className='xl:block hidden' key={`nav${index}`}>
 										<NavLink to={item.link}>{item.icon}</NavLink>
 									</div>
 								);

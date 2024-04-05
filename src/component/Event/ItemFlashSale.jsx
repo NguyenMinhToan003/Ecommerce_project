@@ -7,8 +7,8 @@ const ItemFlashSale = (props) => {
 	const { image, title, sale, price, star, view, counDown } = props.item;
 	return (
 		<>
-			<div className='w-[270px] h-auto group  p-4'>
-				<div className='w-full h-[250px] bg-[#f5f5f5] flex justify-center items-center relative'>
+			<div className='w-[270px] h-auto group p-4 '>
+				<div className='w-full h-[250px] bg-[#f5f5f5] flex justify-center items-center relative -z-10'>
 					<img src={image} />
 					<div className='absolute top-3 left-3 py-1 px-3 rounded-md text-[#fafafa] bg-[#db4444] text-[12px]'>
 						-{counDown}%

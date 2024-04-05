@@ -1,0 +1,9 @@
+@tailwind components;
+@layer components {
+	.focus {
+		@apply absolute top-1/2  bg-inherit  left-[16px] -translate-y-1/2 peer-focus:-top-1 peer-focus:left-1 transition-all  ease-in peer-focus:bg-white px-1 peer-focus:text-[#db4444];
+	}
+	.unFocus {
+		@apply absolute -top-1 left-1 bg-white px-1 -translate-y-1/2 text-[#db4444];
+	}
+}
