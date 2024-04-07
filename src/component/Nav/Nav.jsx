@@ -1,5 +1,5 @@
 import IconHeart from '../../assets/Icons/Heart';
-import IconSearch from '../../assets/Icons/Search';
+import { FiSearch } from 'react-icons/fi';
 import IconAvatar from '../../assets/Icons/Avatar';
 import IconCart from '../../assets/Icons/Cart';
 import { NavLink } from 'react-router-dom';
@@ -20,7 +20,7 @@ const Nav = () => {
 	];
 	return (
 		<>
-			<div className='my-3 container mx-auto flex flex-col items-center  justify-between lg:flex-row z-50'>
+			<div className='my-3 container mx-auto flex flex-col items-center  justify-between lg:flex-row '>
 				<div className='flex lg:w-1/2 container items-center justify-between '>
 					<div>
 						<span className='inline-block font-bold text-2xl'>Exclusive</span>
@@ -43,7 +43,7 @@ const Nav = () => {
 								placeholder='What are you looking for?'
 							/>
 							<div className='absolute top-1/2 -translate-y-1/2 right-3 '>
-								<IconSearch />
+								<FiSearch className='w-4 h-4' />
 							</div>
 						</div>
 						<div className='flex items-center gap-3'>
