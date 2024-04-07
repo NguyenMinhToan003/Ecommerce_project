@@ -14,6 +14,7 @@ const FlashSale = () => {
 		{ time: 'Minutes', value: '19' },
 		{ time: 'Seconds', value: '56' },
 	];
+
 	const flashSale = [
 		{
 			image: Image2,

@@ -11,7 +11,11 @@ const AccountSlice = createSlice({
 			const user = action.payload;
 			state.data = user;
 			state.isAuth = true;
-			localStorage.setItem('account', JSON.stringify(state));
+			console.log(state.data);
+			localStorage.setItem(
+				'account',
+				JSON.stringify({ data: state.data, isAuth: state.isAuth })
+			);
 		},
 		resetAccount: (state) => {
 			state.data = null;

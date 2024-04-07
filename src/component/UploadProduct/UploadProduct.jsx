@@ -1,14 +1,20 @@
-import { useEffect, useState } from 'react';
 import { VscError } from 'react-icons/vsc';
 import { MdOutlineFileUpload } from 'react-icons/md';
 import './UploadProduct.css';
 import { toast } from 'react-toastify';
+import { UploadProductService } from '../../services/ProductService';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+
 const UploadProduct = () => {
+	const idUser = useSelector((state) => state.account.data.id);
 	const [name, setName] = useState('');
 	const [price, setPrice] = useState(-1);
-	const [catagory, setCatagory] = useState('');
+	const [category, setCategory] = useState('');
 	const [detail, setDetail] = useState('');
 	const [image, setImage] = useState([]);
+	const [imagePreview, setImagePreview] = useState([]);
+
 	const handlerValidateNumber = (e) => {
 		setPrice(e.target.value);
 		if (e.target.value < 0 || e.target.value === '') {
@@ -16,21 +22,45 @@ const UploadProduct = () => {
 			e.target.value = '';
 		}
 	};
+
 	const handlerRemoveImage = (index) => {
-		const arr = [...image];
-		arr.splice(index, 1);
-		setImage(arr);
+		setImage(image.filter((item, i) => i !== index));
+		setImagePreview(imagePreview.filter((item, i) => i !== index));
+		console.log(image, imagePreview);
 	};
+
+	const handleSubmit = async () => {
+		let formData = new FormData();
+		formData.append('name', name);
+		formData.append('price', price);
+		formData.append('category', category);
+		formData.append('detail', detail);
+		formData.append('userID', idUser);
+		for (let i = 0; i < image.length; i++) {
+			formData.append('files', image[i]);
+		}
+
+		const response = await UploadProductService(formData);
+		if (response && response.EC === 0) {
+			toast.success(response.EM);
+		} else toast.error(response.EM);
+	};
+
 	const handlerInputFile = (e) => {
-		if (e.target.files.length > 5) toast.error('You can only upload 5 images.');
-		else {
+		console.log(image, imagePreview);
+		if (e.target.files.length > 5) {
+			toast.error('You can only upload 5 images.');
+		} else {
 			const files = e.target.files;
+			let imagePre = [...imagePreview];
 			if (files.length + image.length <= 5) {
 				const arr = [...image];
 				for (let i = 0; i < files.length; i++) {
-					arr.push(URL.createObjectURL(files[i]));
+					arr.push(files[i]);
+					imagePre.push(URL.createObjectURL(files[i]));
 				}
 				setImage(arr);
+				setImagePreview(imagePre);
 			} else {
 				toast.error(
 					'You can only upload 5 images, please remove some images to upload more.'
@@ -38,9 +68,7 @@ const UploadProduct = () => {
 			}
 		}
 	};
-	useEffect(() => {
-		console.log('>>>> image', image);
-	}, [image]);
+
 	return (
 		<>
 			<div className='container mx-auto'>
@@ -66,13 +94,14 @@ const UploadProduct = () => {
 						<hr className='h-[1px]' />
 						<div>
 							<ul className='flex flex-wrap gap-4 justify-center items-center'>
-								{image.length > 0 &&
-									image.map((item, index) => {
+								{imagePreview.length > 0 &&
+									imagePreview.map((item, index) => {
 										return (
 											<li
 												className='h-28 w-24 bg-black rounded-md relative'
 												key={`image${index}`}>
 												<VscError
+													title='remove'
 													className='absolute  text-[#db4444] cursor-pointer -top-1 -left-1 rounded-full bg-white'
 													onClick={() => handlerRemoveImage(index)}
 												/>
@@ -120,17 +149,17 @@ const UploadProduct = () => {
 									<span className='unFocus'>Price *</span>
 								)}
 							</label>
-							<label htmlFor='catagory' className='relative'>
+							<label htmlFor='category' className='relative'>
 								<input
 									type='text'
-									id='catagory'
-									onChange={(e) => setCatagory(e.target.value)}
+									id='category'
+									onChange={(e) => setCategory(e.target.value)}
 									className='py-[13px] px-4 border-none bg-[#f5f5f5] rounded-sm peer'
 								/>
-								{catagory === '' ? (
-									<span className='focus'>Catagory *</span>
+								{category === '' ? (
+									<span className='focus'>Category *</span>
 								) : (
-									<span className='unFocus'>Catagory *</span>
+									<span className='unFocus'>Category *</span>
 								)}
 							</label>
 						</div>
@@ -155,8 +184,10 @@ const UploadProduct = () => {
 							</div>
 						</div>
 						<div className='flex justify-end '>
-							<button className='h-[56px] w-[215px] rounded-md bg-[#db4444] text-white '>
-								Acept
+							<button
+								className='h-[56px] w-[215px] rounded-md bg-[#db4444] text-white'
+								onClick={() => handleSubmit()}>
+								Accept
 							</button>
 						</div>
 					</div>

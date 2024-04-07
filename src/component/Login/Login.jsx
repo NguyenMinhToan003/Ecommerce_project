@@ -7,7 +7,6 @@ import { setAccount as setAccountRedux } from '../../Redux/AccountSlice';
 import Image from '../../assets/Image/login_art.jpg';
 import IconGoogle from '../../assets/Image/Google';
 import IconFacebook from '../../assets/Image/Facebook';
-
 import './Login.css';
 
 const Login = () => {
@@ -15,7 +14,6 @@ const Login = () => {
 	const navigate = useNavigate();
 	const refAccount = useRef(null);
 	const refPassword = useRef(null);
-
 	const [account, setAccount] = useState('');
 	const [password, setPassword] = useState('');
 

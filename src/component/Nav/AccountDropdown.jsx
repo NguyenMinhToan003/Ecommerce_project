@@ -9,6 +9,9 @@ import IconCart from '../../assets/Icons/Cart';
 import { IoCloseSharp } from 'react-icons/io5';
 import { resetCartStore } from '../../Redux/CartSlice';
 import { resetAccount } from '../../Redux/AccountSlice';
+import { TbLogout2 } from 'react-icons/tb';
+import { MdOutlineChangeCircle } from 'react-icons/md';
+import { FaFolderPlus } from 'react-icons/fa';
 
 const AccountDropdown = () => {
 	const number = useSelector((state) => state.cart.list.length);
@@ -30,7 +33,7 @@ const AccountDropdown = () => {
 		<>
 			{isOpen && (
 				<div
-					className='bg-slate-900 opacity-60 fixed top-0 left-0 right-0 bottom-0 z-40 '
+					className='bg-slate-900 opacity-60 fixed top-0 left-0 right-0 bottom-0 z-40 transition-all duration-300 ease-in-out'
 					onClick={() => {
 						setIsOpen(!isOpen);
 					}}></div>
@@ -46,27 +49,34 @@ const AccountDropdown = () => {
 					)}
 				</button>
 				{isOpen && (
-					<ul className='absolute z-10 min-w-[180px]  rounded-md border  bg-white p-3  text-sm font-normal text-blue-gray-500 shadow-lg shadow-blue-gray-500/10 focus:outline-none right-0 mt-2'>
+					<ul className='absolute z-10 w-[225px]  rounded-md border  bg-white p-3  text-sm font-normal text-blue-gray-500 shadow-lg shadow-blue-gray-500/10 focus:outline-none right-0 mt-2'>
 						<li
 							className=' w-full cursor-pointer  rounded-md px-3 pt-[9px] pb-2 text-start leading-tight'
 							key='drop-1 '
 							onClick={() => {
 								setIsOpen(!isOpen);
 							}}>
-							<NavLink to='/changePassword'>Change Password</NavLink>
+							<NavLink
+								to='/changePassword'
+								className='flex  items-center w-fulll gap-3'>
+								<MdOutlineChangeCircle />
+								<span>Change Password</span>
+							</NavLink>
 						</li>
 						<li
-							className=' w-full cursor-pointer  rounded-md px-3 pt-[9px] pb-2 text-start leading-tight'
+							className=' w-full cursor-pointer  rounded-md px-3 pt-[9px] pb-2 text-start leading-tight '
 							key='drop-2'
 							onClick={() => {
 								setIsOpen(!isOpen);
 							}}>
 							<NavLink
 								to='/login'
+								className='flex items-center w-full gap-3'
 								onClick={() => {
 									handlerLogout();
 								}}>
-								Logout
+								<TbLogout2 />
+								<span>Logout</span>
 							</NavLink>
 						</li>
 						<li
@@ -74,10 +84,12 @@ const AccountDropdown = () => {
 							className=' w-full cursor-pointer  rounded-md px-3 pt-[9px] pb-2 text-start leading-tight'>
 							<NavLink
 								to='/uploadProduct'
+								className='flex items-center w-full gap-3'
 								onClick={() => {
 									setIsOpen(!isOpen);
 								}}>
-								You want add products
+								<FaFolderPlus />
+								<span>Upload </span>
 							</NavLink>
 						</li>
 						{button.map((item, index) => {
@@ -87,7 +99,7 @@ const AccountDropdown = () => {
 									key={`drop+${index}`}>
 									<NavLink
 										to={item.link}
-										className='flex gap-4 items-center justify-between'
+										className='flex  items-center gap-3'
 										onClick={() => {
 											setIsOpen(!isOpen);
 										}}>

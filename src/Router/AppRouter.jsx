@@ -17,14 +17,7 @@ const AppRouter = () => {
 		<Routes>
 			<Route path='/' element={<Home />}>
 				<Route index element={<Index />} />
-				<Route
-					path='cart'
-					element={
-						<PrivateRoute>
-							<Cart />
-						</PrivateRoute>
-					}
-				/>
+				<Route path='cart' element={<Cart />} />
 				<Route
 					path='billing'
 					element={
