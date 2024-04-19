@@ -77,10 +77,10 @@ const FlashSale = () => {
 							{time.map((item, index) => {
 								return (
 									<>
-										<div className='flex flex-col'>
+										<li className='flex flex-col' key={`itemProduct+${index}`}>
 											<span className=' text-sm'>{item.time}</span>
 											<span className=' font-bold text-2xl'>{item.value}</span>
-										</div>
+										</li>
 
 										{index != time.length - 1 ? (
 											<span className='text-[#db4444] font-bold'>:</span>
@@ -102,7 +102,7 @@ const FlashSale = () => {
 					</div>
 				</div>
 			</div>
-			<div className='flex overflow-x-scroll  gap-8  mt-10 snap-x lg:ml-20 ml-10 flex-nowrap  no-scrollbar '>
+			<div className='flex overflow-x-scroll  gap-8  mt-10 snap-x lg:ml-20 ml-10 flex-nowrap  no-scrollbar infinite-scroll 25s linear infinite'>
 				{flashSale.map((item, index) => {
 					return (
 						<div>

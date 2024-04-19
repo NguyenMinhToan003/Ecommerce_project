@@ -22,10 +22,12 @@ const Index = () => {
 					{menu.map((item, index) => {
 						return (
 							<>
-								<div className='flex items-center justify-between'>
-									<li key={item}>{item}</li>
+								<li
+									className='flex items-center justify-between'
+									key={`menu+${index}`}>
+									<div key={item}>{item}</div>
 									{index === 0 || index === 1 ? <ArrowLeftMenu /> : ' '}
-								</div>
+								</li>
 							</>
 						);
 					})}

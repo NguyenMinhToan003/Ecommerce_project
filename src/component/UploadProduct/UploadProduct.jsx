@@ -28,7 +28,6 @@ const UploadProduct = () => {
 	const handlerRemoveImage = (index) => {
 		setImage(image.filter((item, i) => i !== index));
 		setImagePreview(imagePreview.filter((item, i) => i !== index));
-		console.log(image, imagePreview);
 	};
 
 	const handlerChangeSize = (e) => {
@@ -40,6 +39,11 @@ const UploadProduct = () => {
 			arr.push(e.target.value);
 		}
 		setSize(arr);
+	};
+	const handleColor = (value) => {
+		let colorset = color;
+		colorset.push(value);
+		setColor(colorset);
 	};
 
 	const handleSubmit = async () => {
@@ -60,7 +64,6 @@ const UploadProduct = () => {
 	};
 
 	const handlerInputFile = (e) => {
-		console.log(image, imagePreview);
 		if (e.target.files.length > 5) {
 			toast.error('You can only upload 5 images.');
 		} else {
@@ -189,11 +192,11 @@ const UploadProduct = () => {
 										id='size'
 										onChange={(e) => handlerChangeSize(e)}
 										className='py-[13px] px-4 border-none bg-[#f5f5f5] rounded-sm'>
-										<option value=''>Size *</option>
-										<option value='S'>S</option>
-										<option value='M'>M</option>
-										<option value='L'>L</option>
-										<option value='XL'>XL</option>
+										<option defaultValue=''>Size *</option>
+										<option defaultValue='S'>S</option>
+										<option defaultValue='M'>M</option>
+										<option valdefaultValueue='L'>L</option>
+										<option defaultValue='XL'>XL</option>
 									</select>
 									<input
 										value={size.length > 0 ? size.join(', ') : ''}
@@ -203,11 +206,7 @@ const UploadProduct = () => {
 								<input type='checkbox' className='peer hidden' id='size' />
 								<div className='hidden peer-checked:block'></div>
 							</div>
-							<div>
-								<label htmlFor='color' className='relative'>
-									<input type='color' />
-								</label>
-							</div>
+							<div></div>
 						</div>
 
 						<div className='flex justify-end '>

@@ -8,7 +8,7 @@ const ItemFlashSale = (props) => {
 	return (
 		<>
 			<div className='w-[270px] h-auto group p-4 '>
-				<div className='w-full h-[250px] bg-[#f5f5f5] flex justify-center items-center relative -z-10'>
+				<div className='w-full h-[250px] bg-[#f5f5f5] flex justify-center items-center relative '>
 					<img src={image} />
 					<div className='absolute top-3 left-3 py-1 px-3 rounded-md text-[#fafafa] bg-[#db4444] text-[12px]'>
 						-{counDown}%
@@ -23,7 +23,7 @@ const ItemFlashSale = (props) => {
 						<IconEye />
 					</div>
 
-					<div className='absolute bottom-0 left-0 right-0 bg-black text-[#f4f4f4] h-10  justify-center items-center font-medium text-xl invisible group-hover:visible flex  rounded-b-lg'>
+					<div className='absolute bottom-0 left-0 right-0 bg-black text-[#f4f4f4] h-10  justify-center items-center font-medium text-xl invisible group-hover:visible flex  rounded-b-lg cursor-pointer'>
 						Add To Cart
 					</div>
 				</div>
