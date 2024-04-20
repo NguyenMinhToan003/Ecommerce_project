@@ -4,9 +4,9 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { loginService } from '../../services/UserServices';
 import { setAccount as setAccountRedux } from '../../Redux/AccountSlice';
-import Image from '../../assets/Image/login_art.jpg';
-import IconGoogle from '../../assets/Image/Google';
-import IconFacebook from '../../assets/Image/Facebook';
+import image from '../../assets/images/login_art.jpg';
+import IconGoogle from '../../assets/images/Google';
+import IconFacebook from '../../assets/images/Facebook';
 import './Login.css';
 
 const Login = () => {
@@ -129,7 +129,7 @@ const Login = () => {
 					</div>
 				</div>
 				<div>
-					<img src={Image} className='aspect-auto w-full' alt='login_art' />
+					<img src={image} className='aspect-auto w-full' alt='login_art' />
 				</div>
 			</div>
 		</>

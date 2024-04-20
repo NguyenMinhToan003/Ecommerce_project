@@ -1,10 +1,10 @@
 import ItemFlashSale from './ItemFlashSale';
-import IconArrowRight from '../../assets/Icons/ArrowRight';
-import IconArrowLeft from '../../assets/Icons/ArrowLeft';
-import Image from '../../assets/Image/item1.jpg';
-import Image2 from '../../assets/Image/item2.png';
-import Image3 from '../../assets/Image/item3.png';
-import Image4 from '../../assets/Image/item4.png';
+import IconArrowRight from '../../assets/icons/ArrowRight';
+import IconArrowLeft from '../../assets/icons/ArrowLeft';
+import Image from '../../assets/images/item1.jpg';
+import Image2 from '../../assets/images/item2.png';
+import Image3 from '../../assets/images/item3.png';
+import Image4 from '../../assets/images/item4.png';
 import './FlashSale.css';
 
 const FlashSale = () => {

@@ -1,5 +1,5 @@
 import './Footer.css';
-import IconLatter from '../../assets/Icons/IconLetter';
+import IconLatter from '../../assets/icons/IconLetter';
 const Footer = () => {
 	const Exclusive = ['Subscribe', 'Get 10% off your first order'];
 	const Support = [

@@ -1,7 +1,7 @@
-import IconHeart from '../../assets/Icons/Heart';
+import IconHeart from '../../assets/icons/Heart';
 import { FiSearch } from 'react-icons/fi';
-import IconAvatar from '../../assets/Icons/Avatar';
-import IconCart from '../../assets/Icons/Cart';
+import IconAvatar from '../../assets/icons/Avatar';
+import IconCart from '../../assets/icons/Cart';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import AccountDropdown from './AccountDropdown';

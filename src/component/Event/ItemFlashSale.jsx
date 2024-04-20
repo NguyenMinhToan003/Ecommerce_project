@@ -1,6 +1,6 @@
-import IconStar from '../../assets/Icons/IconStar';
-import IconHeart from '../../assets/Icons/Heart';
-import IconEye from '../../assets/Icons/IconEye';
+import IconStar from '../../assets/icons/IconStar';
+import IconHeart from '../../assets/icons/Heart';
+import IconEye from '../../assets/icons/IconEye';
 import { useState } from 'react';
 const ItemFlashSale = (props) => {
 	const [colorHeart, setColorHeart] = useState('none');

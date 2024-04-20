@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 const ErrorRouter = () => {
 	const navigate = useNavigate();
 	return (
-		<div className='flex justify-center items-center flex-col space-x-2 container mx-auto '>
+		<div className='flex justify-center items-center flex-col space-x-2 container mx-auto mt-64'>
 			<h1 className='lg:text-[110px] text-7xl  font-medium'>404 Not Found</h1>
 			<p className='pt-10 pb-20 text-[16px]'>
 				Your visited page not found. You may go home page.

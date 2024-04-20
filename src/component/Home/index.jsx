@@ -1,8 +1,9 @@
-import imageBg from '../../assets/Image/Main_Home.jpg';
-import IconApple from '../../assets/Icons/iconApple';
-import IconArrowLeft from '../../assets/Icons/ArrowLeft';
-import ArrowLeftMenu from '../../assets/Icons/ArrowLeftMenu';
+import imageBg from '../../assets/images/Main_Home.jpg';
+import IconApple from '../../assets/icons/iconApple';
+import IconArrowLeft from '../../assets/icons/ArrowLeft';
+import ArrowLeftMenu from '../../assets/icons/ArrowLeftMenu';
 import FlashSale from '../Event/FlashSale';
+import Catalory from '../Catalory/Catalory';
 const Index = () => {
 	const menu = [
 		'Woman’s Fashion',
@@ -50,6 +51,7 @@ const Index = () => {
 					/>
 				</div>
 			</div>
+			<Catalory />
 			<FlashSale />
 		</>
 	);

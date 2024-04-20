@@ -11,8 +11,9 @@ import Cart from '../component/Cart/Cart';
 import Detail from '../component/Detail/Detail';
 import Billing from '../component/Billing/Billing';
 import PrivateRoute from './PrivateRouter';
-import UploadProduct from '../component/UploadProduct/UploadProduct';
+import UploadProduct from '../component/ViewListProduct/ViewListProduct';
 import MissRouter from './MissRouter';
+import ViewListProduct from '../component/Catalory/Catalory';
 const AppRouter = () => {
 	return (
 		<Routes>
@@ -35,8 +36,11 @@ const AppRouter = () => {
 						</PrivateRoute>
 					}
 				/>
+				<Route
+					path='/catalory/phone'
+					element={<ViewListProduct catalory={'phone'} />}
+				/>
 				<Route path='detail' element={<Detail />} />
-
 				<Route
 					path='account'
 					element={
