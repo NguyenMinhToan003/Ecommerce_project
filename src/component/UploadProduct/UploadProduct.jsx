@@ -40,15 +40,12 @@ const UploadProduct = () => {
 		}
 		setSize(arr);
 	};
-	const handleColor = (value) => {
-		let colorset = color;
-		colorset.push(value);
-		setColor(colorset);
-	};
 
 	const handleSubmit = async () => {
+		size.length === 0 && toast.error('Size is required.');
 		let formData = new FormData();
 		formData.append('name', name);
+		formData.append('size', size.join(', '));
 		formData.append('price', price);
 		formData.append('category', category);
 		formData.append('detail', detail);
@@ -114,11 +111,11 @@ const UploadProduct = () => {
 									imagePreview.map((item, index) => {
 										return (
 											<li
-												className='h-28 w-24 bg-black rounded-md relative'
+												className='h-28 w-24 rounded-md relative'
 												key={`image${index}`}>
 												<VscError
 													title='remove'
-													className='absolute  text-[#db4444] cursor-pointer -top-1 -left-1 rounded-full bg-white'
+													className='absolute  text-[#db4444] cursor-pointer -top-1 -left-1 rounded-full bg-white scale-125'
 													onClick={() => handlerRemoveImage(index)}
 												/>
 												<img

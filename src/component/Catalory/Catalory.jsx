@@ -5,7 +5,8 @@ import CataPC from '../../assets/icons/CataPC';
 import CataHeadPhone from '../../assets/icons/CataHeadPhone';
 import CataWatch from '../../assets/icons/CataWatch';
 import CataGamimg from '../../assets/icons/CataGamimg';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
+import './Catalory.css';
 const Catalory = () => {
 	const list = [
 		{
@@ -18,25 +19,26 @@ const Catalory = () => {
 			icon: <CataCamera color={'black'} />,
 			link: '/catalory/camera',
 		},
-		{ title: 'PC', icon: <CataPC color={'black'} />, link: 'catalory/pc' },
+		{ title: 'PC', icon: <CataPC color={'black'} />, link: '/catalory/pc' },
 		{
 			title: 'HeadPhone',
 			icon: <CataHeadPhone color={'black'} />,
-			link: 'catalory/headphone',
+			link: '/catalory/headphone',
 		},
 		{
 			title: 'Watch',
 			icon: <CataWatch color={'black'} />,
-			link: 'catalory/watch',
+			link: '/catalory/watch',
 		},
 		{
 			title: 'Gaming',
 			icon: <CataGamimg color={'black'} />,
-			link: 'catalory/gaming',
+			link: '/catalory/gaming',
 		},
 	];
+
 	return (
-		<div className='container mx-auto mt-11 flex flex-col'>
+		<div className='container mx-auto mt-24 flex flex-col'>
 			<div className='h-10 flex items-center gap-5 mb-6'>
 				<div className='h-full w-5 bg-[#db4444] rounded'></div>
 				<div className='text-[#db4444]'>Categories</div>
@@ -53,13 +55,13 @@ const Catalory = () => {
 				</div>
 			</div>
 			<div>
-				<ul className='grid grid-cols-6 gap-4 mt-[60px] max-w-full mx-auto'>
+				<ul className='grid xl:grid-cols-6  md:grid-cols-4 grid-cols-3  gap-4 mt-[60px] mx-auto'>
 					{list.map((item, index) => {
 						return (
-							<li key={`cata+${index}`}>
+							<li key={`cata+${index}`} className='peer'>
 								<NavLink
 									to={item.link}
-									className='flex flex-col items-center justify-center w-[170px] h-[145px] border border-[#b3b3b3] text-black rounded-md bg-transparent hover:bg-[#db4444] hover:text-white'>
+									className='flex flex-col items-center justify-center w-[170px] h-[145px] border border-[#b3b3b3] text-black rounded-md bg-transparent hover:bg-[#db4444] hover:text-white '>
 									<div className='w-20 h-20 flex justify-center items-center'>
 										{item.icon}
 									</div>
@@ -70,6 +72,7 @@ const Catalory = () => {
 					})}
 				</ul>
 			</div>
+			<Outlet />
 		</div>
 	);
 };
