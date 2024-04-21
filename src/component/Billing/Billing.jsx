@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import IconBanking from '../../assets/Image/iconBanking.png';
+import IconBanking from '../../assets/images/iconBanking.png';
 import { useState } from 'react';
 
 const Billing = () => {

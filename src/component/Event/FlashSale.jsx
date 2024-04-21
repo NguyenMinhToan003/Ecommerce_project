@@ -1,10 +1,10 @@
 import ItemFlashSale from './ItemFlashSale';
-import IconArrowRight from '../../assets/Icons/ArrowRight';
-import IconArrowLeft from '../../assets/Icons/ArrowLeft';
-import Image from '../../assets/Image/item1.jpg';
-import Image2 from '../../assets/Image/item2.png';
-import Image3 from '../../assets/Image/item3.png';
-import Image4 from '../../assets/Image/item4.png';
+import IconArrowRight from '../../assets/icons/ArrowRight';
+import IconArrowLeft from '../../assets/icons/ArrowLeft';
+import Image from '../../assets/images/item1.jpg';
+import Image2 from '../../assets/images/item2.png';
+import Image3 from '../../assets/images/item3.png';
+import Image4 from '../../assets/images/item4.png';
 import './FlashSale.css';
 
 const FlashSale = () => {
@@ -77,10 +77,10 @@ const FlashSale = () => {
 							{time.map((item, index) => {
 								return (
 									<>
-										<div className='flex flex-col'>
+										<li className='flex flex-col' key={`itemProduct+${index}`}>
 											<span className=' text-sm'>{item.time}</span>
 											<span className=' font-bold text-2xl'>{item.value}</span>
-										</div>
+										</li>
 
 										{index != time.length - 1 ? (
 											<span className='text-[#db4444] font-bold'>:</span>
@@ -102,7 +102,7 @@ const FlashSale = () => {
 					</div>
 				</div>
 			</div>
-			<div className='flex overflow-x-scroll  gap-8  mt-10 snap-x lg:ml-20 ml-10 flex-nowrap  no-scrollbar '>
+			<div className='flex overflow-x-scroll  gap-8  mt-10 snap-x lg:ml-20 ml-10 flex-nowrap  no-scrollbar infinite-scroll 25s linear infinite'>
 				{flashSale.map((item, index) => {
 					return (
 						<div>

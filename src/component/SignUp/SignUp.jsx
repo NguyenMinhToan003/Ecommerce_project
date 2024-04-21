@@ -1,6 +1,6 @@
-import Image from '../../assets/Image/login_art.jpg';
-import IconGoogle from '../../assets/Image/Google';
-import IconFacebook from '../../assets/Image/Facebook';
+import images from '../../assets/images/login_art.jpg';
+import IconGoogle from '../../assets/images/Google';
+import IconFacebook from '../../assets/images/Facebook';
 import './SignUp.css';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useState, useRef } from 'react';
@@ -140,7 +140,7 @@ const Login = () => {
 		<>
 			<div className='grid lg:grid-cols-[600px,minmax(auto,_1fr)] w-full p-7 text-primary grid-cols-1'>
 				<div>
-					<img src={Image} className='aspect-auto w-full' alt='Login Art' />
+					<img src={images} className='aspect-auto w-full' alt='Login Art' />
 				</div>
 				<div className='flex flex-row justify-center items-center h-full'>
 					<div className='max-w-full'>

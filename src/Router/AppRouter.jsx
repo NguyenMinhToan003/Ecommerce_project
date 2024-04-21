@@ -12,6 +12,9 @@ import Detail from '../component/Detail/Detail';
 import Billing from '../component/Billing/Billing';
 import PrivateRoute from './PrivateRouter';
 import UploadProduct from '../component/UploadProduct/UploadProduct';
+import MissRouter from './MissRouter';
+import ViewListProduct from '../component/ViewListProduct/ViewListProduct';
+import Catalory from '../component/Catalory/Catalory';
 const AppRouter = () => {
 	return (
 		<Routes>
@@ -26,9 +29,38 @@ const AppRouter = () => {
 						</PrivateRoute>
 					}
 				/>
-				<Route path='uploadProduct' element={<UploadProduct />} />
+				<Route
+					path='uploadProduct'
+					element={
+						<PrivateRoute>
+							<UploadProduct />
+						</PrivateRoute>
+					}
+				/>
 				<Route path='detail' element={<Detail />} />
-
+				<Route path='catalory' element={<Catalory />}>
+					<Route
+						path='phone'
+						element={<ViewListProduct catalory={'phone'} />}
+					/>
+					<Route
+						path='camera'
+						element={<ViewListProduct catalory={'camera'} />}
+					/>
+					<Route path='pc' element={<ViewListProduct catalory={'pc'} />} />
+					<Route
+						path='headphone'
+						element={<ViewListProduct catalory={'headphone'} />}
+					/>
+					<Route
+						path='watch'
+						element={<ViewListProduct catalory={'watch'} />}
+					/>
+					<Route
+						path='gaming'
+						element={<ViewListProduct catalory={'gaming'} />}
+					/>
+				</Route>
 				<Route
 					path='account'
 					element={
@@ -41,8 +73,22 @@ const AppRouter = () => {
 				<Route path='contact' element={<Contact />} />
 				<Route path='*' element={<ErrorRouter />} />
 			</Route>
-			<Route path='login' element={<Login />} />
-			<Route path='signup' element={<SignUp />} />
+			<Route
+				path='login'
+				element={
+					<MissRouter>
+						<Login />
+					</MissRouter>
+				}
+			/>
+			<Route
+				path='signup'
+				element={
+					<MissRouter>
+						<SignUp />
+					</MissRouter>
+				}
+			/>
 		</Routes>
 	);
 };

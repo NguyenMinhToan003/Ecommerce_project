@@ -14,6 +14,8 @@ const UploadProduct = () => {
 	const [detail, setDetail] = useState('');
 	const [image, setImage] = useState([]);
 	const [imagePreview, setImagePreview] = useState([]);
+	const [size, setSize] = useState([]);
+	const [color, setColor] = useState([]);
 
 	const handlerValidateNumber = (e) => {
 		setPrice(e.target.value);
@@ -26,12 +28,24 @@ const UploadProduct = () => {
 	const handlerRemoveImage = (index) => {
 		setImage(image.filter((item, i) => i !== index));
 		setImagePreview(imagePreview.filter((item, i) => i !== index));
-		console.log(image, imagePreview);
+	};
+
+	const handlerChangeSize = (e) => {
+		if (e.target.value === '') return setSize([]);
+		let arr = [...size];
+		if (arr.includes(e.target.value)) {
+			arr = arr.filter((item) => item !== e.target.value);
+		} else {
+			arr.push(e.target.value);
+		}
+		setSize(arr);
 	};
 
 	const handleSubmit = async () => {
+		size.length === 0 && toast.error('Size is required.');
 		let formData = new FormData();
 		formData.append('name', name);
+		formData.append('size', size.join(', '));
 		formData.append('price', price);
 		formData.append('category', category);
 		formData.append('detail', detail);
@@ -47,7 +61,6 @@ const UploadProduct = () => {
 	};
 
 	const handlerInputFile = (e) => {
-		console.log(image, imagePreview);
 		if (e.target.files.length > 5) {
 			toast.error('You can only upload 5 images.');
 		} else {
@@ -98,11 +111,11 @@ const UploadProduct = () => {
 									imagePreview.map((item, index) => {
 										return (
 											<li
-												className='h-28 w-24 bg-black rounded-md relative'
+												className='h-28 w-24 rounded-md relative'
 												key={`image${index}`}>
 												<VscError
 													title='remove'
-													className='absolute  text-[#db4444] cursor-pointer -top-1 -left-1 rounded-full bg-white'
+													className='absolute  text-[#db4444] cursor-pointer -top-1 -left-1 rounded-full bg-white scale-125'
 													onClick={() => handlerRemoveImage(index)}
 												/>
 												<img
@@ -118,13 +131,13 @@ const UploadProduct = () => {
 					</div>
 					<div className='p-[31px] flex flex-col gap-8 justify-between shadow-lg'>
 						<p className='text-[14px] text-[#db4444]'>* Required fields</p>
-						<div className='grid grid-cols-3 gap-4 '>
+						<div className='grid md:grid-cols-3 gap-4 grid-cols-1'>
 							<label htmlFor='name' className='relative'>
 								<input
 									type='text'
 									id='name'
 									onChange={(e) => setName(e.target.value)}
-									className='py-[13px] px-4 border-none bg-[#f5f5f5] rounded-sm peer '
+									className='py-[13px] px-4 border-none bg-[#f5f5f5] rounded-sm peer w-full'
 								/>
 								{name === '' ? (
 									<span className='focus'>Your Name *</span>
@@ -138,7 +151,7 @@ const UploadProduct = () => {
 									min={0}
 									id='price'
 									onChange={(e) => handlerValidateNumber(e)}
-									className='py-[13px] px-4 border-none bg-[#f5f5f5] rounded-sm peer'
+									className='pl-4 pr-14 py-[13px] border-none bg-[#f5f5f5] rounded-sm peer w-full'
 								/>
 								<span className='absolute top-1/2 -translate-y-1/2 right-3'>
 									VND
@@ -154,7 +167,7 @@ const UploadProduct = () => {
 									type='text'
 									id='category'
 									onChange={(e) => setCategory(e.target.value)}
-									className='py-[13px] px-4 border-none bg-[#f5f5f5] rounded-sm peer'
+									className='py-[13px] px-4 border-none bg-[#f5f5f5] rounded-sm peer w-full'
 								/>
 								{category === '' ? (
 									<span className='focus'>Category *</span>
@@ -167,22 +180,32 @@ const UploadProduct = () => {
 							placeholder='Detail product *'
 							className='w-full h-[200px] min-h-28 max-h-60 py-[13px] px-4 border-none bg-[#f5f5f5] rounded-sm'
 							onChange={(e) => setDetail(e.target.value)}></textarea>
+
 						<div>
 							<div>
-								<label htmlFor='size' className='text-[14px] text-[#db4444]'>
-									You need to list the
-									<span className='text-[#2b54ea]'>size</span> the product has
+								<label htmlFor='size' className='relative flex gap-9'>
+									<select
+										name='size'
+										id='size'
+										onChange={(e) => handlerChangeSize(e)}
+										className='py-[13px] px-4 border-none bg-[#f5f5f5] rounded-sm'>
+										<option defaultValue=''>Size *</option>
+										<option defaultValue='S'>S</option>
+										<option defaultValue='M'>M</option>
+										<option valdefaultValueue='L'>L</option>
+										<option defaultValue='XL'>XL</option>
+									</select>
+									<input
+										value={size.length > 0 ? size.join(', ') : ''}
+										className='py-[13px] px-4 border-none bg-[#f5f5f5] rounded-sm w-[300px]'
+									/>
 								</label>
 								<input type='checkbox' className='peer hidden' id='size' />
 								<div className='hidden peer-checked:block'></div>
 							</div>
-							<div>
-								<label className='text-[14px] text-[#db4444]'>
-									You need to list the
-									<span className='text-[#2b54ea]'>color</span> the product has
-								</label>
-							</div>
+							<div></div>
 						</div>
+
 						<div className='flex justify-end '>
 							<button
 								className='h-[56px] w-[215px] rounded-md bg-[#db4444] text-white'
