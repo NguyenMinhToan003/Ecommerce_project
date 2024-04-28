@@ -48,8 +48,17 @@ const Login = () => {
 		const response = await loginService({ account, password });
 		if (response.EC === 0) {
 			toast.success(response.EM);
-			const user = response.DT;
-			dispatch(setAccountRedux(user));
+			const user = response.DT.user;
+			const id = user.id;
+			const name = user.name;
+			const email = user.email;
+			const phone = user.phone;
+			const address = user.address;
+			const avatar = user.avatar;
+			const group_id = user.group.id;
+			const token = response.DT.token;
+			const data = { id, name, email, phone, address, avatar, group_id, token };
+			dispatch(setAccountRedux(data));
 			navigate('/');
 		} else if (response.EC === 1) {
 			toast.error(response.EM);

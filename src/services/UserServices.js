@@ -5,5 +5,10 @@ const signUpService = async (data) => {
 const loginService = async (data) => {
 	return await axios.post('/login', data);
 };
-
-export { signUpService, loginService };
+const accessTokenService = async (data) => {
+	return await axios.post('/accessToken', data);
+};
+const logoutService = async (id) => {
+	return await axios.post('/logout', id);
+};
+export { signUpService, loginService, accessTokenService, logoutService };

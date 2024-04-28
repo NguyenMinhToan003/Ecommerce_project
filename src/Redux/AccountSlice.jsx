@@ -1,29 +1,38 @@
 import { createSlice } from '@reduxjs/toolkit';
-const account = JSON.parse(localStorage.getItem('account'));
+
+const accountDefault = {
+	data: {
+		id: '',
+		name: '',
+		email: '',
+		phone: '',
+		address: '',
+		avatar: '',
+		group_id: '',
+		token: '',
+	},
+	isAuth: false,
+};
+
 const AccountSlice = createSlice({
 	name: 'account',
 	initialState: {
-		data: account || null,
-		isAuth: account ? true : false,
+		data: accountDefault.data,
+		isAuth: accountDefault.isAuth,
 	},
 	reducers: {
 		setAccount: (state, action) => {
 			const user = action.payload;
-			state.data = user;
+			state.data = { ...user };
 			state.isAuth = true;
-			console.log(state.data);
-			localStorage.setItem(
-				'account',
-				JSON.stringify({ data: state.data, isAuth: state.isAuth })
-			);
 		},
 		resetAccount: (state) => {
-			state.data = null;
-			state.isAuth = false;
-			localStorage.removeItem('account');
-			console.log('>>>> reset account:', state);
+			state.data = accountDefault.data;
+			state.isAuth = accountDefault.isAuth;
 		},
 	},
 });
+
 export const { setAccount, resetAccount } = AccountSlice.actions;
+
 export default AccountSlice.reducer;

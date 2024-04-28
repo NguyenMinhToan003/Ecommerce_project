@@ -111,7 +111,7 @@ const UploadProduct = () => {
 									imagePreview.map((item, index) => {
 										return (
 											<li
-												className='h-28 w-24 rounded-md relative'
+												className='h-32 w-24 rounded-md relative'
 												key={`image${index}`}>
 												<VscError
 													title='remove'

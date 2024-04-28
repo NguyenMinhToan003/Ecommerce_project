@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { MdMenu } from 'react-icons/md';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import IconHeart from '../../assets/icons/Heart';
@@ -12,9 +12,12 @@ import { resetAccount } from '../../Redux/AccountSlice';
 import { TbLogout2 } from 'react-icons/tb';
 import { MdOutlineChangeCircle } from 'react-icons/md';
 import { FaFolderPlus } from 'react-icons/fa';
+import { logoutService } from '../../services/UserServices';
 
 const AccountDropdown = () => {
+	const navigate = useNavigate();
 	const number = useSelector((state) => state.cart.list.length);
+	const idUser = useSelector((state) => state.account.data.id);
 	const dispastch = useDispatch();
 	const [isOpen, setIsOpen] = useState(false);
 	const button = [
@@ -23,11 +26,16 @@ const AccountDropdown = () => {
 		{ icon: <IconAvatar />, link: '/account', title: 'Account' },
 	];
 
-	const handlerLogout = () => {
-		setIsOpen(false);
-		dispastch(resetCartStore());
-		dispastch(resetAccount());
-		toast.success('Logout Successfully');
+	const handlerLogout = async () => {
+		const result = await logoutService({ id: idUser });
+		if (result && result.EC === 0) {
+			dispastch(resetCartStore());
+			dispastch(resetAccount());
+			toast.success(result.EM);
+			navigate('/login');
+		} else {
+			toast.error(result.EM);
+		}
 	};
 	return (
 		<>
