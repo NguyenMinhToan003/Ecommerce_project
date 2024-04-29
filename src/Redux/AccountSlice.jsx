@@ -12,6 +12,7 @@ const accountDefault = {
 		token: '',
 	},
 	isAuth: false,
+	isLoading: true,
 };
 
 const AccountSlice = createSlice({
@@ -19,16 +20,19 @@ const AccountSlice = createSlice({
 	initialState: {
 		data: accountDefault.data,
 		isAuth: accountDefault.isAuth,
+		isLoading: accountDefault.isLoading,
 	},
 	reducers: {
 		setAccount: (state, action) => {
 			const user = action.payload;
 			state.data = { ...user };
 			state.isAuth = true;
+			state.isLoading = false;
 		},
 		resetAccount: (state) => {
 			state.data = accountDefault.data;
 			state.isAuth = accountDefault.isAuth;
+			state.isLoading = accountDefault.isLoading;
 		},
 	},
 });

@@ -4,15 +4,13 @@ import { accessTokenService } from './services/UserServices';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { setAccount } from './Redux/AccountSlice';
+import Loading from './component/Loading/Loading';
 
 function App() {
 	const dispatch = useDispatch();
-
 	const fetchDataAccount = async () => {
 		const response = await accessTokenService();
-		console.log(response);
 		if (response && response.EC === 0) {
-			console.log('check');
 			const user = response.DT.user;
 			const id = user.id;
 			const name = user.name;
@@ -35,6 +33,7 @@ function App() {
 	return (
 		<>
 			<div className='font-poppins'>
+				<Loading />
 				<AppRouter />
 				<ToastContainer
 					position='bottom-center'

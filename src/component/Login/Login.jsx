@@ -35,7 +35,6 @@ const Login = () => {
 	};
 
 	const handlerOnkeyDown = (event) => {
-		console.log(event);
 		if (event.key === 'Enter') {
 			if (event.target === refAccount.current) refPassword.current.focus();
 			else if (event.target === refPassword.current) handlerSubmit();

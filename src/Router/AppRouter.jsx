@@ -15,6 +15,8 @@ import UploadProduct from '../component/UploadProduct/UploadProduct';
 import MissRouter from './MissRouter';
 import ViewListProduct from '../component/ViewListProduct/ViewListProduct';
 import Catalory from '../component/Catalory/Catalory';
+import LeaderRouter from './LeaderRouter';
+import Dashboard from '../component/Dashboard/dashboard';
 const AppRouter = () => {
 	return (
 		<Routes>
@@ -87,6 +89,14 @@ const AppRouter = () => {
 					<MissRouter>
 						<SignUp />
 					</MissRouter>
+				}
+			/>
+			<Route
+				path='/dashboard'
+				element={
+					<LeaderRouter>
+						<Dashboard />
+					</LeaderRouter>
 				}
 			/>
 		</Routes>
