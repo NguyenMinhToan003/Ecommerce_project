@@ -64,7 +64,7 @@ const ViewListProduct = (props) => {
 		},
 	];
 	return (
-		<div className='mt-14 grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-2 mx-auto items-center gap-[30px] '>
+		<div className='mt-14 grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 mx-auto items-center gap-[30px] '>
 			{ls.map((item, index) => {
 				return <ItemProduct product={item} />;
 			})}

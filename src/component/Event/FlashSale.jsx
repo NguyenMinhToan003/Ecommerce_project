@@ -73,7 +73,7 @@ const FlashSale = () => {
 				<div className='flex justify-between container mx-auto'>
 					<div className='flex md:gap-20 gap:15  lg:flex-row flex-col'>
 						<div className='text-4xl'>Flash Sales</div>
-						<div className='w-12 flex gap-9 '>
+						<ul className='w-12 flex gap-9 '>
 							{time.map((item, index) => {
 								return (
 									<>
@@ -90,7 +90,7 @@ const FlashSale = () => {
 									</>
 								);
 							})}
-						</div>
+						</ul>
 					</div>
 					<div className='flex '>
 						<div className='arrow'>
@@ -102,7 +102,7 @@ const FlashSale = () => {
 					</div>
 				</div>
 			</div>
-			<div className='flex overflow-x-scroll  gap-8  mt-10 snap-x lg:ml-20 ml-10 flex-nowrap  no-scrollbar infinite-scroll 25s linear infinite'>
+			<div className='flex overflow-x-scroll  gap-8  mt-10 snap-x lg:ml-20 ml-5 flex-nowrap  no-scrollbar infinite-scroll 25s linear infinite'>
 				{flashSale.map((item, index) => {
 					return (
 						<div>

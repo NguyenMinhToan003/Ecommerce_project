@@ -18,7 +18,7 @@ const Index = () => {
 	];
 	return (
 		<>
-			<div className='container mx-auto grid xl:grid-cols-[200px_minmax(0,_1fr)] gap-11  lg:grid-cols-[auto_minmax(0,_1fr)]'>
+			<div className='container mx-auto grid xl:grid-cols-[200px_minmax(0,_1fr)] gap-11  lg:grid-cols-[auto_minmax(0,_1fr)] lg:mt-32 mt-56'>
 				<ul className=' grid grid-rows-9  px-4 border-r-[0.5px] '>
 					{menu.map((item, index) => {
 						return (
@@ -33,11 +33,13 @@ const Index = () => {
 						);
 					})}
 				</ul>
-				<div className='px-10 py-10 max-w-full h-full relative bg-black text-white pl-16 pt-14 '>
-					<div>
+				<div className='px-10 py-10 w-full h-fit relative bg-black text-white pl-16 pt-14 '>
+					<div className='w-1/2'>
 						<IconApple />
-						<span className='text-[16px]'>iPhone 14 Series</span>
-						<h1 className='text-5xl max-w-72 mt-5 mb-6 leading-10'>
+						<span className='md:text-[16px] text-[10px] '>
+							iPhone 14 Series
+						</span>
+						<h1 className='md:text-5xl text-lx max-w-72 md:mt-5 mt-2 md:mb-6 md-2 leading-10'>
 							Up to 10% off Voucher
 						</h1>
 						<div className='flex gap-4 items-center'>
@@ -45,10 +47,9 @@ const Index = () => {
 							<IconArrowLeft color='white' />
 						</div>
 					</div>
-					<img
-						src={imageBg}
-						className=' h-full w-1/2 absolute right-0 top-0  object-cover'
-					/>
+					<div className='w-1/2 md:h-full h-auto absolute right-0 top-1/2 -translate-y-1/2  object-cover'>
+						<img src={imageBg} className=' h-full ' />
+					</div>
 				</div>
 			</div>
 			<Catalory />

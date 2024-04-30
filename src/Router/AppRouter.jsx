@@ -16,7 +16,7 @@ import MissRouter from './MissRouter';
 import ViewListProduct from '../component/ViewListProduct/ViewListProduct';
 import Catalory from '../component/Catalory/Catalory';
 import LeaderRouter from './LeaderRouter';
-import Dashboard from '../component/Dashboard/dashboard';
+import Dashboard from '../component/Dashboard/Dashboard';
 const AppRouter = () => {
 	return (
 		<Routes>

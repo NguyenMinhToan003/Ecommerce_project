@@ -222,12 +222,12 @@ const Login = () => {
 								Create Account
 							</button>
 							<hr className='my-6' />
-							<div className='flex w-full justify-between items-center'>
-								<button className='flex flex-row justify-center items-center gap-3 bg-[#f3f9fa] rounded-[16px] px-4 py-3'>
+							<div className='flex md:flex-row flex-col w-full justify-between items-center gap-2'>
+								<button className='flex flex-row justify-center items-center gap-3 bg-[#f3f9fa] rounded-[16px] px-4 py-3 w-full'>
 									<IconGoogle />
 									<span>Sign in with Google</span>
 								</button>
-								<button className='flex flex-row justify-center items-center gap-3 bg-[#f3f9fa] rounded-[16px] px-4 py-3'>
+								<button className='flex flex-row justify-center items-center gap-3 bg-[#f3f9fa] rounded-[16px] px-4 py-3 w-full'>
 									<IconFacebook />
 									<span>Sign in with Facebook</span>
 								</button>

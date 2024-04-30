@@ -1,0 +1,9 @@
+.dash .active{
+  color: #2D3748 ;
+  background-color: white;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.dash .active .icon{
+  color: white ;
+  background-color: #4FD1C5;
+}

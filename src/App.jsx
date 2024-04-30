@@ -28,7 +28,9 @@ function App() {
 			const token = response.DT.token;
 			const data = { id, name, email, phone, address, avatar, group_id, token };
 			dispatch(setAccount(data));
-		} else if (!(guestLoading = localStorage.getItem('guestLoading'))) {
+		} else if (
+			(guestLoading = localStorage.getItem('guestLoading') === 'false')
+		) {
 			console.log('>>>> redirect with app:');
 			navigate('/login');
 		}
