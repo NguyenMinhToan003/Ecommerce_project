@@ -7,6 +7,11 @@ import { setAccount } from './Redux/AccountSlice';
 import Loading from './component/Loading/Loading';
 
 function App() {
+	const guestLoading = localStorage.getItem('guestLoading');
+	console.log('guestLoading APP', guestLoading);
+	if (guestLoading === null) {
+		localStorage.setItem('guestLoading', JSON.stringify(true));
+	}
 	const dispatch = useDispatch();
 	const fetchDataAccount = async () => {
 		const response = await accessTokenService();
@@ -21,11 +26,9 @@ function App() {
 			const group_id = user.group.id;
 			const token = response.DT.token;
 			const data = { id, name, email, phone, address, avatar, group_id, token };
-			console.log(data);
 			dispatch(setAccount(data));
 		}
 	};
-
 	useEffect(() => {
 		fetchDataAccount();
 	}, []);

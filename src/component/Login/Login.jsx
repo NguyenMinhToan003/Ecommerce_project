@@ -59,6 +59,7 @@ const Login = () => {
 			const data = { id, name, email, phone, address, avatar, group_id, token };
 			dispatch(setAccountRedux(data));
 			navigate('/');
+			localStorage.setItem('guestLoading', JSON.stringify(false));
 		} else if (response.EC === 1) {
 			toast.error(response.EM);
 		} else toast.error(response.EM);

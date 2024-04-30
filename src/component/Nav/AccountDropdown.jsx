@@ -33,6 +33,7 @@ const AccountDropdown = () => {
 			dispastch(resetAccount());
 			toast.success(result.EM);
 			navigate('/login');
+			localStorage.removeItem('guestLoading');
 		} else {
 			toast.error(result.EM);
 		}

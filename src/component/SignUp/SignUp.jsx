@@ -133,7 +133,7 @@ const Login = () => {
 		});
 		if (+response.EC === 0) {
 			toast.success(response.EM);
-			navigate(-1);
+			navigate('/login');
 		} else if (+response.EC === 1) {
 			toast.error(response.EM);
 			navigate('/login');

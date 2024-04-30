@@ -1,11 +1,15 @@
 import { ColorRing } from 'react-loader-spinner';
 import { useSelector } from 'react-redux';
 const Loading = () => {
+	const guestLoading = JSON.parse(localStorage.getItem('guestLoading'));
+	console.log('guestLoading', guestLoading);
+	if (guestLoading == true) return <></>;
 	const loading = useSelector((state) => state.account.isLoading);
 	const missRoter = ['/login', '/signup'];
 	const currentRouter = window.location.pathname;
 	let check =
 		missRoter.findIndex((item) => item === currentRouter) == -1 && loading;
+	console.log('check', check);
 	return (
 		check && (
 			<div className='fixed top-0 left-0 right-0 bg-[#0000008c] w-full h-full flex justify-center items-center flex-col z-[100000]'>
