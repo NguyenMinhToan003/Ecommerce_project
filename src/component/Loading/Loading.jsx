@@ -9,7 +9,6 @@ const Loading = () => {
 	const currentRouter = window.location.pathname;
 	let check =
 		missRoter.findIndex((item) => item === currentRouter) == -1 && loading;
-	console.log('check', check);
 	return (
 		check && (
 			<div className='fixed top-0 left-0 right-0 bg-[#0000008c] w-full h-full flex justify-center items-center flex-col z-[100000]'>

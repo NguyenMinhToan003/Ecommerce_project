@@ -5,10 +5,11 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { setAccount } from './Redux/AccountSlice';
 import Loading from './component/Loading/Loading';
+import { useNavigate } from 'react-router-dom';
 
 function App() {
-	const guestLoading = localStorage.getItem('guestLoading');
-	console.log('guestLoading APP', guestLoading);
+	const navigate = useNavigate();
+	let guestLoading = localStorage.getItem('guestLoading');
 	if (guestLoading === null) {
 		localStorage.setItem('guestLoading', JSON.stringify(true));
 	}
@@ -27,6 +28,9 @@ function App() {
 			const token = response.DT.token;
 			const data = { id, name, email, phone, address, avatar, group_id, token };
 			dispatch(setAccount(data));
+		} else if (!(guestLoading = localStorage.getItem('guestLoading'))) {
+			console.log('>>>> redirect with app:');
+			navigate('/login');
 		}
 	};
 	useEffect(() => {

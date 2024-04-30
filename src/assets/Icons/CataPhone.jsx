@@ -1,6 +1,5 @@
 const CataPhone = (props) => {
 	const { color } = props;
-	console.log(color);
 	return (
 		<svg
 			width='56'

@@ -28,11 +28,13 @@ const AccountSlice = createSlice({
 			state.data = { ...user };
 			state.isAuth = true;
 			state.isLoading = false;
+			localStorage.setItem('data', JSON.stringify(user));
 		},
 		resetAccount: (state) => {
 			state.data = accountDefault.data;
 			state.isAuth = accountDefault.isAuth;
 			state.isLoading = accountDefault.isLoading;
+			localStorage.setItem('data', JSON.stringify(accountDefault.data));
 		},
 	},
 });
