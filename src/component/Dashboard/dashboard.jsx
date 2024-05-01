@@ -29,12 +29,12 @@ const Dashboard = () => {
 	return (
 		<>
 			<div className='bg-[#f8f9fa]'>
-				<div className='grid xl:grid-cols-[246px_minmax(500px,_1fr)] lg:grid-cols-[200px_minmax(500px,_1fr)] grid-cols-[60px_minmax(500px,_1fr)] xl:gap-[33px] lg:gap-[24px] gap-0 container mx-auto mt-10 '>
+				<div className='grid xl:grid-cols-[246px_minmax(0,_1fr)] lg:grid-cols-[200px_minmax(0,_1fr)] grid-cols-[60px_minmax(0,_1fr)] xl:gap-[33px] lg:gap-[24px] gap-0 container mx-auto mt-10 '>
 					<div>
 						<ul>
 							{menu.map((item, index) => (
 								<li className='dash' key={index}>
-									<NavLink to={item.link} className='link'>
+									<NavLink to={item.link} className='link' title={item.title}>
 										<div className='icon'>{item.icon}</div>
 										<p className='title'>{item && item.title}</p>
 									</NavLink>
@@ -42,12 +42,12 @@ const Dashboard = () => {
 							))}
 						</ul>
 						<ul>
-							<h4 className='text-[#2D3748] text-[12px] font-bold pl-[14px] pt-4 py-6 uppercase'>
+							<h4 className='text-[#2D3748] text-[12px] text-wrap  font-bold pl-[14px] pt-4 py-6 uppercase md:inline-block hidden'>
 								Account Pages
 							</h4>
 							{profile.map((item, index) => (
 								<li className='dash' key={index}>
-									<NavLink to={item.link} className='link'>
+									<NavLink to={item.link} className='link' title={item.title}>
 										<div className='icon'>{item.icon}</div>
 										<p className='title'>{item && item.title}</p>
 									</NavLink>

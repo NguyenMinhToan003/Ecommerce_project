@@ -17,7 +17,7 @@
       @apply lg:inline-block hidden;
     }
     .pagination{
-      @apply flex items-center gap-5 justify-center mt-10 mx-auto w-[500px] py-5 px-5;
+      @apply flex items-center gap-5 justify-center mt-10 mx-auto w-[500px] p-5;
     }
     .pagination .page-item{
       @apply min-w-[40px] min-h-[40px] rounded-[15px] flex items-center justify-center text-[#A0AEC0] font-bold cursor-pointer transition-all ease-in-out duration-150;

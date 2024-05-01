@@ -50,12 +50,12 @@ const IndexDashboard = () => {
 					</caption>
 					<thead>
 						<tr className='text-left text-[#A0AEC0] font-normal text-[10px] border-b-[1px] border-[#E2E8F0]'>
-							<th className='uppercase w-0 pr-3'>id</th>
-							<th className='uppercase w-56 pr-3'>User</th>
-							<th className='uppercase w-11 pr-3'>Gender</th>
-							<th className='uppercase w-20 pr-3'>Function</th>
-							<th className='uppercase w-20 pr-3'>Status</th>
-							<th className='uppercase w-20 pr-3'>Action</th>
+							<th className='uppercase w-5'>id</th>
+							<th className='uppercase md:w-60 w-72'>User</th>
+							<th className='uppercase w-20 lg:table-cell hidden'>Gender</th>
+							<th className='uppercase w-20 md:table-cell hidden'>Function</th>
+							<th className='uppercase w-20 xl:table-cell hidden'>Status</th>
+							<th className='uppercase w-20 '>Action</th>
 						</tr>
 					</thead>
 					<tbody>

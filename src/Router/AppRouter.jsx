@@ -92,13 +92,7 @@ const AppRouter = () => {
 					</MissRouter>
 				}
 			/>
-			<Route
-				path='dashboard'
-				element={
-					<LeaderRouter>
-						<Dashboard />
-					</LeaderRouter>
-				}>
+			<Route path='dashboard' element={<Dashboard />}>
 				<Route index element={<IndexDashboard />} />
 				<Route path='profile' element={<IndexDashboard />} />
 				<Route path='table' element={<IndexDashboard />} />
