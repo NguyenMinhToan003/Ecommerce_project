@@ -1,9 +1,30 @@
-.dash .active{
-  color: #2D3748 ;
-  background-color: white;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+@tailwind components;
+@layer components{
+  
+  .dash .active{
+      @apply text-[#2D3748] bg-white shadow-lg !important;
+    }
+    .dash .active .icon{
+      @apply   rounded-[15px] text-white flex justify-center items-center text-[15px] bg-[#4FD1C5] shadow-md !important;
+    }
+    .dash .link{
+      @apply flex items-center gap-3 py-4 pl-[14px] rounded-[15px] text-[#A0AEC0] text-[12px] font-bold cursor-pointer transition-all ease-in-out duration-150;
+    }
+    .dash .link .icon{
+      @apply  w-[35px] h-[35px] rounded-[15px] text-[#4FD1C5] flex justify-center items-center text-[15px] bg-white shadow-md;
+    }
+    .dash .link .title{
+      @apply lg:inline-block hidden;
+    }
+    .pagination{
+      @apply flex items-center gap-5 justify-center mt-10 mx-auto w-[500px] py-5 px-5;
+    }
+    .pagination .page-item{
+      @apply min-w-[40px] min-h-[40px] rounded-[15px] flex items-center justify-center text-[#A0AEC0] font-bold cursor-pointer transition-all ease-in-out duration-150;
+    }
+    .pagination .page-item.active{
+      @apply text-white bg-[#4FD1C5];
+    }
 }
-.dash .active .icon{
-  color: white ;
-  background-color: #4FD1C5;
-}
+
+

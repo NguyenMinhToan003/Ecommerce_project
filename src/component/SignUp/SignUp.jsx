@@ -18,7 +18,7 @@ const Login = () => {
 	const [group, setGroup] = useState(4);
 	const [gender, setGender] = useState(0);
 	const [phone, setPhone] = useState('');
-	const [checkSubmit, setCheckSubmit] = useState(false);
+	const [loading, setLoading] = useState(false);
 	const refName = useRef();
 	const refAddress = useRef();
 	const refEmail = useRef();
@@ -116,10 +116,10 @@ const Login = () => {
 		return true;
 	};
 	const hanlderSubmit = async () => {
-		setCheckSubmit(true);
+		setLoading(true);
 		const check = checkDataSubmit();
 		if (!check) {
-			setCheckSubmit(false);
+			setLoading(false);
 			return;
 		}
 		const response = await signUpService({
@@ -140,12 +140,12 @@ const Login = () => {
 		} else {
 			toast.error(response.EM);
 		}
-		setCheckSubmit(false);
+		setLoading(false);
 	};
 
 	return (
 		<>
-			<LoadingEvent check={checkSubmit} />
+			<LoadingEvent check={loading} />
 			<div className='grid lg:grid-cols-[600px,minmax(auto,_1fr)] w-full p-7 text-primary grid-cols-1'>
 				<div>
 					<img src={images} className='aspect-auto w-full' alt='Login Art' />

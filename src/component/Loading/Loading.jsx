@@ -2,7 +2,6 @@ import { ColorRing } from 'react-loader-spinner';
 import { useSelector } from 'react-redux';
 const Loading = () => {
 	const guestLoading = JSON.parse(localStorage.getItem('guestLoading'));
-	console.log('guestLoading', guestLoading);
 	if (guestLoading == true) return <></>;
 	const loading = useSelector((state) => state.account.isLoading);
 	const missRoter = ['/login', '/signup'];

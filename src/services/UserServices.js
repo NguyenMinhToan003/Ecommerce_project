@@ -11,4 +11,13 @@ const accessTokenService = async (data) => {
 const logoutService = async (id) => {
 	return await axios.post('/logout', id);
 };
-export { signUpService, loginService, accessTokenService, logoutService };
+const getListUserService = async (page, limit) => {
+	return await axios.get(`/getListUser?page=${page}&limit=${limit}`);
+};
+export {
+	signUpService,
+	loginService,
+	accessTokenService,
+	logoutService,
+	getListUserService,
+};

@@ -17,6 +17,7 @@ import ViewListProduct from '../component/ViewListProduct/ViewListProduct';
 import Catalory from '../component/Catalory/Catalory';
 import LeaderRouter from './LeaderRouter';
 import Dashboard from '../component/Dashboard/Dashboard';
+import IndexDashboard from '../component/Dashboard/Index';
 const AppRouter = () => {
 	return (
 		<Routes>
@@ -92,13 +93,19 @@ const AppRouter = () => {
 				}
 			/>
 			<Route
-				path='/dashboard'
+				path='dashboard'
 				element={
 					<LeaderRouter>
 						<Dashboard />
 					</LeaderRouter>
-				}
-			/>
+				}>
+				<Route index element={<IndexDashboard />} />
+				<Route path='profile' element={<IndexDashboard />} />
+				<Route path='table' element={<IndexDashboard />} />
+				<Route path='createAccount' element={<IndexDashboard />} />
+				<Route path='logout' element={<IndexDashboard />} />
+				<Route path='payments' element={<IndexDashboard />} />
+			</Route>
 		</Routes>
 	);
 };
