@@ -2,7 +2,7 @@ import avatar from '../../assets/images/avatar.png';
 import { BsGenderFemale } from 'react-icons/bs';
 import { BsGenderMale } from 'react-icons/bs';
 const PageUser = (props) => {
-	const { listUser } = props;
+	const { listUser, setStatusModel } = props;
 
 	return (
 		<>
@@ -81,7 +81,9 @@ const PageUser = (props) => {
 							)}
 						</td>
 						<td>
-							<button className='cursor-pointer text-[#718096]  py-1 text-3 '>
+							<button
+								className='cursor-pointer text-[#718096]  py-1 text-3'
+								onClick={() => props.setStatusModel(true)}>
 								Edit
 							</button>
 						</td>

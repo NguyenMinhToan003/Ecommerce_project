@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import { UploadProductService } from '../../services/ProductService';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import LoadingEvent from '../Loading/LoadingEvent';
 
 const UploadProduct = () => {
 	const idUser = useSelector((state) => state.account.data.id);
@@ -16,6 +17,7 @@ const UploadProduct = () => {
 	const [imagePreview, setImagePreview] = useState([]);
 	const [size, setSize] = useState([]);
 	const [color, setColor] = useState([]);
+	const [loading, setLoading] = useState(false);
 
 	const handlerValidateNumber = (e) => {
 		setPrice(e.target.value);
@@ -42,6 +44,7 @@ const UploadProduct = () => {
 	};
 
 	const handleSubmit = async () => {
+		setLoading(true);
 		size.length === 0 && toast.error('Size is required.');
 		let formData = new FormData();
 		formData.append('name', name);
@@ -58,6 +61,7 @@ const UploadProduct = () => {
 		if (response && response.EC === 0) {
 			toast.success(response.EM);
 		} else toast.error(response.EM);
+		setLoading(false);
 	};
 
 	const handlerInputFile = (e) => {
@@ -84,6 +88,7 @@ const UploadProduct = () => {
 
 	return (
 		<>
+			<LoadingEvent check={loading} />
 			<div className='container mx-auto'>
 				<div className='max-w-[1170px] mx-auto grid lg:grid-cols-[340px,minmax(auto,_1fr)] gap-[30px] mt-[150px] grid-cols-1'>
 					<div className='py-[40px] px-[35px] flex flex-col gap-8 text-[14px] shadow-lg mx-auto '>

@@ -5,11 +5,13 @@ import PageUser from './PageUser';
 import ReactPaginate from 'react-paginate';
 import { useEffect, useState } from 'react';
 import { getListUserService } from '../../services/UserServices';
+import ModelOption from './ModelOption';
 const IndexDashboard = () => {
 	const [page, setPage] = useState(1);
 	const [limit, setLimit] = useState(5);
 	const [listUser, setListUser] = useState([]);
 	const [totalPage, setTotalPage] = useState(0);
+	const [statusModel, setStatusModel] = useState(false);
 	const handlePageClick = (event) => {
 		setPage(event.selected + 1);
 	};
@@ -28,6 +30,7 @@ const IndexDashboard = () => {
 	}, [page]);
 	return (
 		<div>
+			<ModelOption statusModel={statusModel} setStatusModel={setStatusModel} />
 			<div className='flex justify-between items-center mb-10'>
 				<h2 className='font-bold text-[14px]'>Table</h2>
 				<div className='flex justify-center items-center gap-4 cursor-pointer'>
@@ -43,7 +46,7 @@ const IndexDashboard = () => {
 					<CiCircleAlert className='text-[#707f95] cursor-pointer' />
 				</div>
 			</div>
-			<div className='overflow-auto relative'>
+			<div className=' relative'>
 				<table className='table-fixed w-full'>
 					<caption className='text-[#2D3748] text-[18px] font-bold text-left mb-6'>
 						User List
@@ -59,7 +62,7 @@ const IndexDashboard = () => {
 						</tr>
 					</thead>
 					<tbody>
-						<PageUser listUser={listUser} />
+						<PageUser listUser={listUser} setStatusModel={setStatusModel} />
 					</tbody>
 					<ReactPaginate
 						nextLabel='next >'

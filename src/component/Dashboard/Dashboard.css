@@ -23,7 +23,22 @@
       @apply min-w-[40px] min-h-[40px] rounded-[15px] flex items-center justify-center text-[#A0AEC0] font-bold cursor-pointer transition-all ease-in-out duration-150;
     }
     .pagination .page-item.active{
-      @apply text-white bg-[#4FD1C5];
+      @apply text-white bg-[#4FD1C5] shadow-sm;
+    }
+    .formUserChange input{
+      @apply w-full h-[40px] rounded-[15px] border border-[#E2E8F0] text-[#A0AEC0] text-[12px] p-3;
+    }
+    .formUserChange .radioGender{
+      @apply w-[20px] ;
+    }
+    .formUserChange label{
+      @apply text-[#A0AEC0] text-[12px] font-bold uppercase;
+    }
+    .formUserChange tr{
+      @apply h-11;
+    }
+    .model button{
+      @apply flex items-center gap-3 py-3 px-4  text-white rounded-[15px] text-[12px] font-bold cursor-pointer transition-all ease-in-out duration-150;
     }
 }
 

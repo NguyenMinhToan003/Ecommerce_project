@@ -5,13 +5,14 @@ import { CgProfile } from 'react-icons/cg';
 import { FaFile } from 'react-icons/fa';
 import { RiLogoutCircleRLine } from 'react-icons/ri';
 import { NavLink, Outlet } from 'react-router-dom';
+import { FaQuestion } from 'react-icons/fa6';
 
 import './Dashboard.css';
 const Dashboard = () => {
 	const menu = [
 		{
 			title: 'Dashboard',
-			link: '/dashboard',
+			link: '/',
 			icon: <MdDashboardCustomize />,
 		},
 		{ title: 'Table', link: '/dashboard/table', icon: <FaTable /> },
@@ -42,7 +43,7 @@ const Dashboard = () => {
 							))}
 						</ul>
 						<ul>
-							<h4 className='text-[#2D3748] text-[12px] text-wrap  font-bold pl-[14px] pt-4 py-6 uppercase md:inline-block hidden'>
+							<h4 className='text-[#2D3748] text-[12px] text-wrap  font-bold pl-[14px] pt-4 py-6 uppercase xl:inline-block hidden'>
 								Account Pages
 							</h4>
 							{profile.map((item, index) => (
@@ -54,6 +55,20 @@ const Dashboard = () => {
 								</li>
 							))}
 						</ul>
+						<div
+							className='h-fit rounded-[15px] bg-[#4FD1C5] p-4 text-white xl:block flex justify-center items-center flex-col '
+							title='need Help'>
+							<div className='w-[35px] h-[35px] rounded-md bg-white flex justify-center items-center'>
+								<FaQuestion className='p-[0.5px] rounded-full bg-[#4FD1C5] text-white' />
+							</div>
+							<p className='text-[14px] mt-5'>Need Help?</p>
+							<p className='text-3 mb-[8.5px] xl:inline-block hidden '>
+								Please checkout docs
+							</p>
+							<button className='py-[10px] text-center text-[#2d3748] font-bold text-[10px] rounded-[12px] bg-white w-full xl:block hidden'>
+								Documentation
+							</button>
+						</div>
 					</div>
 					<div className='h-[1000px] px-[21px] py-[28px]'>
 						<Outlet />
