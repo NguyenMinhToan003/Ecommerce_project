@@ -6,16 +6,17 @@ import FlashSale from '../Event/FlashSale';
 import Catalory from '../Catalory/Catalory';
 const Index = () => {
 	const menu = [
-		'Woman’s Fashion',
-		'Men’s Fashion',
-		'Electronics',
-		'Home & Lifestyle',
-		'Medicine',
-		'Sports & Outdoor',
-		'Baby’s & Toys',
-		'Groceries & Pets',
-		'Health & Beauty',
+		{ link: '#', name: 'Women’s Fashion' },
+		{ link: '#', name: 'Men’s Fashion' },
+		{ link: '#', name: 'Electronics' },
+		{ link: '#', name: 'Home & Lifestyle' },
+		{ link: '#', name: 'Medicine' },
+		{ link: '#', name: 'Sports & Outdoor' },
+		{ link: '#', name: 'Baby’s & Toys' },
+		{ link: '#', name: 'Groceries & Pets' },
+		{ link: '#', name: 'Health & Beauty' },
 	];
+
 	return (
 		<>
 			<div className='container mx-auto grid xl:grid-cols-[200px_minmax(0,_1fr)] gap-11  lg:grid-cols-[auto_minmax(0,_1fr)] lg:mt-32 mt-56'>
@@ -26,7 +27,9 @@ const Index = () => {
 								<li
 									className='flex items-center justify-between'
 									key={`menu+${index}`}>
-									<div key={item}>{item}</div>
+									<a href={item.link} key={item.name}>
+										{item.name}
+									</a>
 									{index === 0 || index === 1 ? <ArrowLeftMenu /> : ' '}
 								</li>
 							</>

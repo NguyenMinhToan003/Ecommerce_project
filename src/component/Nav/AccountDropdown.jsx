@@ -42,7 +42,7 @@ const AccountDropdown = () => {
 		<>
 			{isOpen && (
 				<div
-					className='bg-slate-900 opacity-60 fixed top-0 left-0 right-0 bottom-0 z-40 transition-all duration-300 ease-in-out'
+					className='bg-slate-900 opacity-60 fixed top-0 left-0 right-0 bottom-0 z-40 transition-all duration-300 ease-in-out '
 					onClick={() => {
 						setIsOpen(!isOpen);
 					}}></div>

@@ -8,6 +8,9 @@ const loginService = async (data) => {
 const accessTokenService = async (data) => {
 	return await axios.post('/accessToken', data);
 };
+const refreshTokenService = async (data) => {
+	return await axios.post('/refreshToken', data);
+};
 const logoutService = async (id) => {
 	return await axios.post('/logout', id);
 };
@@ -20,4 +23,5 @@ export {
 	accessTokenService,
 	logoutService,
 	getListUserService,
+	refreshTokenService,
 };

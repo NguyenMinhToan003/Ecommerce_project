@@ -6,13 +6,13 @@ const Home = () => {
 	return (
 		<>
 			<div>
-				<div className='fixed top-0 left-0 right-0 bg-white z-[100]  mb-7'>
+				<div className='fixed top-0 left-0 right-0 bg-white z-[100]  mb-7 shadow-lg'>
 					<Header />
 					<Nav />
 					<hr />
 				</div>
 
-				<div className='mt-[120px] '>
+				<div className='mt-[150px] '>
 					<Outlet />
 				</div>
 				<Footer />

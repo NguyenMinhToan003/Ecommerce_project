@@ -1,6 +1,9 @@
 import AppRouter from './Router/AppRouter';
 import { ToastContainer } from 'react-toastify';
-import { accessTokenService } from './services/UserServices';
+import {
+	accessTokenService,
+	refreshTokenService,
+} from './services/UserServices';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { setAccount } from './Redux/AccountSlice';
@@ -8,6 +11,7 @@ import Loading from './component/Loading/Loading';
 import { useNavigate } from 'react-router-dom';
 
 function App() {
+	const nonNamePathFetchUser = ['/login', '/signup'];
 	const navigate = useNavigate();
 	let guestLoading = localStorage.getItem('guestLoading');
 	if (guestLoading === null) {
@@ -15,7 +19,10 @@ function App() {
 	}
 	const dispatch = useDispatch();
 	const fetchDataAccount = async () => {
-		const response = await accessTokenService();
+		let response = await accessTokenService();
+		if (response && response.EC === -1) {
+			response = await refreshTokenService();
+		}
 		if (response && response.EC === 0) {
 			const user = response.DT.user;
 			const id = user.id;
@@ -31,7 +38,6 @@ function App() {
 		} else if (
 			(guestLoading = localStorage.getItem('guestLoading') === 'false')
 		) {
-			console.log('>>>> redirect with app:');
 			navigate('/login');
 		}
 	};

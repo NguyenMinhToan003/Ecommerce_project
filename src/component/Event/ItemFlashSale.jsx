@@ -4,7 +4,8 @@ import IconEye from '../../assets/icons/IconEye';
 import { useState } from 'react';
 const ItemFlashSale = (props) => {
 	const [colorHeart, setColorHeart] = useState('none');
-	const { image, title, sale, price, star, view, counDown } = props.item;
+	let { image, title, sale, price, star, view, counDown } = props.item;
+
 	return (
 		<>
 			<div className='w-[270px] h-auto group p-4 '>

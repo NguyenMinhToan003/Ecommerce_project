@@ -21,7 +21,7 @@ const Nav = () => {
 	];
 	return (
 		<>
-			<div className='my-3 container mx-auto flex flex-col items-center  justify-between lg:flex-row '>
+			<div className='py-3 container mx-auto flex flex-col items-center  justify-between lg:flex-row '>
 				<div className='flex lg:w-1/2 container items-center justify-between lg:flex-row flex-col'>
 					<span className='font-bold md:text-2xl pl-4 text-lg'>Exclusive</span>
 					<ul className='flex items-center xl:gap-12 gap-5 w-fit  text-[#484848] '>

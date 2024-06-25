@@ -4,7 +4,6 @@ import { FaStackOverflow } from 'react-icons/fa';
 import { MdDeleteForever } from 'react-icons/md';
 import { IoMdSave } from 'react-icons/io';
 import { IoCloseSharp } from 'react-icons/io5';
-import LoadingEvent from '../Loading/LoadingEvent';
 
 const ModelOption = (props) => {
 	const { statusModel, setStatusModel } = props;
