@@ -33,7 +33,7 @@ const Detail = (props) => {
 	const handlerBuy = () => {
 		dispatch(
 			addCartItem({
-				data: { ...item, color: color, size: size, quantity: count },
+				data: { ...item, color: color, size: size, quantity: count ,img:detail1},
 				index: -1,
 			})
 		);

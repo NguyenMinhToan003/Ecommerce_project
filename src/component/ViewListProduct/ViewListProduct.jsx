@@ -14,7 +14,7 @@ const ViewListProduct = (props) => {
 			price: 160,
 			star: 3,
 			view: 88,
-			counDown: 30,
+			countDown: 30,
 		},
 		{
 			image: Image,
@@ -23,7 +23,7 @@ const ViewListProduct = (props) => {
 			price: 160,
 			star: 5,
 			view: 88,
-			counDown: 40,
+			countDown: 40,
 		},
 		{
 			image: Image3,
@@ -32,7 +32,7 @@ const ViewListProduct = (props) => {
 			price: 160,
 			star: 4,
 			view: 88,
-			counDown: 40,
+			countDown: 40,
 		},
 		{
 			image: Image4,
@@ -41,7 +41,7 @@ const ViewListProduct = (props) => {
 			price: 160,
 			star: 5,
 			view: 88,
-			counDown: 40,
+			countDown: 40,
 		},
 
 		{
@@ -51,7 +51,7 @@ const ViewListProduct = (props) => {
 			price: 160,
 			star: 3,
 			view: 88,
-			counDown: 30,
+			countDown: 30,
 		},
 
 		{
@@ -61,7 +61,7 @@ const ViewListProduct = (props) => {
 			price: 160,
 			star: 3,
 			view: 88,
-			counDown: 30,
+			countDown: 30,
 		},
 	];
 
