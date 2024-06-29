@@ -38,8 +38,8 @@ const Catalory = () => {
 	];
 
 	return (
-		<div className='container mx-auto mt-24 flex flex-col'>
-			<div className='h-10 flex items-center gap-5 mb-6'>
+		<div className='container mx-auto md:mt-16 mt-36 flex flex-col '>
+			<div className='h-10 flex items-center gap-5 mb-6 '>
 				<div className='h-full w-5 bg-[#db4444] rounded'></div>
 				<div className='text-[#db4444]'>Categories</div>
 			</div>
@@ -55,7 +55,7 @@ const Catalory = () => {
 				</div>
 			</div>
 			<div>
-				<ul className='grid xl:grid-cols-6  md:grid-cols-4 grid-cols-3  gap-4 mt-[60px] mx-auto'>
+				<ul className='grid xl:grid-cols-6 pl-4 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-4 mt-[60px] mx-auto'>
 					{list.map((item, index) => {
 						return (
 							<li key={`cata+${index}`} className='peer'>

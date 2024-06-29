@@ -3,6 +3,7 @@ import { NavLink, Outlet } from 'react-router-dom';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa';
 import './Account.css';
 const Account = () => {
+	const data = JSON.parse(localStorage.getItem('data'));
 	const manage = [
 		{ title: 'My Profile', path: '/account/profile' },
 		{ title: 'Address Book', path: '/account/address' },
@@ -15,10 +16,10 @@ const Account = () => {
 	const wishList = [];
 	return (
 		<>
-			<div className='container mx-auto relative text-[16px] font-normal'>
+			<div className='container mx-auto relative text-[16px] font-normal mt-36'>
 				<div className='flex justify-end gap-1 mb-20 text-[14px]'>
 					<span>Welcome! </span>
-					<span className='text-[#db4444]'> Md Rimel</span>
+					<span className='text-[#db4444]'>{data.name}</span>
 				</div>
 
 				<div className='grid grid-cols-[200px,870px] gap-40 max-w-[1170px] mx-auto '>

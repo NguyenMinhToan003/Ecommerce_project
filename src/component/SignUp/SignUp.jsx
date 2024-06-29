@@ -6,6 +6,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useState, useRef } from 'react';
 import { signUpService } from '../../services/UserServices';
 import { toast } from 'react-toastify';
+import LoadingEvent from '../Loading/LoadingEvent';
 
 const Login = () => {
 	const navigate = useNavigate();
@@ -17,6 +18,7 @@ const Login = () => {
 	const [group, setGroup] = useState(4);
 	const [gender, setGender] = useState(0);
 	const [phone, setPhone] = useState('');
+	const [loading, setLoading] = useState(false);
 	const refName = useRef();
 	const refAddress = useRef();
 	const refEmail = useRef();
@@ -114,8 +116,12 @@ const Login = () => {
 		return true;
 	};
 	const hanlderSubmit = async () => {
+		setLoading(true);
 		const check = checkDataSubmit();
-		if (!check) return;
+		if (!check) {
+			setLoading(false);
+			return;
+		}
 		const response = await signUpService({
 			name,
 			address,
@@ -127,17 +133,19 @@ const Login = () => {
 		});
 		if (+response.EC === 0) {
 			toast.success(response.EM);
-			navigate(-1);
+			navigate('/login');
 		} else if (+response.EC === 1) {
 			toast.error(response.EM);
 			navigate('/login');
 		} else {
 			toast.error(response.EM);
 		}
+		setLoading(false);
 	};
 
 	return (
 		<>
+			<LoadingEvent check={loading} />
 			<div className='grid lg:grid-cols-[600px,minmax(auto,_1fr)] w-full p-7 text-primary grid-cols-1'>
 				<div>
 					<img src={images} className='aspect-auto w-full' alt='Login Art' />
@@ -214,12 +222,12 @@ const Login = () => {
 								Create Account
 							</button>
 							<hr className='my-6' />
-							<div className='flex w-full justify-between items-center'>
-								<button className='flex flex-row justify-center items-center gap-3 bg-[#f3f9fa] rounded-[16px] px-4 py-3'>
+							<div className='flex md:flex-row flex-col w-full justify-between items-center gap-2'>
+								<button className='flex flex-row justify-center items-center gap-3 bg-[#f3f9fa] rounded-[16px] px-4 py-3 w-full'>
 									<IconGoogle />
 									<span>Sign in with Google</span>
 								</button>
-								<button className='flex flex-row justify-center items-center gap-3 bg-[#f3f9fa] rounded-[16px] px-4 py-3'>
+								<button className='flex flex-row justify-center items-center gap-3 bg-[#f3f9fa] rounded-[16px] px-4 py-3 w-full'>
 									<IconFacebook />
 									<span>Sign in with Facebook</span>
 								</button>

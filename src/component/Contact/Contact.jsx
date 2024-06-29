@@ -2,7 +2,7 @@ import { BsTelephone } from 'react-icons/bs';
 import { CiMail } from 'react-icons/ci';
 const Contact = () => {
 	return (
-		<div className='container mx-auto'>
+		<div className='container mx-auto ms:mt-auto mt-56'>
 			<div className='max-w-[1170px] mx-auto grid lg:grid-cols-[340px,minmax(auto,_1fr)] gap-[30px] mt-[150px] grid-cols-1'>
 				<div className='py-[40px] px-[35px] flex flex-col gap-8 text-[14px] shadow-lg '>
 					<div>

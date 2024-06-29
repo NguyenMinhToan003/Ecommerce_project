@@ -5,5 +5,8 @@ const UploadProductService = async (data) => {
 const GetProductService = async (page, limit) => {
 	return await axios.get(`/getProduct?page=${page}&limit=${limit}`);
 };
+const SearchProductService = async (name) => {
+	return await axios.get(`/search?name=${name}`);
+};
 
-export { UploadProductService, GetProductService };
+export { UploadProductService, GetProductService, SearchProductService };

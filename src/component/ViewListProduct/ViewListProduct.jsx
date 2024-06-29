@@ -3,6 +3,7 @@ import Image2 from '../../assets/images/item2.png';
 import Image3 from '../../assets/images/item3.png';
 import Image4 from '../../assets/images/item4.png';
 import ItemProduct from './ItemProduct';
+
 const ViewListProduct = (props) => {
 	const { catalory } = props;
 	const ls = [
@@ -13,7 +14,7 @@ const ViewListProduct = (props) => {
 			price: 160,
 			star: 3,
 			view: 88,
-			counDown: 30,
+			countDown: 30,
 		},
 		{
 			image: Image,
@@ -22,7 +23,7 @@ const ViewListProduct = (props) => {
 			price: 160,
 			star: 5,
 			view: 88,
-			counDown: 40,
+			countDown: 40,
 		},
 		{
 			image: Image3,
@@ -31,7 +32,7 @@ const ViewListProduct = (props) => {
 			price: 160,
 			star: 4,
 			view: 88,
-			counDown: 40,
+			countDown: 40,
 		},
 		{
 			image: Image4,
@@ -40,7 +41,7 @@ const ViewListProduct = (props) => {
 			price: 160,
 			star: 5,
 			view: 88,
-			counDown: 40,
+			countDown: 40,
 		},
 
 		{
@@ -50,7 +51,7 @@ const ViewListProduct = (props) => {
 			price: 160,
 			star: 3,
 			view: 88,
-			counDown: 30,
+			countDown: 30,
 		},
 
 		{
@@ -60,15 +61,20 @@ const ViewListProduct = (props) => {
 			price: 160,
 			star: 3,
 			view: 88,
-			counDown: 30,
+			countDown: 30,
 		},
 	];
+
 	return (
-		<div className='mt-14 grid xl:grid-cols-4 lg:grid-cols-3 grid-cols-2 mx-auto items-center gap-[30px] '>
+		<ul className='mt-14 grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 mx-auto items-center gap-[30px] '>
 			{ls.map((item, index) => {
-				return <ItemProduct product={item} />;
+				return (
+					<li key={index}>
+						<ItemProduct product={item} />
+					</li>
+				);
 			})}
-		</div>
+		</ul>
 	);
 };
 export default ViewListProduct;

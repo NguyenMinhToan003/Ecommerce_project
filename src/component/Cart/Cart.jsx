@@ -76,9 +76,12 @@ const Cart = () => {
 								return (
 									<tr
 										key={index}
-										className='px-10 py-6 text-[16px] h-[72px] w-full items-center '>
-										<td className='relative'>
-											<span>{item.name}</span>
+										className='px-10 py-6 text-[16px] h-[72px] w-full items-center  border-b-2'>
+										<td className='relative '>
+											<span className='h-[40px] flex justify-start items-center gap-3'>
+												<img className='h-full' src={item.img} />
+												{item.name}
+											</span>
 											<div
 												className='absolute top-0 -left-10 w-[18px] h-[18px] rounded-full bg-[#db4444] text-white cursor-pointer flex items-center justify-center'
 												onClick={() => {

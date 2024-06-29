@@ -7,6 +7,7 @@ import { setAccount as setAccountRedux } from '../../Redux/AccountSlice';
 import image from '../../assets/images/login_art.jpg';
 import IconGoogle from '../../assets/images/Google';
 import IconFacebook from '../../assets/images/Facebook';
+import LoadingEvent from '../Loading/LoadingEvent';
 import './Login.css';
 
 const Login = () => {
@@ -16,6 +17,7 @@ const Login = () => {
 	const refPassword = useRef(null);
 	const [account, setAccount] = useState('');
 	const [password, setPassword] = useState('');
+	const [loading, setLoading] = useState(false);
 
 	const checkDataSubmit = () => {
 		if (account === '') {
@@ -35,7 +37,6 @@ const Login = () => {
 	};
 
 	const handlerOnkeyDown = (event) => {
-		console.log(event);
 		if (event.key === 'Enter') {
 			if (event.target === refAccount.current) refPassword.current.focus();
 			else if (event.target === refPassword.current) handlerSubmit();
@@ -43,21 +44,42 @@ const Login = () => {
 	};
 
 	const handlerSubmit = async () => {
+		setLoading(true);
 		const check = checkDataSubmit();
-		if (!check) return;
+		if (!check) {
+			setLoading(false);
+			return;
+		}
 		const response = await loginService({ account, password });
 		if (response.EC === 0) {
 			toast.success(response.EM);
-			const user = response.DT;
-			dispatch(setAccountRedux(user));
-			navigate('/');
+			const user = response.DT.user;
+			const id = user.id;
+			const name = user.name;
+			const email = user.email;
+			const phone = user.phone;
+			const address = user.address;
+			const avatar = user.avatar;
+			const group_id = user.group.id;
+			const token = response.DT.token;
+			const data = { id, name, email, phone, address, avatar, group_id, token };
+			localStorage.setItem('data', JSON.stringify(data));
+			dispatch(setAccountRedux(data));
+			localStorage.setItem('guestLoading', JSON.stringify(false));
+			if (group_id === 1) {
+				console.log('visit dashboard');
+				console.log(JSON.parse(localStorage.getItem('data')));
+				navigate('dashboard');
+			} else navigate('/');
 		} else if (response.EC === 1) {
 			toast.error(response.EM);
 		} else toast.error(response.EM);
+		setLoading(false);
 	};
 
 	return (
 		<>
+			<LoadingEvent check={loading} />
 			<div className='grid lg:grid-cols-2 w-full p-7 text-primary grid-cols-1'>
 				<div className='flex flex-row justify-center items-center h-full'>
 					<div className='max-w-[25rem]'>
