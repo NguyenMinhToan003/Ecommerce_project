@@ -63,13 +63,10 @@ const Login = () => {
 			const group_id = user.group.id;
 			const token = response.DT.token;
 			const data = { id, name, email, phone, address, avatar, group_id, token };
-			localStorage.setItem('data', JSON.stringify(data));
+
 			dispatch(setAccountRedux(data));
-			localStorage.setItem('guestLoading', JSON.stringify(false));
 			if (group_id === 1) {
-				console.log('visit dashboard');
-				console.log(JSON.parse(localStorage.getItem('data')));
-				navigate('dashboard');
+				navigate('/dashboard');
 			} else navigate('/');
 		} else if (response.EC === 1) {
 			toast.error(response.EM);

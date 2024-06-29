@@ -5,7 +5,7 @@ import { BsPersonFillCheck } from 'react-icons/bs';
 import { useState } from 'react';
 const ItemFlashSale = (props) => {
 	const [colorHeart, setColorHeart] = useState('none');
-	let { image, name, User, price, star, view, counDown } = props.item;
+	let { image, name, User, price, star, counDown } = props.item;
 
 	return (
 		<>

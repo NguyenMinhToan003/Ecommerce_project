@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { TbRuler } from 'react-icons/tb';
 
 const accountDefault = {
 	data: {
@@ -9,7 +10,6 @@ const accountDefault = {
 		address: '',
 		avatar: '',
 		group_id: '',
-		token: '',
 	},
 	isAuth: false,
 	isLoading: true,
@@ -26,7 +26,8 @@ const AccountSlice = createSlice({
 		setAccount: (state, action) => {
 			const user = action.payload;
 			state.data = { ...user };
-			state.isAuth = true;
+			state.isAuth = Object.keys(user).length === 0 ? false : true;
+
 			state.isLoading = false;
 			localStorage.setItem('data', JSON.stringify(user));
 		},

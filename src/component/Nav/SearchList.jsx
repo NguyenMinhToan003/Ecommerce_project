@@ -26,7 +26,7 @@ const SearchList = (props) => {
 			return;
 		}
 
-		const response = await SearchProductService(trimmedSearchKey);
+		const response = await SearchProductService(trimmedSearchKey, 6, 1);
 
 		if (response.EC === 0) {
 			setProducts(response.DT);

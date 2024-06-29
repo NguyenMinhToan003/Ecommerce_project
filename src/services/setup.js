@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 
 // Set config defaults when creating the instance
@@ -49,7 +50,9 @@ instance.interceptors.response.use(
 			default:
 				return;
 		}
-		toast.error(`${arlet}.... `);
+		const nonPathname = ['/', '/login', '/signup'];
+
+		!nonPathname.includes(window.location.pathname) && toast.error(`${arlet}`);
 		return Promise.reject(error);
 	}
 );

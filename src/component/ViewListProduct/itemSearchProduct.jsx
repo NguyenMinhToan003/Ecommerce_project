@@ -1,11 +1,9 @@
 import IconStar from '../../assets/icons/IconStar';
-import IconHeart from '../../assets/icons/Heart';
-import IconEye from '../../assets/icons/IconEye';
+
 import { BsPersonFillCheck } from 'react-icons/bs';
-import { useState } from 'react';
+
 const ItemSearchProduct = (props) => {
-	const [colorHeart, setColorHeart] = useState('none');
-	let { image, name, User, price, star, view, counDown } = props.item;
+	let { image, name, User, price, star, counDown } = props.item;
 
 	return (
 		<>
