@@ -9,14 +9,9 @@ const PageUser = (props) => {
 			{listUser.map((item, index) => {
 				return (
 					<tr className='border-b-[1px] border-[#E2E8F0]'>
-						<td className='py-3 pr-2 text-start'>
-							<p className='text-[#2D3748] text-[14px] font-normal'>
-								{item.id}
-							</p>
-						</td>
 						<td className='py-3 pr-2 '>
 							<div className='flex gap-[15px] '>
-								<div className='flex flex-shrink-0 items-center w-[40px] h-[40px]  rounded-lg'>
+								<div className='flex flex-shrink-0 items-center w-[45px] h-[45px]  rounded-lg'>
 									<img
 										className='w-full h-full rounded-lg object-cover'
 										src={item.avatar ? item.avatar : avatar}
@@ -27,7 +22,7 @@ const PageUser = (props) => {
 									<div className='font-bold text-[#2D3748] text-[14px]'>
 										<p>{item.name}</p>
 									</div>
-									<p className='text-[#718096] text-[14px] font-normal'>
+									<p className='text-[#718096] text-[14px] font-normal italic'>
 										{item.email}
 									</p>
 									<dl className='xl:hidden flex items-center gap-2 '>

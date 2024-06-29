@@ -18,12 +18,14 @@ import Catalory from '../component/Catalory/Catalory';
 import LeaderRouter from './LeaderRouter';
 import Dashboard from '../component/Dashboard/Dashboard';
 import IndexDashboard from '../component/Dashboard/Index';
+import ListSearch from '../component/ViewListProduct/ListSearch';
 const AppRouter = () => {
 	return (
 		<Routes>
 			<Route path='/' element={<Home />}>
 				<Route index element={<Index />} />
 				<Route path='cart' element={<Cart />} />
+				<Route path='search' element={<ListSearch />} />
 				<Route
 					path='billing'
 					element={
@@ -41,6 +43,7 @@ const AppRouter = () => {
 					}
 				/>
 				<Route path='detail' element={<Detail />} />
+
 				<Route path='catalory' element={<Catalory />}>
 					<Route
 						path='phone'

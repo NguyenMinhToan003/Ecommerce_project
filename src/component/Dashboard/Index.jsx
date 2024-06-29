@@ -53,7 +53,6 @@ const IndexDashboard = () => {
 					</caption>
 					<thead>
 						<tr className='text-left text-[#A0AEC0] font-normal text-[10px] border-b-[1px] border-[#E2E8F0]'>
-							<th className='uppercase w-5'>id</th>
 							<th className='uppercase md:w-60 w-72'>User</th>
 							<th className='uppercase w-20 lg:table-cell hidden'>Gender</th>
 							<th className='uppercase w-20 md:table-cell hidden'>Function</th>

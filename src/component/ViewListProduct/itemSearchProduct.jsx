@@ -3,33 +3,20 @@ import IconHeart from '../../assets/icons/Heart';
 import IconEye from '../../assets/icons/IconEye';
 import { BsPersonFillCheck } from 'react-icons/bs';
 import { useState } from 'react';
-const ItemFlashSale = (props) => {
+const ItemSearchProduct = (props) => {
 	const [colorHeart, setColorHeart] = useState('none');
 	let { image, name, User, price, star, view, counDown } = props.item;
 
 	return (
 		<>
-			<div className='w-[270px] h-auto group p-4 '>
-				<div className='w-full h-[250px] bg-[#f5f5f5] flex justify-center items-center relative '>
+			<div className='w-full h-auto group p-4 '>
+				<div className='w-full h-full bg-[#f5f5f5] flex justify-center items-center relative '>
 					<img src={image} className='w-full h-full object-scale-down' />
 					{counDown && (
 						<div className='absolute top-3 left-3 py-1 px-3 rounded-md text-[#fafafa] bg-[#db4444] text-[12px]'>
 							-{counDown}%
 						</div>
 					)}
-					<div className='flex flex-col gap-3 absolute top-3 right-3'>
-						<div
-							onClick={() => {
-								setColorHeart(colorHeart === 'none' ? '#de5454' : 'none');
-							}}>
-							<IconHeart color={colorHeart} />
-						</div>
-						<IconEye />
-					</div>
-
-					<div className='absolute bottom-0 left-0 right-0 bg-black text-[#f4f4f4] h-10  justify-center items-center font-medium text-xl invisible group-hover:visible flex  rounded-b-lg cursor-pointer'>
-						Add To Cart
-					</div>
 				</div>
 				<div className='mt-6 flex flex-col justify-start gap-2'>
 					<span className='font-medium text-[16px]'>{name}</span>
@@ -55,4 +42,4 @@ const ItemFlashSale = (props) => {
 		</>
 	);
 };
-export default ItemFlashSale;
+export default ItemSearchProduct;
