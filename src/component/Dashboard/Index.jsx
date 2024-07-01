@@ -46,45 +46,29 @@ const IndexDashboard = () => {
 					<CiCircleAlert className='text-[#707f95] cursor-pointer' />
 				</div>
 			</div>
-			<div className=' relative'>
-				<table className='w-8/12 mx-auto '>
-					<caption className='text-[#2D3748] text-[18px] font-bold text-left mb-6'>
-						User List
-					</caption>
-					<thead>
-						<tr className='text-left text-[#A0AEC0] font-normal text-[10px] border-b-[1px] border-[#E2E8F0]'>
-							<th className='uppercase md:w-60 w-72'>User</th>
-							<th className='uppercase w-20 lg:table-cell hidden'>Gender</th>
-							<th className='uppercase w-20 md:table-cell hidden'>Function</th>
-							<th className='uppercase w-20 xl:table-cell hidden'>Status</th>
-							<th className='uppercase w-20 '>Action</th>
-						</tr>
-					</thead>
-					<tbody>
-						<PageUser listUser={listUser} setStatusModel={setStatusModel} />
-					</tbody>
-					<ReactPaginate
-						nextLabel='next >'
-						onPageChange={handlePageClick}
-						pageRangeDisplayed={3}
-						marginPagesDisplayed={2}
-						pageCount={totalPage}
-						previousLabel='< previous'
-						pageClassName='page-item'
-						pageLinkClassName='page-link'
-						previousClassName='page-item'
-						previousLinkClassName='page-link'
-						nextClassName='page-item'
-						nextLinkClassName='page-link'
-						breakLabel='...'
-						breakClassName='page-item'
-						breakLinkClassName='page-link'
-						containerClassName='pagination'
-						activeClassName='active'
-						renderOnZeroPageCount={null}
-					/>
-				</table>
+			<div className='overflow-x-auto shadow-lg rounded  bg-white  mx-auto xl:w-10/12 w-full'>
+				<PageUser listUser={listUser} setStatusModel={setStatusModel} />
 			</div>
+			<ReactPaginate
+				nextLabel='next >'
+				onPageChange={handlePageClick}
+				pageRangeDisplayed={3}
+				marginPagesDisplayed={2}
+				pageCount={totalPage}
+				previousLabel='< previous'
+				pageClassName='page-item'
+				pageLinkClassName='page-link'
+				previousClassName='page-item'
+				previousLinkClassName='page-link'
+				nextClassName='page-item'
+				nextLinkClassName='page-link'
+				breakLabel='...'
+				breakClassName='page-item'
+				breakLinkClassName='page-link'
+				containerClassName='pagination'
+				activeClassName='active'
+				renderOnZeroPageCount={null}
+			/>
 		</div>
 	);
 };

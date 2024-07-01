@@ -19,6 +19,8 @@ import LeaderRouter from './LeaderRouter';
 import Dashboard from '../component/Dashboard/Dashboard';
 import IndexDashboard from '../component/Dashboard/Index';
 import ListSearch from '../component/ViewListProduct/ListSearch';
+import Orders from '../component/Orders/Orders';
+import OrderDetails from '../component/OrdersDetail/OrdersDetail';
 const AppRouter = () => {
 	return (
 		<Routes>
@@ -103,8 +105,9 @@ const AppRouter = () => {
 					</LeaderRouter>
 				}>
 				<Route index element={<IndexDashboard />} />
+				<Route path='orders/detail' element={<OrderDetails />} />
 				<Route path='profile' element={<IndexDashboard />} />
-				<Route path='table' element={<IndexDashboard />} />
+				<Route path='orders' element={<Orders />} />
 				<Route path='createAccount' element={<IndexDashboard />} />
 				<Route path='logout' element={<IndexDashboard />} />
 				<Route path='payments' element={<IndexDashboard />} />

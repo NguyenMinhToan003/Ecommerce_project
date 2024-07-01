@@ -16,7 +16,7 @@ const Nav = () => {
 		{ title: 'Contact', link: '/contact' },
 		{ title: 'About', link: '/about' },
 		{ title: 'Sign Up', link: '/signup' },
-		{ title: 'Dashboard', link: '/dashboard' },
+		{ title: 'Dashboard', link: 'dashboard' },
 	];
 	const button = [
 		{ icon: <IconHeart color-='none' />, link: '/like' },

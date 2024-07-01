@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import IconBanking from '../../assets/images/iconBanking.png';
 import { useState } from 'react';
-import { ShippingServices } from '../../services/Shipping';
+import { ShippingServices } from '../../services/Orders';
 import { toast } from 'react-toastify';
 const Billing = () => {
 	const [Shipping, setShipping] = useState(0);
