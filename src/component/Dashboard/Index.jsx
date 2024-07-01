@@ -47,7 +47,7 @@ const IndexDashboard = () => {
 				</div>
 			</div>
 			<div className=' relative'>
-				<table className='table-fixed w-full'>
+				<table className='w-8/12 mx-auto '>
 					<caption className='text-[#2D3748] text-[18px] font-bold text-left mb-6'>
 						User List
 					</caption>

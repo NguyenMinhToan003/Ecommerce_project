@@ -1,10 +1,11 @@
 import { useSelector } from 'react-redux';
 import IconBanking from '../../assets/images/iconBanking.png';
 import { useState } from 'react';
-
+import { ShippingServices } from '../../services/Shipping';
+import { toast } from 'react-toastify';
 const Billing = () => {
 	const [Shipping, setShipping] = useState(0);
-
+	const userID = useSelector((state) => state.account.data.id);
 	const [listCart, setListCart] = useState(
 		useSelector((state) => state.cart.list)
 	);
@@ -17,6 +18,24 @@ const Billing = () => {
 		'Phone Number',
 		'Email Address',
 	];
+	const shiping = async (listCart) => {
+		let products = listCart.map((item) => ({
+			id: item.id,
+			quantity: item.quantity,
+			size: item.size,
+			color: item.color,
+			price: item.price,
+		}));
+		const data = {
+			products: products,
+			userID: userID,
+		};
+
+		const response = await ShippingServices(data);
+		if (response && response.EC === 0) {
+			toast.success(response.EM);
+		} else toast.error(response.EM);
+	};
 	return (
 		<div className='max-w-[1170px] mx-auto p-[15px] grid xl:grid-cols-2 grid-cols-1 gap-10'>
 			<div className='w-[470px] flex flex-col gap-[32px] mx-auto'>
@@ -102,7 +121,9 @@ const Billing = () => {
 						Apply Coupon
 					</button>
 				</div>
-				<button className='px-12 py-4 rounded-md bg-[#db4444] text-white text-[16px] font-medium'>
+				<button
+					className='px-12 py-4 rounded-md bg-[#db4444] text-white text-[16px] font-medium'
+					onClick={() => shiping(listCart)}>
 					Place Order
 				</button>
 			</div>

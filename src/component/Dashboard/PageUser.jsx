@@ -8,7 +8,7 @@ const PageUser = (props) => {
 		<>
 			{listUser.map((item, index) => {
 				return (
-					<tr className='border-b-[1px] border-[#E2E8F0]'>
+					<tr className=' last:border-b-[1px] border-[#E2E8F0]'>
 						<td className='py-3 pr-2 '>
 							<div className='flex gap-[15px] '>
 								<div className='flex flex-shrink-0 items-center w-[45px] h-[45px]  rounded-lg'>

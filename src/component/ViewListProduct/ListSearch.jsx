@@ -33,12 +33,12 @@ const ListSearch = (props) => {
 
 	return (
 		<div className='container mx-auto'>
-			<ul className='mx-auto'>
+			<ul className='mx-auto grid grid-cols-5  gap-4'>
 				{ls &&
 					ls.map((item, index) => (
 						<li
 							key={index}
-							className='inline-block 2xl:w-1/6 sm:w-1/3 lg:w-1/4 xl:w-1/5   '>
+							className='flex item-center w-full h-[500px] hover:shadow-lg hover:-translate-x-[2px] hover:-translate-y-[2px] transition-all ease-in-out '>
 							<ItemSearchProduct item={item} />
 						</li>
 					))}

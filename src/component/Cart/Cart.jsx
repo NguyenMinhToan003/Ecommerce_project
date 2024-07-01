@@ -11,26 +11,26 @@ import { addCartItem, removeCartItem } from '../../Redux/CartSlice';
 
 const Cart = () => {
 	const dispatch = useDispatch();
-	const [Shipping, setShipping] = useState(0);
-	const [quantity, setQuantity] = useState([]);
 	const navigate = useNavigate();
 	const listCart = useSelector((state) => state.cart.list);
+	const [Shipping, setShipping] = useState(0);
+	const [quantity, setQuantity] = useState([]);
 
 	useEffect(() => {
+		// Đồng bộ hóa quantity với listCart khi listCart thay đổi
 		setQuantity(listCart.map((item) => item.quantity));
-	}, []);
+	}, [listCart]);
 
 	const handlerCancelPage = () => {
 		navigate(-1);
 	};
 
-	const handerChangeQuantity = (value, index) => {
+	const handleChangeQuantity = (value, index) => {
 		const valueNumber = +value;
-		if (value === -1 && quantity[index] === 1) return;
-		else
-			setQuantity(
-				quantity.map((item, idx) => (idx === index ? item + valueNumber : item))
-			);
+		if (valueNumber === -1 && quantity[index] === 1) return;
+		setQuantity((prev) =>
+			prev.map((item, idx) => (idx === index ? item + valueNumber : item))
+		);
 		dispatch(
 			addCartItem({
 				data: {
@@ -42,13 +42,13 @@ const Cart = () => {
 		);
 	};
 
-	const handerChangeQuantityInput = (value, index) => {
+	const handleChangeQuantityInput = (value, index) => {
 		const valueNumber = +value;
-		setQuantity(
-			quantity.map((item, idx) => (idx === index ? valueNumber : item))
+		setQuantity((prev) =>
+			prev.map((item, idx) => (idx === index ? valueNumber : item))
 		);
 		dispatch(
-			addItem({
+			addCartItem({
 				data: {
 					...listCart[index],
 					quantity: valueNumber,
@@ -60,7 +60,7 @@ const Cart = () => {
 
 	return (
 		<>
-			{listCart.length > 0 ? (
+			{listCart && listCart.length > 0 ? (
 				<div className='container mx-auto'>
 					<table className='max-w-[1170px] xl:w-[1170px] mx-auto border-separate border-spacing-10'>
 						<thead className='text-justify'>
@@ -72,49 +72,47 @@ const Cart = () => {
 							</tr>
 						</thead>
 						<tbody>
-							{listCart.map((item, index) => {
-								return (
-									<tr
-										key={index}
-										className='px-10 py-6 text-[16px] h-[72px] w-full items-center  border-b-2'>
-										<td className='relative '>
-											<span className='h-[40px] flex justify-start items-center gap-3'>
-												<img className='h-full' src={item.img} />
-												{item.name}
-											</span>
-											<div
-												className='absolute top-0 -left-10 w-[18px] h-[18px] rounded-full bg-[#db4444] text-white cursor-pointer flex items-center justify-center'
-												onClick={() => {
-													dispatch(removeCartItem(index));
-												}}>
-												<IoCloseSharp />
-											</div>
-										</td>
-										<td>{item.price}</td>
-										<td className='relative w-[80px]'>
-											<input
-												type='number'
-												onChange={(event) => {
-													handerChangeQuantityInput(event.target.value, index);
-												}}
-												value={quantity[index]}
-												className='w-[72px] h-[44px] border-2 border-[#808080] rounded-md pl-4 px-4'
+							{listCart.map((item, index) => (
+								<tr
+									key={index}
+									className='px-10 py-6 text-[16px] h-[72px] w-full items-center  border-b-2'>
+									<td className='relative '>
+										<span className='h-[40px] flex justify-start items-center gap-3'>
+											<img className='h-full' src={item.img} alt={item.name} />
+											{item.name}
+										</span>
+										<div
+											className='absolute top-0 -left-10 w-[18px] h-[18px] rounded-full bg-[#db4444] text-white cursor-pointer flex items-center justify-center'
+											onClick={() => {
+												dispatch(removeCartItem(index));
+											}}>
+											<IoCloseSharp />
+										</div>
+									</td>
+									<td>{item.price}</td>
+									<td className='relative w-[80px]'>
+										<input
+											type='number'
+											onChange={(event) => {
+												handleChangeQuantityInput(event.target.value, index);
+											}}
+											value={quantity[index]}
+											className='w-[72px] h-[44px] border-2 border-[#808080] rounded-md pl-4 px-4'
+										/>
+										<div className='absolute top-1/2 right-4 flex flex-col items-center justify-between -translate-y-1/2'>
+											<MdOutlineKeyboardArrowUp
+												className='cursor-pointer'
+												onClick={() => handleChangeQuantity(1, index)}
 											/>
-											<div className='absolute top-1/2 right-4 flex flex-col items-center justify-between -translate-y-1/2'>
-												<MdOutlineKeyboardArrowUp
-													className='cursor-pointer'
-													onClick={() => handerChangeQuantity(1, index)}
-												/>
-												<MdOutlineKeyboardArrowDown
-													className='cursor-pointer'
-													onClick={() => handerChangeQuantity(-1, index)}
-												/>
-											</div>
-										</td>
-										<td>{item.price * quantity[index]}</td>
-									</tr>
-								);
-							})}
+											<MdOutlineKeyboardArrowDown
+												className='cursor-pointer'
+												onClick={() => handleChangeQuantity(-1, index)}
+											/>
+										</div>
+									</td>
+									<td>{item.price * quantity[index]}</td>
+								</tr>
+							))}
 						</tbody>
 					</table>
 					<div className='max-w-[1170px] xl:w-[1170px] mx-auto flex justify-between items-center mt-6 '>
@@ -165,7 +163,7 @@ const Cart = () => {
 								<NavLink
 									to='/billing'
 									className='py-4 px-12 rounded-md bg-[#db4444] text-white font-medium text-[16px] '>
-									Procees to checkout
+									Proceed to checkout
 								</NavLink>
 							</div>
 						</div>

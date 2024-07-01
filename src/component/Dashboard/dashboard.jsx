@@ -6,7 +6,7 @@ import { FaFile } from 'react-icons/fa';
 import { RiLogoutCircleRLine } from 'react-icons/ri';
 import { NavLink, Outlet } from 'react-router-dom';
 import { FaQuestion } from 'react-icons/fa6';
-
+import Temp from './temp';
 import './Dashboard.css';
 const Dashboard = () => {
 	const menu = [
@@ -71,6 +71,7 @@ const Dashboard = () => {
 						</div>
 					</div>
 					<div className='h-[1000px] px-[21px] py-[28px]'>
+						<Temp />
 						<Outlet />
 					</div>
 				</div>

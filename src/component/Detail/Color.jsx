@@ -1,6 +1,7 @@
 const Color = (props) => {
 	const color = props.colorAmount;
 	const { coloring } = props;
+	console.log(coloring, color);
 	return (
 		<div className='flex items-center gap-2'>
 			{color.map((item, index) => {

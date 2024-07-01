@@ -8,5 +8,12 @@ const GetProductService = async (page, limit) => {
 const SearchProductService = async (name, limit, page) => {
 	return await axios.get(`/search?name=${name}&limit=${limit}&page=${page}`);
 };
-
-export { UploadProductService, GetProductService, SearchProductService };
+const DetailProductService = async (id) => {
+	return await axios.get(`/detailProduct?id=${id}`);
+};
+export {
+	UploadProductService,
+	GetProductService,
+	SearchProductService,
+	DetailProductService,
+};
