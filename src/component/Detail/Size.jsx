@@ -1,7 +1,6 @@
 const Size = (props) => {
 	const count = props.sizeAmount;
 	const { sizing } = props;
-	console.log('SIZING ', sizing, count);
 	return (
 		<div className='flex gap-3 items-center justify-start'>
 			{count.map((item, index) => {

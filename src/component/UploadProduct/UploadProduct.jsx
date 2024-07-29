@@ -15,8 +15,13 @@ const UploadProduct = () => {
 	const [detail, setDetail] = useState('');
 	const [image, setImage] = useState([]);
 	const [imagePreview, setImagePreview] = useState([]);
-	const [size, setSize] = useState([]);
-	const [color, setColor] = useState([]);
+	const [size, setSize] = useState(['XS', 'S', 'M', 'L', 'XL']);
+	const [color, setColor] = useState([
+		'#ec4899',
+		'#a855f7',
+		'#22c55e',
+		'#3b82f6',
+	]);
 	const [loading, setLoading] = useState(false);
 
 	const handlerValidateNumber = (e) => {
@@ -53,6 +58,7 @@ const UploadProduct = () => {
 		formData.append('category', category);
 		formData.append('detail', detail);
 		formData.append('userID', idUser);
+		formData.append('color', color.join(', '));
 		for (let i = 0; i < image.length; i++) {
 			formData.append('files', image[i]);
 		}
@@ -200,10 +206,6 @@ const UploadProduct = () => {
 										<option valdefaultValueue='L'>L</option>
 										<option defaultValue='XL'>XL</option>
 									</select>
-									<input
-										value={size.length > 0 ? size.join(', ') : ''}
-										className='py-[13px] px-4 border-none bg-[#f5f5f5] rounded-sm w-[300px]'
-									/>
 								</label>
 								<input type='checkbox' className='peer hidden' id='size' />
 								<div className='hidden peer-checked:block'></div>

@@ -11,6 +11,7 @@ import { logoutService } from '../../services/UserServices';
 import { resetCartStore } from '../../Redux/CartSlice';
 import { resetAccount } from '../../Redux/AccountSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { IoHomeOutline } from 'react-icons/io5';
 import { toast } from 'react-toastify';
 const Dashboard = () => {
 	const userId = useSelector((state) => state.account.data.id);
@@ -24,6 +25,7 @@ const Dashboard = () => {
 		},
 		{ title: 'Orders', link: '/dashboard/orders', icon: <FaTable /> },
 		{ title: 'Payments', link: '/dashboard/payments', icon: <MdPayments /> },
+		{ title: 'website', link: '../', icon: <IoHomeOutline /> },
 	];
 	const profile = [
 		{ title: 'Profile', link: '/dashboard/profile', icon: <CgProfile /> },

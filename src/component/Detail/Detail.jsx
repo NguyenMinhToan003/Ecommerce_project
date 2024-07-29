@@ -18,15 +18,17 @@ const Detail = (props) => {
 	const dispatch = useDispatch();
 	const [count, setCount] = useState(1);
 	const [color, setColor] = useState([]);
-	const [size, setSize] = useState('XS');
+	const [size, setSize] = useState([]);
+	const [choiseColor, setChoiseColor] = useState('');
+	const [choiseSize, setChoiseSize] = useState('');
 	const [colorHeart, setColorHeart] = useState('none');
 	const [item, setItem] = useState({
 		id: '',
 		name: '',
 		star: 5,
 		price: 0,
-		size: ['XS', 'S', 'M', 'L', 'XL'],
-		color: ['#ec4899', '#a855f7', '#22c55e', '#3b82f6'],
+		size: [],
+		color: [],
 		detail: '',
 		image: [],
 	});
@@ -38,12 +40,13 @@ const Detail = (props) => {
 				name: response.DT.name,
 				star: response.DT.star,
 				price: response.DT.price,
-				size: ['XS', 'S', 'M', 'L', 'XL'],
-				color: ['#ec4899', '#a855f7', '#22c55e', '#3b82f6'],
+				size: response.DT.size.split(','),
+				color: response.DT.color.split(','),
 				detail: response.DT.detail,
 				image: response.DT.image.split(','),
 			};
-			console.log(data);
+			setChoiseColor(data.color[0]);
+			setChoiseSize(data.size[0]);
 			setItem(data);
 		}
 	};
@@ -53,18 +56,30 @@ const Detail = (props) => {
 	}, []);
 
 	const handlerSetColor = (color) => {
-		setColor(color);
+		setChoiseColor(color);
 	};
 
 	const handlerSetSize = (size) => {
-		setSize(size);
+		setChoiseSize(size);
 	};
 
 	const handlerBuy = () => {
+		console.log({
+			data: {
+				...item,
+				color: choiseColor,
+				size: choiseSize,
+				quantity: count,
+				img: item.image[0],
+			},
+			index: -1,
+		});
 		dispatch(
 			addCartItem({
 				data: {
 					...item,
+					color: choiseColor,
+					size: choiseSize,
 					quantity: count,
 					img: item.image[0],
 				},
@@ -123,6 +138,8 @@ const Detail = (props) => {
 					<p className='text-[14px]'>
 						PlayStation 5 Controller Skin High quality vinyl with air channel
 						adhesive for easy bubble free install & mess free removal.
+						<br />
+						{item.detail}
 					</p>
 					<hr className='my-6' />
 					<div className='flex gap-3'>
@@ -130,7 +147,8 @@ const Detail = (props) => {
 						<Color
 							colorAmount={item.color}
 							handlerSetColor={handlerSetColor}
-							coloring={color}
+							coloring={choiseColor}
+							handlerChoiseColor={setChoiseColor}
 						/>
 					</div>
 					<div className='mt-6 peer flex gap-3 '>
@@ -138,7 +156,7 @@ const Detail = (props) => {
 						<Size
 							sizeAmount={item.size}
 							handlerSetSize={handlerSetSize}
-							sizing={size}
+							sizing={choiseSize}
 						/>
 					</div>
 					<div className='flex justify-between items-center mt-6'>
