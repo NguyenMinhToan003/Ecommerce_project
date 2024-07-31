@@ -3,10 +3,10 @@ import { MdOutlineFileUpload } from 'react-icons/md';
 import './UploadProduct.css';
 import { toast } from 'react-toastify';
 import { UploadProductService } from '../../services/ProductService';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import LoadingEvent from '../Loading/LoadingEvent';
-
+import { getCatagories } from '../../services/CatagoryServices';
 const UploadProduct = () => {
 	const idUser = useSelector((state) => state.account.data.id);
 	const [name, setName] = useState('');
@@ -22,7 +22,18 @@ const UploadProduct = () => {
 		'#22c55e',
 		'#3b82f6',
 	]);
+	const [categories, setCategories] = useState([]);
 	const [loading, setLoading] = useState(false);
+	const fetchCategories = async () => {
+		const response = await getCatagories();
+		if (response && response.EC === 0) {
+			setCategories(response.DT);
+			console.log(response.DT);
+		}
+	};
+	useEffect(() => {
+		fetchCategories();
+	}, []);
 
 	const handlerValidateNumber = (e) => {
 		setPrice(e.target.value);
@@ -174,17 +185,19 @@ const UploadProduct = () => {
 								)}
 							</label>
 							<label htmlFor='category' className='relative'>
-								<input
-									type='text'
-									id='category'
-									onChange={(e) => setCategory(e.target.value)}
-									className='py-[13px] px-4 border-none bg-[#f5f5f5] rounded-sm peer w-full'
-								/>
-								{category === '' ? (
-									<span className='focus'>Category *</span>
-								) : (
-									<span className='unFocus'>Category *</span>
-								)}
+								<select
+									id='catagory'
+									className='py-[13px] px-4 border-none bg-[#f5f5f5] rounded-sm'
+									onChange={(e) => setCategory(e.target.value)}>
+									<option defaultValue=''>Catagory</option>
+									{categories.map((item, index) => {
+										return (
+											<option key={index} value={item.id}>
+												{item.name}
+											</option>
+										);
+									})}
+								</select>
 							</label>
 						</div>
 						<textarea
