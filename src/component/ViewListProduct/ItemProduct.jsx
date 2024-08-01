@@ -4,7 +4,9 @@ import IconStar from '../../assets/icons/IconStar';
 const ItemProduct = ({ product }) => {
 	return (
 		<div className='w-[270px] h-[322px] flex flex-col justify-between mb-[30px]'>
-			<div className='relative bg-[#f5f5f5] flex justify-center items-center h-full w-full rounded-md '>
+			<a
+				href={`/detail?id=${product.id}`}
+				className='relative  bg-[#f5f5f5] flex justify-center items-center h-full w-full rounded-md '>
 				{product.countDown && (
 					<div className='absolute top-3 left-3 py-1 px-3 rounded-md text-[#fafafa] bg-[#db4444] text-[12px]'>
 						-{product.countDown}%
@@ -23,7 +25,7 @@ const ItemProduct = ({ product }) => {
 						<BsEye />
 					</div>
 				</div>
-			</div>
+			</a>
 
 			<h2 className='text-[16px] font-medium'>{product.name}</h2>
 			<div className='flex gap-2 items-center'>

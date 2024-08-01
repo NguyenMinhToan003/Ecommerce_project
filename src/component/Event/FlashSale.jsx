@@ -88,7 +88,7 @@ const FlashSale = () => {
 					</div>
 				</div>
 			</div>
-			<ul className='flex overflow-x-scroll gap-8 mt-10 snap-x lg:ml-20 ml-5 flex-nowrap no-scrollbar '>
+			<ul className='flex overflow-x-scroll gap-8 mt-10  lg:ml-20 ml-5 flex-nowrap no-scrollbar '>
 				{listProduct.map((item, index) => (
 					<li key={index}>
 						<ItemFlashSale item={item} />

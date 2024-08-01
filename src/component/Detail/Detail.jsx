@@ -2,11 +2,7 @@ import IconStar from '../../assets/icons/IconStar';
 import IconHeart from '../../assets/icons/Heart';
 import IconBus from '../../assets/icons/IconBus';
 import IconDelivery from '../../assets/icons/IconDelivery';
-import detail1 from '../../assets/images/detail1.png';
-import detail2 from '../../assets/images/detail2.png';
-import detail3 from '../../assets/images/detail3.png';
-import detail4 from '../../assets/images/detail4.png';
-import detail5 from '../../assets/images/detail5.png';
+
 import './Detail.css';
 import Size from './Size';
 import Color from './Color';
@@ -14,104 +10,120 @@ import { useEffect, useState } from 'react';
 import { addCartItem } from '../../Redux/CartSlice';
 import { useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
+import { DetailProductService } from '../../services/ProductService';
+import { useSearchParams } from 'react-router-dom';
 
 const Detail = (props) => {
+	const [queryParameters] = useSearchParams();
 	const dispatch = useDispatch();
 	const [count, setCount] = useState(1);
-	const [color, setColor] = useState('');
-	const [size, setSize] = useState('XS');
+	const [color, setColor] = useState([]);
+	const [size, setSize] = useState([]);
+	const [choiseColor, setChoiseColor] = useState('');
+	const [choiseSize, setChoiseSize] = useState('');
 	const [colorHeart, setColorHeart] = useState('none');
+	const [item, setItem] = useState({
+		id: '',
+		name: '',
+		star: 5,
+		price: 0,
+		size: [],
+		color: [],
+		detail: '',
+		image: [],
+	});
+	const fetchData = async () => {
+		const response = await DetailProductService(queryParameters.get('id'));
+		if (response && response.EC === 0) {
+			const data = {
+				id: response.DT.id,
+				name: response.DT.name,
+				star: response.DT.star,
+				price: response.DT.price,
+				size: response.DT.size.split(','),
+				color: response.DT.color.split(','),
+				detail: response.DT.detail,
+				image: response.DT.image.split(','),
+			};
+			setChoiseColor(data.color[0]);
+			setChoiseSize(data.size[0]);
+			setItem(data);
+		}
+	};
+
 	useEffect(() => {
-		setColor(item.color[0]);
+		fetchData();
 	}, []);
+
 	const handlerSetColor = (color) => {
-		setColor(color);
+		setChoiseColor(color);
 	};
+
 	const handlerSetSize = (size) => {
-		setSize(size);
+		setChoiseSize(size);
 	};
+
 	const handlerBuy = () => {
+		console.log({
+			data: {
+				...item,
+				color: choiseColor,
+				size: choiseSize,
+				quantity: count,
+				img: item.image[0],
+			},
+			index: -1,
+		});
 		dispatch(
 			addCartItem({
-				data: { ...item, color: color, size: size, quantity: count ,img:detail1},
+				data: {
+					...item,
+					color: choiseColor,
+					size: choiseSize,
+					quantity: count,
+					img: item.image[0],
+				},
 				index: -1,
 			})
 		);
-		toast.success('Up to Cart');
+		toast.success('Added to Cart');
 	};
 
 	const handlerColorHeart = () => {
 		setColorHeart(colorHeart === 'none' ? '#db4444' : 'none');
 	};
+
 	const Count = (value) => {
 		const constParse = +count;
 		if ((count <= 1) & (value === -1)) return;
 		setCount(constParse + value);
 	};
+
 	const handlerChangeQuantity = (event) => {
 		const value = +event.target.value;
 		if (isNaN(value)) setCount('');
 		else setCount(value);
 	};
-	const list = [
-		{
-			id: 0,
-			name: 'Havic HV G-92 Gamepad',
-			star: 4,
-			price: 192.0,
-			size: ['XS', 'S', 'M', 'L', 'XL'],
-			color: ['#ec4899', '#a855f7', '#22c55e', '#3b82f6'],
-
-			detail:
-				'PlayStation 5 Controller Skin High quality vinyl with air channel adhesive htmlFor easy bubble free install & mess free removal Pressure sensitive.',
-		},
-		{
-			id: 1,
-			name: 'Havic HV G-92 Gamepad',
-			star: 4,
-			price: 192.0,
-			size: ['XS', 'S', 'M', 'L', 'XL'],
-			color: ['#ec4899', '#a855f7', '#22c55e', '#3b82f6'],
-			detail:
-				'PlayStation 5 Controller Skin High quality vinyl with air channel adhesive htmlFor easy bubble free install & mess free removal Pressure sensitive.',
-		},
-		{
-			id: 2,
-			name: 'Havic HV G-92 Gamepad',
-			star: 4,
-			price: 192.0,
-			size: ['XS', 'S', 'M', 'L', 'XL'],
-			color: ['#ec4899', '#a855f7', '#22c55e', '#3b82f6'],
-			detail:
-				'PlayStation 5 Controller Skin High quality vinyl with air channel adhesive htmlFor easy bubble free install & mess free removal Pressure sensitive.',
-		},
-		{
-			id: 3,
-			name: 'Havic HV G-92 Gamepad',
-			star: 4,
-			price: 192.0,
-			size: ['XS', 'S', 'M', 'L', 'XL'],
-			color: ['#ec4899', '#a855f7', '#22c55e', '#3b82f6'],
-			detail:
-				'PlayStation 5 Controller Skin High quality vinyl with air channel adhesive htmlFor easy bubble free install & mess free removal Pressure sensitive.',
-		},
-	];
-
-	const item = list[1];
 
 	return (
 		<div className='container mx-auto px-2 mt-56'>
-			<div className='max-w-[1170px] min-h-[600px] mx-auto grid lg:grid-cols-[170px,minmax(auto,_1fr),400px] grid-cols-2'>
+			<div className='max-w-[1170px] min-h-[600px] mx-auto grid lg:grid-cols-[170px,minmax(auto,_1fr),400px] grid-cols-2 gap-9'>
 				<div className='lg:flex lg:flex-col items-center justify-between gap-4 grid grid-cols-2'>
-					<img src={detail2} alt='product' />
-					<img src={detail3} alt='product' />
-					<img src={detail4} alt='product' />
-					<img src={detail5} alt='product' />
+					{item &&
+						item.image &&
+						item.image.map((el, index) => {
+							if (index === item.image.length - 1 || index === 0) return '';
+							return <img src={el} alt='product' />;
+						})}
 				</div>
 				<div className='flex justify-center items-center '>
-					<img src={detail1} alt='product' />
+					<img
+						src={item.image[0]}
+						alt='product'
+						className='w-full object-fill'
+					/>
 				</div>
-				<div className='flex justify-between flex-col lg:col-span-1 col-span-2 mt-30'>
+				<div className='flex justify-start flex-col lg:col-span-1 col-span-2 mt-30'>
 					<div>
 						<h3 className='text-[24px] font-semibold mb-4'>{item.name}</h3>
 						<div className='mb-4 flex gap-4'>
@@ -125,8 +137,9 @@ const Detail = (props) => {
 					</div>
 					<p className='text-[14px]'>
 						PlayStation 5 Controller Skin High quality vinyl with air channel
-						adhesive htmlFor easy bubble free install & mess free removal
-						Pressure sensitive.
+						adhesive for easy bubble free install & mess free removal.
+						<br />
+						{item.detail}
 					</p>
 					<hr className='my-6' />
 					<div className='flex gap-3'>
@@ -134,15 +147,16 @@ const Detail = (props) => {
 						<Color
 							colorAmount={item.color}
 							handlerSetColor={handlerSetColor}
-							coloring={color}
+							coloring={choiseColor}
+							handlerChoiseColor={setChoiseColor}
 						/>
 					</div>
-					<div className='mt-6 peer flex  gap-3 '>
+					<div className='mt-6 peer flex gap-3 '>
 						<span>Size:</span>
 						<Size
 							sizeAmount={item.size}
 							handlerSetSize={handlerSetSize}
-							sizing={size}
+							sizing={choiseSize}
 						/>
 					</div>
 					<div className='flex justify-between items-center mt-6'>
@@ -160,12 +174,11 @@ const Detail = (props) => {
 								/>
 							</div>
 							<button
-								className='w-10 h-11 border-[1px]  border-[#db4444] bg-[#db4444]  rounded-r-md text-white'
+								className='w-10 h-11 border-[1px] border-[#db4444] bg-[#db4444] rounded-r-md text-white'
 								onClick={() => Count(1)}>
 								+
 							</button>
 						</div>
-
 						<button
 							className='bg-[#db4444] px-12 py-[10px] rounded-md text-white'
 							onClick={() => handlerBuy()}>
@@ -181,9 +194,9 @@ const Detail = (props) => {
 								<IconBus />
 							</div>
 							<div className='font-medium'>
-								<p className='text-[16px] '>Free Delivery</p>
+								<p className='text-[16px]'>Free Delivery</p>
 								<a className='underline text-[12px]'>
-									Enter your postal code htmlFor Delivery Availability
+									Enter your postal code for Delivery Availability
 								</a>
 							</div>
 						</div>

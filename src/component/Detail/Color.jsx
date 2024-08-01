@@ -1,6 +1,7 @@
 const Color = (props) => {
 	const color = props.colorAmount;
 	const { coloring } = props;
+	console.log('>>>>COLORING', coloring);
 	return (
 		<div className='flex items-center gap-2'>
 			{color.map((item, index) => {
@@ -15,7 +16,10 @@ const Color = (props) => {
 						/>
 						<div
 							className='peer radio-color  '
-							onClick={() => props.handlerSetColor(item)}>
+							onClick={() => {
+								console.log(item);
+								props.handlerSetColor(item);
+							}}>
 							<div
 								style={{ backgroundColor: item }}
 								className='w-[12px] h-[12px] rounded-full '></div>

@@ -5,11 +5,13 @@ import { BsPersonFillCheck } from 'react-icons/bs';
 import { useState } from 'react';
 const ItemFlashSale = (props) => {
 	const [colorHeart, setColorHeart] = useState('none');
-	let { image, name, User, price, star, view, counDown } = props.item;
+	let { image, name, User, price, star, counDown, id } = props.item;
 
 	return (
 		<>
-			<div className='w-[270px] h-auto group p-4 '>
+			<a
+				href={`/detail?id=${id}`}
+				className='w-[270px] inline-block h-auto group p-4 '>
 				<div className='w-full h-[250px] bg-[#f5f5f5] flex justify-center items-center relative '>
 					<img src={image} className='w-full h-full object-scale-down' />
 					{counDown && (
@@ -51,7 +53,7 @@ const ItemFlashSale = (props) => {
 						<span className='italic'>{User.name}</span>
 					</div>
 				</div>
-			</div>
+			</a>
 		</>
 	);
 };

@@ -23,10 +23,10 @@
       @apply min-w-[40px] min-h-[40px] rounded-[15px] flex items-center justify-center text-[#A0AEC0] font-bold cursor-pointer transition-all ease-in-out duration-150;
     }
     .pagination .page-item.active{
-      @apply text-white bg-[#4FD1C5] shadow-sm;
+      @apply text-white bg-indigo-600 shadow-sm;
     }
     .formUserChange input{
-      @apply w-full h-[40px] rounded-[15px] border border-[#E2E8F0] text-[#A0AEC0] text-[12px] p-3;
+      @apply w-full h-[40px] rounded-[15px] border border-[#E2E8F0] text-black  text-[14px] p-3;
     }
     .formUserChange .radioGender{
       @apply w-[20px] ;

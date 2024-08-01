@@ -1,16 +1,14 @@
 import IconStar from '../../assets/icons/IconStar';
-import IconHeart from '../../assets/icons/Heart';
-import IconEye from '../../assets/icons/IconEye';
+
 import { BsPersonFillCheck } from 'react-icons/bs';
-import { useState } from 'react';
+
 const ItemSearchProduct = (props) => {
-	const [colorHeart, setColorHeart] = useState('none');
-	let { image, name, User, price, star, view, counDown } = props.item;
+	let { image, name, User, price, star, counDown, id } = props.item;
 
 	return (
 		<>
-			<div className='w-full h-auto group p-4 '>
-				<div className='w-full h-full bg-[#f5f5f5] flex justify-center items-center relative '>
+			<a href={`/detail?id=${id}`} className='h-full w-full p-4  '>
+				<div className='w-full h-[300px]  bg-[#f5f5f5] flex justify-center items-center relative '>
 					<img src={image} className='w-full h-full object-scale-down' />
 					{counDown && (
 						<div className='absolute top-3 left-3 py-1 px-3 rounded-md text-[#fafafa] bg-[#db4444] text-[12px]'>
@@ -38,7 +36,7 @@ const ItemSearchProduct = (props) => {
 						<span className='italic'>{User.name}</span>
 					</div>
 				</div>
-			</div>
+			</a>
 		</>
 	);
 };

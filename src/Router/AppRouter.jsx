@@ -19,6 +19,8 @@ import LeaderRouter from './LeaderRouter';
 import Dashboard from '../component/Dashboard/Dashboard';
 import IndexDashboard from '../component/Dashboard/Index';
 import ListSearch from '../component/ViewListProduct/ListSearch';
+import Orders from '../component/Orders/Orders';
+import OrderDetails from '../component/OrdersDetail/OrdersDetail';
 const AppRouter = () => {
 	return (
 		<Routes>
@@ -45,27 +47,12 @@ const AppRouter = () => {
 				<Route path='detail' element={<Detail />} />
 
 				<Route path='catalory' element={<Catalory />}>
-					<Route
-						path='phone'
-						element={<ViewListProduct catalory={'phone'} />}
-					/>
-					<Route
-						path='camera'
-						element={<ViewListProduct catalory={'camera'} />}
-					/>
-					<Route path='pc' element={<ViewListProduct catalory={'pc'} />} />
-					<Route
-						path='headphone'
-						element={<ViewListProduct catalory={'headphone'} />}
-					/>
-					<Route
-						path='watch'
-						element={<ViewListProduct catalory={'watch'} />}
-					/>
-					<Route
-						path='gaming'
-						element={<ViewListProduct catalory={'gaming'} />}
-					/>
+					<Route path='phone' element={<ViewListProduct catalory={1} />} />
+					<Route path='camera' element={<ViewListProduct catalory={2} />} />
+					<Route path='pc' element={<ViewListProduct catalory={3} />} />
+					<Route path='headphone' element={<ViewListProduct catalory={4} />} />
+					<Route path='watch' element={<ViewListProduct catalory={5} />} />
+					<Route path='gaming' element={<ViewListProduct catalory={6} />} />
 				</Route>
 				<Route
 					path='account'
@@ -103,8 +90,9 @@ const AppRouter = () => {
 					</LeaderRouter>
 				}>
 				<Route index element={<IndexDashboard />} />
+				<Route path='orders/detail' element={<OrderDetails />} />
 				<Route path='profile' element={<IndexDashboard />} />
-				<Route path='table' element={<IndexDashboard />} />
+				<Route path='orders' element={<Orders />} />
 				<Route path='createAccount' element={<IndexDashboard />} />
 				<Route path='logout' element={<IndexDashboard />} />
 				<Route path='payments' element={<IndexDashboard />} />
