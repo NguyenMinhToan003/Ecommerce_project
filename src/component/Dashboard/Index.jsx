@@ -12,6 +12,7 @@ const IndexDashboard = () => {
 	const [listUser, setListUser] = useState([]);
 	const [totalPage, setTotalPage] = useState(0);
 	const [statusModel, setStatusModel] = useState(false);
+	const [chooseUserId, setChooseUserId] = useState('');
 	const handlePageClick = (event) => {
 		setPage(event.selected + 1);
 	};
@@ -30,7 +31,11 @@ const IndexDashboard = () => {
 	}, [page]);
 	return (
 		<div>
-			<ModelOption statusModel={statusModel} setStatusModel={setStatusModel} />
+			<ModelOption
+				statusModel={statusModel}
+				setStatusModel={setStatusModel}
+				id={chooseUserId}
+			/>
 			<div className='flex justify-between items-center mb-10'>
 				<h2 className='font-bold text-[14px]'>Table</h2>
 				<div className='flex justify-center items-center gap-4 cursor-pointer'>
@@ -47,7 +52,11 @@ const IndexDashboard = () => {
 				</div>
 			</div>
 			<div className='overflow-x-auto shadow-lg rounded  bg-white  mx-auto xl:w-10/12 w-full'>
-				<PageUser listUser={listUser} setStatusModel={setStatusModel} />
+				<PageUser
+					listUser={listUser}
+					setStatusModel={setStatusModel}
+					setChooseUserId={setChooseUserId}
+				/>
 			</div>
 			<ReactPaginate
 				nextLabel='next >'

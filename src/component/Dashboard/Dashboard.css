@@ -26,7 +26,7 @@
       @apply text-white bg-indigo-600 shadow-sm;
     }
     .formUserChange input{
-      @apply w-full h-[40px] rounded-[15px] border border-[#E2E8F0] text-[#A0AEC0] text-[12px] p-3;
+      @apply w-full h-[40px] rounded-[15px] border border-[#E2E8F0] text-black  text-[14px] p-3;
     }
     .formUserChange .radioGender{
       @apply w-[20px] ;

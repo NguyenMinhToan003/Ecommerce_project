@@ -72,7 +72,10 @@ const PageUser = (props) => {
 								<td className='border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4'>
 									<button
 										className='cursor-pointer text-[#718096]  py-1 text-3'
-										onClick={() => props.setStatusModel(true)}>
+										onClick={() => {
+											props.setStatusModel(true);
+											props.setChooseUserId(item.id);
+										}}>
 										Edit
 									</button>
 								</td>
