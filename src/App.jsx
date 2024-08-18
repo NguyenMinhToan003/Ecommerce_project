@@ -13,7 +13,7 @@ function App() {
 	const dispatch = useDispatch();
 	const fetchDataAccount = async () => {
 		try {
-			let data = 1;
+			let data = {};
 			let response = await accessTokenService();
 			if (response && response.EC === -1) {
 				response = await refreshTokenService();

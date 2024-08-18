@@ -8,6 +8,8 @@ import AccountDropdown from './AccountDropdown';
 import SearchList from './SearchList';
 import { useState } from 'react';
 const Nav = () => {
+	const auth = useSelector((state) => state.account.data.group_id) || false;
+	console.log("auth",auth);
 	const number = useSelector((state) => state.cart.list.length);
 	const [statusSearch, setSearchStatus] = useState(false);
 	const [searchKey, setSearchKey] = useState('');
@@ -30,14 +32,16 @@ const Nav = () => {
 	return (
 		<>
 			<div className='py-3 container mx-auto flex flex-col items-center  justify-between lg:flex-row '>
-				<div className='flex lg:w-1/2 container items-center justify-between lg:flex-row flex-col'>
+				<div className='flex lg:w-1/2 container items-center justify-start gap-4 lg:flex-row flex-col'>
 					<span className='font-bold md:text-2xl pl-4 text-lg'>Exclusive</span>
 					<ul className='flex items-center xl:gap-12 gap-5 w-fit  text-[#484848] '>
 						{menu.map((item, index) => {
+							if(auth && item.title === 'Sign Up') return null;
+							if(auth!==1 && item.title === 'Dashboard') return null;
 							return (
-								<NavLink to={item.link} className='p-2' key={item.title}>
+									<NavLink to={item.link} className='p-2' key={item.title}>
 									{item.title}
-								</NavLink>
+									</NavLink>
 							);
 						})}
 					</ul>
